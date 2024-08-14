@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4281fe7080395aa029276bdd6e242e8",
+    "content-hash": "528d950652aea3a071d2d4aa926fbff4",
     "packages": [
         {
             "name": "api-platform/core",
@@ -8173,16 +8173,16 @@
         },
         {
             "name": "symfony/stimulus-bundle",
-            "version": "v2.18.1",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stimulus-bundle.git",
-                "reference": "017b60e036c366c8ce0e77864d5aabab436ad73d"
+                "reference": "5e2e1aff3e7cff2875e2f901437543fda9ca9910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/017b60e036c366c8ce0e77864d5aabab436ad73d",
-                "reference": "017b60e036c366c8ce0e77864d5aabab436ad73d",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/5e2e1aff3e7cff2875e2f901437543fda9ca9910",
+                "reference": "5e2e1aff3e7cff2875e2f901437543fda9ca9910",
                 "shasum": ""
             },
             "require": {
@@ -8222,7 +8222,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.18.1"
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -8238,7 +8238,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-11T13:21:54+00:00"
+            "time": "2024-07-30T19:26:23+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -8838,16 +8838,16 @@
         },
         {
             "name": "symfony/ux-autocomplete",
-            "version": "v2.18.0",
+            "version": "v2.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-autocomplete.git",
-                "reference": "aa2e5b1a335f29f1fbd840b1cf52e1c3d3dafc0d"
+                "reference": "ef15862c55e15a2225587e8b226df21561d36c7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/aa2e5b1a335f29f1fbd840b1cf52e1c3d3dafc0d",
-                "reference": "aa2e5b1a335f29f1fbd840b1cf52e1c3d3dafc0d",
+                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/ef15862c55e15a2225587e8b226df21561d36c7c",
+                "reference": "ef15862c55e15a2225587e8b226df21561d36c7c",
                 "shasum": ""
             },
             "require": {
@@ -8910,7 +8910,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.18.0"
+                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.19.2"
             },
             "funding": [
                 {
@@ -8926,20 +8926,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-01T17:50:20+00:00"
+            "time": "2024-08-13T14:54:57+00:00"
         },
         {
             "name": "symfony/ux-react",
-            "version": "v2.18.0",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-react.git",
-                "reference": "ac99b57093f855452c6d9cc7f39272ff613cde1f"
+                "reference": "de2d8a53da4430c5c9b4cf04220a669492761f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-react/zipball/ac99b57093f855452c6d9cc7f39272ff613cde1f",
-                "reference": "ac99b57093f855452c6d9cc7f39272ff613cde1f",
+                "url": "https://api.github.com/repos/symfony/ux-react/zipball/de2d8a53da4430c5c9b4cf04220a669492761f7e",
+                "reference": "de2d8a53da4430c5c9b4cf04220a669492761f7e",
                 "shasum": ""
             },
             "require": {
@@ -8986,7 +8986,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-react/tree/v2.18.0"
+                "source": "https://github.com/symfony/ux-react/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -9002,20 +9002,100 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-01T17:50:16+00:00"
+            "time": "2024-07-30T19:26:23+00:00"
         },
         {
-            "name": "symfony/ux-translator",
-            "version": "v2.18.1",
+            "name": "symfony/ux-toggle-password",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/ux-translator.git",
-                "reference": "e17e0b5a472b6452bfee17ba38be44c19c03be7a"
+                "url": "https://github.com/symfony/ux-toggle-password.git",
+                "reference": "d39889b545adebe1cd7d80e67607d7f75dadc188"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-translator/zipball/e17e0b5a472b6452bfee17ba38be44c19c03be7a",
-                "reference": "e17e0b5a472b6452bfee17ba38be44c19c03be7a",
+                "url": "https://api.github.com/repos/symfony/ux-toggle-password/zipball/d39889b545adebe1cd7d80e67607d7f75dadc188",
+                "reference": "d39889b545adebe1cd7d80e67607d7f75dadc188",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/form": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/options-resolver": "^5.4|^6.0|^7.0",
+                "symfony/translation": "^5.4|^6.0|^7.0"
+            },
+            "require-dev": {
+                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+                "symfony/phpunit-bridge": "^5.4|^6.0|^7.0",
+                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
+                "symfony/var-dumper": "^5.4|^6.0|^7.0",
+                "twig/twig": "^2.14.7|^3.0.4"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/ux",
+                    "url": "https://github.com/symfony/ux"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\TogglePassword\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Félix Eymonot",
+                    "email": "felix.eymonot@alximy.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Toggle visibility of password inputs for Symfony Forms",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-toggle-password/tree/v2.19.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-30T19:26:23+00:00"
+        },
+        {
+            "name": "symfony/ux-translator",
+            "version": "v2.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-translator.git",
+                "reference": "0cff4d7fadbf677cf8d96528089ef8b8b869df33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-translator/zipball/0cff4d7fadbf677cf8d96528089ef8b8b869df33",
+                "reference": "0cff4d7fadbf677cf8d96528089ef8b8b869df33",
                 "shasum": ""
             },
             "require": {
@@ -9062,7 +9142,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-translator/tree/v2.18.1"
+                "source": "https://github.com/symfony/ux-translator/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -9078,20 +9158,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-10T13:33:39+00:00"
+            "time": "2024-07-30T19:26:23+00:00"
         },
         {
             "name": "symfony/ux-turbo",
-            "version": "v2.18.0",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-turbo.git",
-                "reference": "e447231ddcc09ab68d29047f47d31a524837dc7a"
+                "reference": "abfee7181ce8b71f9a2447cdf9c562ed719a0e3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/e447231ddcc09ab68d29047f47d31a524837dc7a",
-                "reference": "e447231ddcc09ab68d29047f47d31a524837dc7a",
+                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/abfee7181ce8b71f9a2447cdf9c562ed719a0e3e",
+                "reference": "abfee7181ce8b71f9a2447cdf9c562ed719a0e3e",
                 "shasum": ""
             },
             "require": {
@@ -9159,7 +9239,7 @@
                 "turbo-stream"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-turbo/tree/v2.18.0"
+                "source": "https://github.com/symfony/ux-turbo/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -9175,7 +9255,91 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-01T17:56:14+00:00"
+            "time": "2024-07-30T16:00:35+00:00"
+        },
+        {
+            "name": "symfony/ux-twig-component",
+            "version": "v2.19.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-twig-component.git",
+                "reference": "7f8d4891e8e3a3303de11bfc7224b176a23a2c1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-twig-component/zipball/7f8d4891e8e3a3303de11bfc7224b176a23a2c1c",
+                "reference": "7f8d4891e8e3a3303de11bfc7224b176a23a2c1c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/deprecation-contracts": "^2.2|^3.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/property-access": "^5.4|^6.0|^7.0",
+                "twig/twig": "^3.8"
+            },
+            "conflict": {
+                "symfony/config": "<5.4.0"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/css-selector": "^5.4|^6.0|^7.0",
+                "symfony/dom-crawler": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+                "symfony/phpunit-bridge": "^6.0|^7.0",
+                "symfony/stimulus-bundle": "^2.9.1",
+                "symfony/stopwatch": "^5.4|^6.0|^7.0",
+                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
+                "symfony/webpack-encore-bundle": "^1.15"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/ux",
+                    "url": "https://github.com/symfony/ux"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\TwigComponent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Twig components for Symfony",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "components",
+                "symfony-ux",
+                "twig"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-twig-component/tree/v2.19.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-08-13T03:00:01+00:00"
         },
         {
             "name": "symfony/validator",
@@ -9983,6 +10147,73 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "dama/doctrine-test-bundle",
+            "version": "v8.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmaicher/doctrine-test-bundle.git",
+                "reference": "1f81a280ea63f049d24e9c8ce00e557b18e0ff2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmaicher/doctrine-test-bundle/zipball/1f81a280ea63f049d24e9c8ce00e557b18e0ff2f",
+                "reference": "1f81a280ea63f049d24e9c8ce00e557b18e0ff2f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.3 || ^4.0",
+                "doctrine/doctrine-bundle": "^2.11.0",
+                "php": "^7.4 || ^8.0",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "symfony/cache": "^5.4 || ^6.3 || ^7.0",
+                "symfony/framework-bundle": "^5.4 || ^6.3 || ^7.0"
+            },
+            "require-dev": {
+                "behat/behat": "^3.0",
+                "friendsofphp/php-cs-fixer": "^3.27",
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+                "symfony/phpunit-bridge": "^6.3",
+                "symfony/process": "^5.4 || ^6.3 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.3 || ^7.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DAMA\\DoctrineTestBundle\\": "src/DAMA/DoctrineTestBundle"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Maicher",
+                    "email": "mail@dmaicher.de"
+                }
+            ],
+            "description": "Symfony bundle to isolate doctrine database tests and improve test performance",
+            "keywords": [
+                "doctrine",
+                "isolation",
+                "performance",
+                "symfony",
+                "testing",
+                "tests"
+            ],
+            "support": {
+                "issues": "https://github.com/dmaicher/doctrine-test-bundle/issues",
+                "source": "https://github.com/dmaicher/doctrine-test-bundle/tree/v8.2.0"
+            },
+            "time": "2024-05-28T15:41:06+00:00"
+        },
         {
             "name": "doctrine/data-fixtures",
             "version": "1.7.0",

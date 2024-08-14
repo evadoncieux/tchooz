@@ -64,4 +64,8 @@ return [
     '@app/translations/configuration' => [
         'path' => './var/translations/configuration.js',
     ],
+    'tom-select/dist/css/tom-select.default.css' => [
+        'version' => '2.3.1',
+        'type' => 'css',
+    ],
 ];
