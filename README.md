@@ -3,8 +3,9 @@
 End of the year project for my web developer diploma, with the 3W Academy.
 
 ## Installation
-
-- To get the project started, open a terminal in the `Tchooz` folder and run `npm run dev server`
+- To get the back server started, run `symfony server:start`
+- To get the front server started, run `npm run dev server`
+- To get the mailhog service started, run `mailhog`and go to [this address](http://0.0.0.0:8025/#) to get the emails 
 - If there are any changes to the javascript files and there's a need to reload the assets, run `npm run build`
 
 ## Technologies

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240814143221 extends AbstractMigration
+final class Version20240814232106 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -32,7 +32,7 @@ final class Version20240814143221 extends AbstractMigration
         $this->addSql('CREATE TABLE suggestion (id INT AUTO_INCREMENT NOT NULL, user_suggestions_id INT DEFAULT NULL, suggested_outfit LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:array)\', INDEX IDX_DD80F31B59303820 (user_suggestions_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE suggestion_outfit (suggestion_id INT NOT NULL, outfit_id INT NOT NULL, INDEX IDX_583603D7A41BB822 (suggestion_id), INDEX IDX_583603D7AE96E385 (outfit_id), PRIMARY KEY(suggestion_id, outfit_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE temperature (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE `user` (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, location VARCHAR(255) DEFAULT NULL, avatar VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_IDENTIFIER_USERNAME (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE `user` (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, location VARCHAR(255) DEFAULT NULL, avatar VARCHAR(255) DEFAULT NULL, is_verified TINYINT(1) NOT NULL, UNIQUE INDEX UNIQ_IDENTIFIER_USERNAME (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE wardrobe (id INT AUTO_INCREMENT NOT NULL, wardrobe_user_id INT DEFAULT NULL, type VARCHAR(255) NOT NULL, clothing_items LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:array)\', INDEX IDX_2C80050E8E15D9A0 (wardrobe_user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE wardrobe_clothing_item (wardrobe_id INT NOT NULL, clothing_item_id INT NOT NULL, INDEX IDX_5A4570A4FC109F73 (wardrobe_id), INDEX IDX_5A4570A4AA13B545 (clothing_item_id), PRIMARY KEY(wardrobe_id, clothing_item_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE weather_type (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

@@ -90,13 +90,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->username;
+        return (string)$this->username;
     }
 
     /**
+     * @return list<string>
      * @see UserInterface
      *
-     * @return list<string>
      */
     public function getRoles(): array
     {
@@ -247,5 +247,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    public function getUser()
+    {
+        return $this->getUser();
     }
 }
