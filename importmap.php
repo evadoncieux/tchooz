@@ -68,4 +68,7 @@ return [
         'version' => '2.3.1',
         'type' => 'css',
     ],
+    '@symfony/webpack-encore' => [
+        'version' => '4.6.1',
+    ],
 ];

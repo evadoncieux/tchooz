@@ -18,7 +18,7 @@ Encore
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
 
@@ -49,7 +49,7 @@ Encore
 
     // configure Babel
     // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
+    //     config.plugins.push('@babel/plugin-transform-runtime');
     // })
 
     // enables and configure @babel/preset-env polyfills
@@ -59,20 +59,30 @@ Encore
     })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
     // uncomment if you use React
-    //.enableReactPreset()
+    .enableReactPreset()
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
+// uncomment to get integrity="..." attributes on your script & link tags
+// requires WebpackEncoreBundle 1.4 or higher
+//.enableIntegrityHashes(Encore.isProduction())
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+// uncomment if you're having problems with a jQuery plugin
+//.autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();
+module.exports = {
+   devServer: {
+    hot: true,
+    contentBase: path.join(__dirname, 'public'),
+    watchContentBase: true,
+    historyApiFallback: true,
+    open: true,
+    port: 8080,
+  },
+};

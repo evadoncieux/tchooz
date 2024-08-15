@@ -54,8 +54,6 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            // do anything else you need here, like send an email
-
             return $security->login($user, 'form_login', 'main');
         }
 
@@ -79,7 +77,7 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('success', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_home');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
