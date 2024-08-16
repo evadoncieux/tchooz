@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1df9c817dcb35e89a754df4ec21627",
+    "content-hash": "8214deb185b2bacfc08efb5b03f297c0",
     "packages": [
         {
             "name": "api-platform/core",
@@ -794,16 +794,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.8.7",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2093d670ca17f634f3c095ec10a20687eccebd99"
+                "reference": "d8f68ea6cc00912e5313237130b8c8decf4d28c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2093d670ca17f634f3c095ec10a20687eccebd99",
-                "reference": "2093d670ca17f634f3c095ec10a20687eccebd99",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d8f68ea6cc00912e5313237130b8c8decf4d28c6",
+                "reference": "d8f68ea6cc00912e5313237130b8c8decf4d28c6",
                 "shasum": ""
             },
             "require": {
@@ -887,7 +887,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.8.7"
+                "source": "https://github.com/doctrine/dbal/tree/3.9.0"
             },
             "funding": [
                 {
@@ -903,7 +903,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-07T11:57:25+00:00"
+            "time": "2024-08-15T07:34:42+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -9097,16 +9097,16 @@
         },
         {
             "name": "symfony/ux-react",
-            "version": "v2.19.0",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-react.git",
-                "reference": "de2d8a53da4430c5c9b4cf04220a669492761f7e"
+                "reference": "6518cecc62c800b1ece02b70d1dec0067d012495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-react/zipball/de2d8a53da4430c5c9b4cf04220a669492761f7e",
-                "reference": "de2d8a53da4430c5c9b4cf04220a669492761f7e",
+                "url": "https://api.github.com/repos/symfony/ux-react/zipball/6518cecc62c800b1ece02b70d1dec0067d012495",
+                "reference": "6518cecc62c800b1ece02b70d1dec0067d012495",
                 "shasum": ""
             },
             "require": {
@@ -9153,7 +9153,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-react/tree/v2.19.0"
+                "source": "https://github.com/symfony/ux-react/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -9169,20 +9169,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-30T19:26:23+00:00"
+            "time": "2024-08-14T04:55:38+00:00"
         },
         {
             "name": "symfony/ux-toggle-password",
-            "version": "v2.19.0",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-toggle-password.git",
-                "reference": "d39889b545adebe1cd7d80e67607d7f75dadc188"
+                "reference": "4d7d9a70bac309c8e388b09528094a59cd1a01ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-toggle-password/zipball/d39889b545adebe1cd7d80e67607d7f75dadc188",
-                "reference": "d39889b545adebe1cd7d80e67607d7f75dadc188",
+                "url": "https://api.github.com/repos/symfony/ux-toggle-password/zipball/4d7d9a70bac309c8e388b09528094a59cd1a01ab",
+                "reference": "4d7d9a70bac309c8e388b09528094a59cd1a01ab",
                 "shasum": ""
             },
             "require": {
@@ -9233,7 +9233,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-toggle-password/tree/v2.19.0"
+                "source": "https://github.com/symfony/ux-toggle-password/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -9249,20 +9249,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-30T19:26:23+00:00"
+            "time": "2024-08-14T04:55:38+00:00"
         },
         {
             "name": "symfony/ux-translator",
-            "version": "v2.19.0",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-translator.git",
-                "reference": "0cff4d7fadbf677cf8d96528089ef8b8b869df33"
+                "reference": "2c0027a4aeda6a9c58db7428862c778e106c12a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-translator/zipball/0cff4d7fadbf677cf8d96528089ef8b8b869df33",
-                "reference": "0cff4d7fadbf677cf8d96528089ef8b8b869df33",
+                "url": "https://api.github.com/repos/symfony/ux-translator/zipball/2c0027a4aeda6a9c58db7428862c778e106c12a1",
+                "reference": "2c0027a4aeda6a9c58db7428862c778e106c12a1",
                 "shasum": ""
             },
             "require": {
@@ -9309,7 +9309,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-translator/tree/v2.19.0"
+                "source": "https://github.com/symfony/ux-translator/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -9325,20 +9325,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-30T19:26:23+00:00"
+            "time": "2024-08-14T14:09:20+00:00"
         },
         {
             "name": "symfony/ux-turbo",
-            "version": "v2.19.0",
+            "version": "v2.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-turbo.git",
-                "reference": "abfee7181ce8b71f9a2447cdf9c562ed719a0e3e"
+                "reference": "4a38f267193017958d487171c0a86e64f36164a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/abfee7181ce8b71f9a2447cdf9c562ed719a0e3e",
-                "reference": "abfee7181ce8b71f9a2447cdf9c562ed719a0e3e",
+                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/4a38f267193017958d487171c0a86e64f36164a3",
+                "reference": "4a38f267193017958d487171c0a86e64f36164a3",
                 "shasum": ""
             },
             "require": {
@@ -9406,7 +9406,7 @@
                 "turbo-stream"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-turbo/tree/v2.19.0"
+                "source": "https://github.com/symfony/ux-turbo/tree/v2.19.3"
             },
             "funding": [
                 {
@@ -9422,7 +9422,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-30T16:00:35+00:00"
+            "time": "2024-08-14T04:55:38+00:00"
         },
         {
             "name": "symfony/ux-twig-component",
@@ -9917,39 +9917,6 @@
                 }
             ],
             "time": "2023-10-22T18:53:08+00:00"
-        },
-        {
-            "name": "symfony/webpack-encore-pack",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/webpack-encore-pack.git",
-                "reference": "f9f4e91659e5f55de370d6aebe77e64bce35e4d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/webpack-encore-pack/zipball/f9f4e91659e5f55de370d6aebe77e64bce35e4d3",
-                "reference": "f9f4e91659e5f55de370d6aebe77e64bce35e4d3",
-                "shasum": ""
-            },
-            "type": "symfony-pack",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/webpack-encore",
-                    "url": "https://github.com/symfony/webpack-encore"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A pack for Symfony Encore",
-            "support": {
-                "issues": "https://github.com/symfony/webpack-encore-pack/issues",
-                "source": "https://github.com/symfony/webpack-encore-pack/tree/master"
-            },
-            "abandoned": "symfony/webpack-encore-bundle",
-            "time": "2017-12-21T02:20:09+00:00"
         },
         {
             "name": "symfony/yaml",

@@ -1,12 +1,14 @@
 * {
   margin: 0;
   padding: 0;
+  //background-color: #eae1cb; // for dark mode
   background-color: #423e39;
 }
 
 body {
   margin: 2rem;
   padding: 1rem;
+  //font-family: "Ojuju", sans-serif;
 }
 
 title, h1, h2, h3, h4, h5, h6 {
@@ -32,5 +34,3 @@ p {
   text-align: center;
   color: #eae1cb;
 }
-
-/*# sourceMappingURL=app.css.map */

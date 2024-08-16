@@ -67,6 +67,12 @@ Encore
     // uncomment if you use React
     .enableReactPreset()
 
+    .copyFiles({
+        from: './assets/styles/images',
+        to: 'images/[path][name].[hash:8].[ext]',
+        pattern: /\.(ico|png|jpg|jpeg|svg)$/
+    })
+
 // uncomment to get integrity="..." attributes on your script & link tags
 // requires WebpackEncoreBundle 1.4 or higher
 //.enableIntegrityHashes(Encore.isProduction())
@@ -76,13 +82,3 @@ Encore
 ;
 
 module.exports = Encore.getWebpackConfig();
-module.exports = {
-   devServer: {
-    hot: true,
-    contentBase: path.join(__dirname, 'public'),
-    watchContentBase: true,
-    historyApiFallback: true,
-    open: true,
-    port: 8080,
-  },
-};
