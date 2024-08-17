@@ -1,0 +1,29 @@
+nav {
+  font: "Ojuju", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem;
+}
+nav a {
+  color: #eae1cb;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+nav a:hover {
+  font-weight: 700;
+  color: #b6dad9;
+}
+
+.title-nav {
+  font-family: "Sarina", sans-serif;
+  font-size: 2rem;
+}
+
+.element-nav {
+  font-family: "Ojuju", sans-serif;
+}
+
+/*# sourceMappingURL=_nav.css.map */

@@ -1,0 +1,94 @@
+@import "../ressources/mixins";
+@import "../ressources/variables";
+
+nav {
+  font: $secondary-font;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: .5rem .5rem;
+  padding: .5rem;
+
+  & ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: .5rem;
+
+    & li {
+      list-style-type: none;
+      margin: 0 1rem;
+    }
+
+  }
+
+  & a {
+    color: #eae1cb;
+    text-decoration: none;
+    font-size: 1.3rem;
+
+    &:hover {
+      font-weight: 700;
+      color: $secondary-light-color;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+}
+
+.title-nav {
+  font-family: $primary-font;
+  font-size: 2rem;
+
+  & a {
+    color: #eae1cb;
+    text-decoration: none;
+    font-size: 1.3rem;
+
+    &:hover {
+      font-weight: 700;
+      color: $secondary-light-color;
+    }
+  }
+}
+
+.element-nav {
+  font-family: $secondary-font;
+}
+
+#hamburger-menu {
+  width: 45px;
+  height: 25px;
+  display: block;
+  border: none;
+  padding: 0;
+  background: linear-gradient(
+                  to bottom,
+                  $primary-light-color, $primary-light-color 20%,
+                  $primary-dark-color 20%, $primary-dark-color 40%,
+                  $primary-light-color 40%, $primary-light-color 60%,
+                  $primary-dark-color 60%, $primary-dark-color 80%,
+                  $primary-light-color 80%, $primary-light-color 100%
+  );
+}
+
+#hamburger-menu #sidebar-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 200px;
+  height: 100%;
+  background-color: $primary-light-color;
+  padding: 0 10px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+

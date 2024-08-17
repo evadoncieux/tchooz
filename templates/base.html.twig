@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('build/images/favicon.png') }}">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('build/images/favicon.png') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="nav">
+        <p class="title-nav"><a href="{{ path('app_home') }}">tchooz</a></p>
+
+{#        <input type="checkbox" id="hamburger-input" class="burger-shower"/>#}
+
+{#        <label id="hamburger-menu">#}
+{#            <nav id="sidebar-menu">#}
+            <nav>
+                {% include '_components/_navigation.html.twig' %}
+            </nav>
+{#        </label>#}
+{#        <div class="overlay"></div>#}
+    </div>
+</header>
+{% block body %}{% endblock %}
+</body>
 </html>
