@@ -1,0 +1,36 @@
+@import "../ressources/variables";
+@import "../ressources/mixins";
+
+.form-group {
+  font-family: $secondary-font;
+  margin: 2rem;
+  padding: 1rem;
+  width: 50vw;
+  color: $primary-light-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: start;
+  border: .1rem dashed $primary-light-color;
+  border-radius: $border-radius;
+
+  input {
+    margin: 1rem;
+    padding: .8rem;
+    border-radius: $border-radius;
+    box-shadow: none;
+    border: 1px solid $primary-light-color;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+  }
+
+  button {
+    @include button;
+  }
+}

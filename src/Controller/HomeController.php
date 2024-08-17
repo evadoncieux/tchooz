@@ -15,4 +15,12 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/settings', name: 'app_settings')]
+    public function getSettings(): Response
+    {
+        return $this->render('home/settings.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

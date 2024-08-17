@@ -1,37 +1,55 @@
+@import "ressources/mixins.scss";
+@import "_components/_nav.scss";
+@import "_components/_forms.scss";
+//@import "ressources/variables"; // pas besoin parce que déjà importé dans `mixins` ?!
+
 * {
   margin: 0;
   padding: 0;
-  //background-color: #eae1cb; // for dark mode
-  background-color: #423e39;
+  //background-color: $primary-light-color; // for light mode
+  background-color: $primary-dark-color;
 }
 
 body {
   margin: 2rem;
   padding: 1rem;
-  color: #eae1cb;
-  //font-family: "Ojuju", sans-serif;
+  color: $primary-light-color;
+}
+
+.container {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 title, h1, h2, h3, h4, h5, h6 {
-  font-family: "Sarina", sans-serif;
-  color: #eae1cb;
+  color: $primary-light-color;
   text-align: center;
-}
-
-title {
-  font-size: 5rem;
+  font-family: $secondary-font;
 }
 
 h1 {
+  font-size: 4rem;
+  font-family: $primary-font;
+  }
+
+h2 {
   font-size: 3rem;
 }
 
-h2 {
+h3 {
   font-size: 2.5rem;
 }
 
 p {
-  font-family: "Ojuju", sans-serif;
+  font-family: $text-font;
+  color: $primary-light-color;
   text-align: center;
-  color: #eae1cb;
+}
+
+.title {
+  font-family: $primary-font;
 }
