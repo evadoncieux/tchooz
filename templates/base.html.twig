@@ -10,6 +10,7 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('theme-switcher') }}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
@@ -24,6 +25,10 @@
 {#            <nav id="sidebar-menu">#}
             <nav>
                 {% include '_components/_navigation.html.twig' %}
+                <label class="switch">
+                    <input type="checkbox" name="theme_switch">
+                    <span class="slider"></span>
+                </label>
             </nav>
 {#        </label>#}
 {#        <div class="overlay"></div>#}
