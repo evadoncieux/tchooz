@@ -24,13 +24,13 @@ nav {
   }
 
   & a {
-    color: #eae1cb;
+    color: var(--color-link);
     text-decoration: none;
     font-size: 1.3rem;
 
     &:hover {
       font-weight: 700;
-      color: $secondary-light-color;
+      color: var(--color-link-hover);
     }
   }
 }
@@ -48,13 +48,13 @@ nav {
   font-size: 2rem;
 
   & a {
-    color: #eae1cb;
+    color: var(--color-link);
     text-decoration: none;
     font-size: 1.3rem;
 
     &:hover {
       font-weight: 700;
-      color: $secondary-light-color;
+      color: var(--color-link-hover);
     }
   }
 }
@@ -86,7 +86,7 @@ nav {
   left: -250px;
   width: 200px;
   height: 100%;
-  background-color: $primary-light-color;
+  background-color: var(--color-background);
   padding: 0 10px;
   box-sizing: border-box;
   transition: 0.3s;
