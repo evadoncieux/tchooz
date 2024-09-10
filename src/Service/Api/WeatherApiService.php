@@ -13,6 +13,7 @@ readonly class WeatherApiService
 {
     public function __construct(
         private HttpClientInterface $httpClient,
+        private string $apiKey,
     )
     {
     }
@@ -27,8 +28,7 @@ readonly class WeatherApiService
     public function fetchWeather(): array
     {
         $location = 'Lyon';
-        $apiKey = 'd7db49441fdd4685bba203526241009';
-        $apiUrl = 'http://api.weatherapi.com/v1/current.json?key=' . $apiKey . '&q=' . $location;
+        $apiUrl = 'http://api.weatherapi.com/v1/current.json?key=' . $this->apiKey . '&q=' . $location;
 
         try {
             return $this->httpClient->request('GET', $apiUrl)->toArray();

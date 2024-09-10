@@ -25,3 +25,7 @@ services:
 
     mailhog_transport:
         class: rpkamp\Mailhog\MailhogClient
+
+    App\Service\Api\WeatherApiService:
+        arguments:
+            $apiKey: '%env(WEATHERAPI_KEY)%'
