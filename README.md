@@ -17,6 +17,8 @@ npm run dev server
 
 - If there are any changes to the javascript files and there's a need to reload the assets, run `npm run build`
 
+- During the development phase, launch your XAMPP for the database and you can start coding ˙ᵕ˙  
+
 ## Technologies
 
 ### Symfony

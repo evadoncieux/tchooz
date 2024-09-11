@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\Api\WeatherApiService;
+use App\Service\Data\WeatherDataService;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,10 +16,9 @@ class DailyWeatherController extends AbstractController
 {
 
     public function __construct(
-        private readonly WeatherApiService $weatherApiService,
+        private readonly WeatherDataService $weatherDataService,
     )
     {
-
     }
 
     /**
@@ -31,10 +31,16 @@ class DailyWeatherController extends AbstractController
     #[Route('/daily_weather', name: 'app_daily_weather')]
     public function index(): Response
     {
-        $weatherData = $this->weatherApiService->fetchWeather();
+        $weatherData = $this->weatherDataService->getDailyWeather();
+
+//        // If data is older than 1 hour or doesn't exist, fetch new data
+        if (!$weatherData || $weatherData->getTimestamp() < new DateTime('-1 hour')) {
+            $weatherData = $this->weatherDataService->fetchAndSaveWeatherData('Lyon');
+        }
 
         return $this->render('daily_weather/index.html.twig', [
             'weatherData' => $weatherData,
         ]);
     }
+
 }

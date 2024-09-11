@@ -6,7 +6,7 @@ use App\Repository\WeatherTypeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WeatherTypeRepository::class)]
-class WeatherType
+class WeatherType // TODO check si on peut supprimer cette classe, pas sûre qu'elle ait un intérêt, sorry bb
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
