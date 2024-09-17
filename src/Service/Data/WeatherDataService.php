@@ -21,20 +21,21 @@ readonly class WeatherDataService
 
     }
 
-    public function fetchAndSaveWeatherData(string $location): DailyWeather
+    public function getWeather(string $location): DailyWeather
     {
         try {
             $weatherApiData = $this->weatherApiService->getWeatherData($location);
         } catch (Exception $error) {
             $this->logger->error('Weather API error: ' . $error->getMessage());
 
-            throw new ServiceUnavailableHttpException('Weather service is currently unavailable. Please try again later.');
+            throw new ServiceUnavailableHttpException('Could not fetch data. Please try again later.');
         }
 
         $weatherData = new DailyWeather();
-        $weatherData->setHumidity($weatherApiData['current']['humidity']);
-        $weatherData->setTemperature($weatherApiData['current']['temp_c']);
-        $weatherData->setTimestamp(new DateTime());
+        $weatherData->setHumidity($weatherApiData['current']['humidity'])
+            ->setTemperature($weatherApiData['current']['temp_c'])
+            ->setWeatherType()
+            ->setTimestamp(new DateTime());
 
         $this->entityManager->persist($weatherData);
         $this->entityManager->flush();

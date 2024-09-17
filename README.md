@@ -8,7 +8,7 @@ End of the year project for my web developer diploma, with the 3W Academy.
 symfony server:start
 ```
 
-- To get the front server started, run 
+- To get the front server started, run ?? TODO fix this
 ```
 npm run dev server
 ```
