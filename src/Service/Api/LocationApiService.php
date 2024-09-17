@@ -4,27 +4,28 @@ namespace App\Service\Api;
 
 use Exception;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/** TODO AJOUTE DE LA DOC EVA  */
 /**
  * @method render(string $string, \Exception[] $array)
  */
-readonly class WeatherApiService
+readonly class LocationApiService
 {
+
     public function __construct(
         private HttpClientInterface $httpClient,
         private LoggerInterface     $logger,
-        private LocationApiService  $locationService,
         private string              $apiKey,
+
     )
     {
     }
-
-// TODO faire une interface pour les deux API
 
     /**
      * @throws TransportExceptionInterface
@@ -33,40 +34,34 @@ readonly class WeatherApiService
      * @throws ClientExceptionInterface
      * @throws \JsonException
      */
-    public function getWeatherData(string $cityCode): array
+    public function getCoordinates(string $cityCode): array
     {
         try {
             return $this->httpClient->request('GET', $this->buildApiUrl($cityCode))->toArray();
         } catch (Exception $error) {
-            $this->logger->error('Weather API error: ' . $error->getMessage());
+            $this->logger->error('Geocoding API error: ' . $error->getMessage());
 
-            throw new \RuntimeException('Weather service is currently unavailable. Please try again later.');
+            throw new ServiceUnavailableHttpException('Geocoding service is currently unavailable. Please try again later.');
         }
     }
 
+    // $cityCode sera à récup dans le profil de l'utilisateur
+    // c'est ca qui bugge ? OUI TODO fix ça
     private function buildApiUrl(string $cityCode): string
     {
-        $location = $this->locationService->getCoordinates($cityCode);
-        dd($location);
-        $lat = $location['lat'];
-        $lon = $location['lon'];
-        /*$lat = '45.75';
-        $lon = '4.83';*/
-
-        /*$dd($lat, $lon);*/
-
-        $baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+        $baseUrl = 'http://api.openweathermap.org/geo/1.0/direct';
         $queryParams = http_build_query([
-            'lat' => $lat,
-            'lon' => $lon,
+            'q' => $cityCode, // y'a un pb lors du passage de la location à l'api, on a ça dans la requete
+            'limit' => 3,
             'appid' => $this->apiKey,
-            'units' => 'metric',
         ]);
-
 
         $apiUrl = $baseUrl . '?' . $queryParams;
 
+        /*var_dump($apiUrl);*/
+
         return $apiUrl;
     }
-
 }
+
+// TODO this means that we have to use an api or stg to fetch city names across the globe

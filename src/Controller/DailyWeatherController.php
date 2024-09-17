@@ -35,7 +35,7 @@ class DailyWeatherController extends AbstractController
 
 //        // If data is older than 1 hour or doesn't exist, fetch new data
         if (!$weatherData || $weatherData->getTimestamp() < new DateTime('-1 hour')) {
-            $weatherData = $this->weatherDataService->fetchAndSaveWeatherData('Lyon');
+            $weatherData = $this->weatherDataService->getWeather('Lyon, FR');
         }
 
         return $this->render('daily_weather/index.html.twig', [
