@@ -20,8 +20,9 @@ npm run dev server
   `mailhog`and go to http://0.0.0.0:8025/# or http://localhost:8025/ to get the
   emails
 
-- If you are making any changes to the assets, run the command below so the 
-  site is updated in real time 
+- If you are making any changes to the assets, run the command below so the
+  site is updated in real time
+
 ```
   npm run watch
 ```

@@ -3,6 +3,12 @@
 {% block title %}My profile{% endblock %}
 
 {% block body %}
-{#    <h1>My profile</h1>#}
-    <h2>Hello {{ username }}!</h2>
+    <h1>My profile</h1>
+    <h2>Hello {{ user.username }}!</h2>
+
+    <div>
+        <p>You are located in {{ user.location ? user.location : 'NO DATA' }}</p>
+        <p>Your email is {{ user.email }}</p>
+    </div>
+
 {% endblock %}

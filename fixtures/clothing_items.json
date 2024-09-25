@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Classic White T-Shirt",
+    "color": "White",
+    "category": "Top",
+    "weatherType": ["Warm", "Mild"],
+    "material": "Cotton",
+    "style": "Casual",
+    "occasion": ["Everyday", "Loungewear"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Black Leather Jacket",
+    "color": "Black",
+    "category": "Outerwear",
+    "weatherType": ["Cool", "Cold"],
+    "material": "Leather",
+    "style": "Edgy",
+    "occasion": ["Casual", "Night Out"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Blue Denim Jeans",
+    "color": "Blue",
+    "category": "Bottom",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Denim",
+    "style": "Casual",
+    "occasion": ["Everyday", "Casual Friday"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "Floral Summer Dress",
+    "color": "Multicolor",
+    "category": "Dress",
+    "weatherType": ["Warm", "Hot"],
+    "material": "Cotton Blend",
+    "style": "Feminine",
+    "occasion": ["Casual", "Garden Party"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Gray Wool Sweater",
+    "color": "Gray",
+    "category": "Top",
+    "weatherType": ["Cool", "Cold"],
+    "material": "Wool",
+    "style": "Classic",
+    "occasion": ["Casual", "Work"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Khaki Chino Pants",
+    "color": "Khaki",
+    "category": "Bottom",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Cotton Twill",
+    "style": "Smart Casual",
+    "occasion": ["Work", "Casual"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "Red Rain Jacket",
+    "color": "Red",
+    "category": "Outerwear",
+    "weatherType": ["Rainy", "Windy"],
+    "material": "Polyester",
+    "style": "Functional",
+    "occasion": ["Outdoor Activities"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "Navy Blue Blazer",
+    "color": "Navy Blue",
+    "category": "Outerwear",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Wool Blend",
+    "style": "Business",
+    "occasion": ["Work", "Formal"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "White Linen Shirt",
+    "color": "White",
+    "category": "Top",
+    "weatherType": ["Warm", "Hot"],
+    "material": "Linen",
+    "style": "Casual Elegant",
+    "occasion": ["Beach", "Summer Party"],
+    "season": ["Summer"]
+  },
+  {
+    "name": "Black Pencil Skirt",
+    "color": "Black",
+    "category": "Bottom",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Polyester Blend",
+    "style": "Business",
+    "occasion": ["Work", "Formal"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "Beige Trench Coat",
+    "color": "Beige",
+    "category": "Outerwear",
+    "weatherType": ["Cool", "Rainy"],
+    "material": "Cotton Gabardine",
+    "style": "Classic",
+    "occasion": ["Work", "Casual"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "Striped Polo Shirt",
+    "color": "Blue and White",
+    "category": "Top",
+    "weatherType": ["Warm", "Mild"],
+    "material": "Cotton Pique",
+    "style": "Preppy",
+    "occasion": ["Casual", "Sports"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Olive Green Cargo Pants",
+    "color": "Olive Green",
+    "category": "Bottom",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Cotton Canvas",
+    "style": "Utilitarian",
+    "occasion": ["Casual", "Outdoor"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "Purple Cashmere Sweater",
+    "color": "Purple",
+    "category": "Top",
+    "weatherType": ["Cool", "Cold"],
+    "material": "Cashmere",
+    "style": "Luxe",
+    "occasion": ["Casual", "Date Night"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Black Leather Boots",
+    "color": "Black",
+    "category": "Footwear",
+    "weatherType": ["Cool", "Cold", "Rainy"],
+    "material": "Leather",
+    "style": "Edgy",
+    "occasion": ["Casual", "Night Out"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "White Tennis Shoes",
+    "color": "White",
+    "category": "Footwear",
+    "weatherType": ["Mild", "Warm"],
+    "material": "Canvas",
+    "style": "Sporty",
+    "occasion": ["Casual", "Sports"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Denim Jacket",
+    "color": "Blue",
+    "category": "Outerwear",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Denim",
+    "style": "Casual",
+    "occasion": ["Casual", "Concert"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "Floral Maxi Skirt",
+    "color": "Multicolor",
+    "category": "Bottom",
+    "weatherType": ["Warm", "Hot"],
+    "material": "Chiffon",
+    "style": "Boho",
+    "occasion": ["Casual", "Beach"],
+    "season": ["Summer"]
+  },
+  {
+    "name": "Charcoal Gray Suit",
+    "color": "Charcoal Gray",
+    "category": "Set",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Wool",
+    "style": "Business",
+    "occasion": ["Work", "Formal"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "Pink Silk Blouse",
+    "color": "Pink",
+    "category": "Top",
+    "weatherType": ["Mild", "Warm"],
+    "material": "Silk",
+    "style": "Elegant",
+    "occasion": ["Work", "Date Night"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Tan Suede Jacket",
+    "color": "Tan",
+    "category": "Outerwear",
+    "weatherType": ["Mild", "Cool"],
+    "material": "Suede",
+    "style": "Vintage",
+    "occasion": ["Casual", "Night Out"],
+    "season": ["Fall"]
+  },
+  {
+    "name": "Navy Blue Swim Shorts",
+    "color": "Navy Blue",
+    "category": "Swimwear",
+    "weatherType": ["Hot"],
+    "material": "Polyester",
+    "style": "Sporty",
+    "occasion": ["Beach", "Pool"],
+    "season": ["Summer"]
+  },
+  {
+    "name": "Red Plaid Flannel Shirt",
+    "color": "Red and Black",
+    "category": "Top",
+    "weatherType": ["Cool", "Cold"],
+    "material": "Cotton Flannel",
+    "style": "Rustic",
+    "occasion": ["Casual", "Outdoor"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Emerald Green Cocktail Dress",
+    "color": "Emerald Green",
+    "category": "Dress",
+    "weatherType": ["Mild"],
+    "material": "Satin",
+    "style": "Glamorous",
+    "occasion": ["Party", "Formal"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "Brown Leather Belt",
+    "color": "Brown",
+    "category": "Accessory",
+    "weatherType": ["All"],
+    "material": "Leather",
+    "style": "Classic",
+    "occasion": ["Casual", "Work"],
+    "season": ["All Seasons"]
+  },
+  {
+    "name": "Gray Hoodie",
+    "color": "Gray",
+    "category": "Top",
+    "weatherType": ["Cool", "Mild"],
+    "material": "Cotton Blend",
+    "style": "Casual",
+    "occasion": ["Casual", "Sports"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Yellow Raincoat",
+    "color": "Yellow",
+    "category": "Outerwear",
+    "weatherType": ["Rainy"],
+    "material": "PVC",
+    "style": "Functional",
+    "occasion": ["Outdoor", "Casual"],
+    "season": ["Spring", "Fall"]
+  },
+  {
+    "name": "White Sneakers",
+    "color": "White",
+    "category": "Footwear",
+    "weatherType": ["Mild", "Warm"],
+    "material": "Leather",
+    "style": "Casual",
+    "occasion": ["Casual", "Sports"],
+    "season": ["Spring", "Summer"]
+  },
+  {
+    "name": "Black Turtleneck Sweater",
+    "color": "Black",
+    "category": "Top",
+    "weatherType": ["Cool", "Cold"],
+    "material": "Cotton Blend",
+    "style": "Classic",
+    "occasion": ["Casual", "Work"],
+    "season": ["Fall", "Winter"]
+  },
+  {
+    "name": "Coral Sundress",
+    "color": "Coral",
+    "category": "Dress",
+    "weatherType": ["Warm", "Hot"],
+    "material": "Cotton",
+    "style": "Summery",
+    "occasion": ["Casual", "Beach"],
+    "season": ["Summer"]
+  }
+]
