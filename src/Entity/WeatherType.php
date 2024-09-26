@@ -8,32 +8,27 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WeatherTypeRepository::class)]
-class WeatherType // TODO check si on peut supprimer cette classe, pas sûre qu'elle ait un intérêt, sorry bb
+#[ORM\Table(name: 'weather_types')]
+#[ORM\UniqueConstraint(name: 'UNIQ_NAME', columns: ['name'])]
+class WeatherType
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
 
     /**
      * @var Collection<int, ClothingItem>
      */
-    #[ORM\ManyToMany(targetEntity: ClothingItem::class, mappedBy: 'weatherType')]
+    #[ORM\ManyToMany(targetEntity: ClothingItem::class, mappedBy: 'weatherTypes')]
     private Collection $clothingItems;
-
-    /**
-     * @var Collection<int, Season>
-     */
-    #[ORM\ManyToMany(targetEntity: Season::class, mappedBy: 'weatherType')]
-    private Collection $seasons;
 
     public function __construct()
     {
         $this->clothingItems = new ArrayCollection();
-        $this->seasons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,33 +70,6 @@ class WeatherType // TODO check si on peut supprimer cette classe, pas sûre qu'
     {
         if ($this->clothingItems->removeElement($clothingItem)) {
             $clothingItem->removeWeatherType($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Season>
-     */
-    public function getSeasons(): Collection
-    {
-        return $this->seasons;
-    }
-
-    public function addSeason(Season $season): static
-    {
-        if (!$this->seasons->contains($season)) {
-            $this->seasons->add($season);
-            $season->addWeatherType($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSeason(Season $season): static
-    {
-        if ($this->seasons->removeElement($season)) {
-            $season->removeWeatherType($this);
         }
 
         return $this;

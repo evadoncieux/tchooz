@@ -6,10 +6,8 @@ use App\Repository\DailyWeatherRepository;
 use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: DailyWeatherRepository::class)]
-#[Broadcast]
 class DailyWeather
 {
     #[ORM\Id]

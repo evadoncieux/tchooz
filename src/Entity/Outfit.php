@@ -6,10 +6,8 @@ use App\Repository\OutfitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: OutfitRepository::class)]
-#[Broadcast]
 class Outfit
 {
     #[ORM\Id]

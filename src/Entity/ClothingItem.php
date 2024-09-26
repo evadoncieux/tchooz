@@ -2,15 +2,12 @@
 
 namespace App\Entity;
 
-use App\Enum\Season;
 use App\Repository\ClothingItemRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: ClothingItemRepository::class)]
-#[Broadcast]
 class ClothingItem
 {
     #[ORM\Id]
@@ -34,9 +31,7 @@ class ClothingItem
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'clothingItems')]
-    private Collection $category;
-
-
+    private Collection $categories;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -51,23 +46,20 @@ class ClothingItem
      * @var Collection<int, WeatherType>
      */
     #[ORM\ManyToMany(targetEntity: WeatherType::class, inversedBy: 'clothingItems')]
-    private Collection $weatherType;
+    private Collection $weatherTypes;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $style = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $occasion = null;
-
-    #[ORM\Column(type: 'season')]
-    private Season $season;
+    private ?array $occasions = null;
 
     public function __construct()
     {
         $this->wardrobes = new ArrayCollection();
         $this->outfits = new ArrayCollection();
-        $this->category = new ArrayCollection();
-        $this->weatherType = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->weatherTypes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,26 +126,26 @@ class ClothingItem
      */
     public function getCategory(): Collection
     {
-        return $this->category;
+        return $this->categories;
     }
 
-    public function setCategory(Collection $category): void
+    public function setCategory(Collection $categories): void
     {
-        $this->category = $category;
+        $this->categories = $categories;
     }
 
-    public function addCategory(Category $category): static
+    public function addCategory(Category $categories): static
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
+        if (!$this->categories->contains($categories)) {
+            $this->categories->add($categories);
         }
 
         return $this;
     }
 
-    public function removeCategory(Category $category): static
+    public function removeCategory(Category $categories): static
     {
-        $this->category->removeElement($category);
+        $this->categories->removeElement($categories);
 
         return $this;
     }
@@ -197,20 +189,15 @@ class ClothingItem
     /**
      * @return Collection<int, WeatherType>
      */
-    public function getWeatherType(): Collection
+    public function getWeatherTypes(): Collection
     {
-        return $this->weatherType;
-    }
-
-    public function setWeatherType(Collection $weatherType): void
-    {
-        $this->weatherType = $weatherType;
+        return $this->weatherTypes;
     }
 
     public function addWeatherType(WeatherType $weatherType): static
     {
-        if (!$this->weatherType->contains($weatherType)) {
-            $this->weatherType->add($weatherType);
+        if (!$this->weatherTypes->contains($weatherType)) {
+            $this->weatherTypes->add($weatherType);
         }
 
         return $this;
@@ -218,7 +205,7 @@ class ClothingItem
 
     public function removeWeatherType(WeatherType $weatherType): static
     {
-        $this->weatherType->removeElement($weatherType);
+        $this->weatherTypes->removeElement($weatherType);
 
         return $this;
     }
@@ -235,27 +222,15 @@ class ClothingItem
         return $this;
     }
 
-    public function getOccasion(): ?string
+    public function getOccasions(): ?array
     {
-        return $this->occasion;
+        return $this->occasions;
     }
 
-    public function setOccasion(?string $occasion): static
+    public function setOccasions(?array $occasions): static
     {
-        $this->occasion = $occasion;
+        $this->occasions = $occasions;
 
         return $this;
     }
-
-    public function getSeason(): Season
-    {
-        return $this->season;
-    }
-
-    public function setSeason(Season $season): self
-    {
-        $this->season = $season;
-        return $this;
-    }
-
 }

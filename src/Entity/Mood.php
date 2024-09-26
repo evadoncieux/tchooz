@@ -4,10 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MoodRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: MoodRepository::class)]
-#[Broadcast]
 class Mood
 {
     #[ORM\Id]

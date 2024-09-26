@@ -6,10 +6,10 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-#[Broadcast]
+#[ORM\Table(name: 'categories')]
+#[ORM\UniqueConstraint(name: 'UNIQ_NAME', columns: ['name'])]
 class Category
 {
     #[ORM\Id]
@@ -17,7 +17,7 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
 
     /**
