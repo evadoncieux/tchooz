@@ -18,7 +18,7 @@ readonly class WeatherApiService
     public function __construct(
         private HttpClientInterface $httpClient,
         private LoggerInterface     $logger,
-        private LocationApiService  $locationService,
+        private LocationApiService  $locationApiService,
         private string              $apiKey,
     )
     {
@@ -33,10 +33,10 @@ readonly class WeatherApiService
      * @throws ClientExceptionInterface
      * @throws \JsonException
      */
-    public function getWeatherData(string $cityCode): array
+    public function getWeatherData(string $location): array
     {
         try {
-            return $this->httpClient->request('GET', $this->buildApiUrl($cityCode))->toArray();
+            return $this->httpClient->request('GET', $this->buildApiUrl($location))->toArray();
         } catch (Exception $error) {
             $this->logger->error('Weather API error: ' . $error->getMessage());
 
@@ -44,16 +44,19 @@ readonly class WeatherApiService
         }
     }
 
-    private function buildApiUrl(string $cityCode): string
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     * @throws \JsonException
+     */
+    private function buildApiUrl(string $location): string
     {
-        $location = $this->locationService->getCoordinates($cityCode);
-        dd($location);
-        $lat = $location['lat'];
-        $lon = $location['lon'];
-        /*$lat = '45.75';
-        $lon = '4.83';*/
-
-        /*$dd($lat, $lon);*/
+        /*Coordonnées pour Lyon $lat = '45.75' & $lon = '4.83';*/
+        $userLocation = $this->locationApiService->getCoordinates($location);
+        $lat = $userLocation[0]['lat'];
+        $lon = $userLocation[0]['lon'];
 
         $baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
         $queryParams = http_build_query([
@@ -63,10 +66,7 @@ readonly class WeatherApiService
             'units' => 'metric',
         ]);
 
-
-        $apiUrl = $baseUrl . '?' . $queryParams;
-
-        return $apiUrl;
+        return $baseUrl . '?' . $queryParams;
     }
 
 }
