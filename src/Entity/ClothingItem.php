@@ -33,7 +33,7 @@ class ClothingItem
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'clothingItems')]
     private Collection $categories;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
@@ -45,7 +45,7 @@ class ClothingItem
     /**
      * @var Collection<int, WeatherType>
      */
-    #[ORM\ManyToMany(targetEntity: WeatherType::class, inversedBy: 'clothingItems')]
+    #[ORM\ManyToMany(targetEntity: WeatherType::class, inversedBy: 'clothingItems', cascade: ['persist'])]
     private Collection $weatherTypes;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -194,7 +194,7 @@ class ClothingItem
         return $this->weatherTypes;
     }
 
-    public function addWeatherType(WeatherType $weatherType): static
+    public function addWeatherType(WeatherType $weatherType): self
     {
         if (!$this->weatherTypes->contains($weatherType)) {
             $this->weatherTypes->add($weatherType);
