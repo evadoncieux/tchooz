@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Daily weather{% endblock %}
+{% block title %}Outfits{% endblock %}
 
 {% block body %}
+    <h1>Outfits</h1>
+
+    <h2>Get an outfit suggestion</h2>
+
+    <p>Today's weather in {{ user.location }} is {{ weatherData.description }}</p>
+
+    <div>
+
+        <p>The temperature will be {{ weatherData.temperature }} ({{ weatherData.tempMin|round(0, 'floor') }}-{{ weatherData.tempMax|round(0, 'floor') }}) </p>
+    </div>
+
+    <a href="{{ path('generate_recommandation') }}">Get a recom°</a>
+
     {{ dump(weatherData) }}
 {% endblock %}
+
+
