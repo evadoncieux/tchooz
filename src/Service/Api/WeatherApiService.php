@@ -46,14 +46,10 @@ readonly class WeatherApiService
 
     private function buildApiUrl(string $cityCode): string
     {
+        /*Coordonnées pour Lyon $lat = '45.75' & $lon = '4.83';*/
         $location = $this->locationService->getCoordinates($cityCode);
-        dd($location);
-        $lat = $location['lat'];
-        $lon = $location['lon'];
-        /*$lat = '45.75';
-        $lon = '4.83';*/
-
-        /*$dd($lat, $lon);*/
+        $lat = $location[0]['lat'];
+        $lon = $location[0]['lon'];
 
         $baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
         $queryParams = http_build_query([
@@ -63,8 +59,9 @@ readonly class WeatherApiService
             'units' => 'metric',
         ]);
 
-
         $apiUrl = $baseUrl . '?' . $queryParams;
+
+//        var_dump($apiUrl);
 
         return $apiUrl;
     }

@@ -4,4 +4,10 @@
 
 {% block body %}
     {{ dump(weatherData) }}
+    <h2>Today's weather in {{ user.location }} is {{ weatherData.description }}</h2>
+
+    <div>
+        <p>The min temperature will be {{ weatherData.tempMin }} and the max temperature will
+            be {{ weatherData.tempMax }} </p>
+    </div>
 {% endblock %}

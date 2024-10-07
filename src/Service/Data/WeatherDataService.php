@@ -31,10 +31,16 @@ readonly class WeatherDataService
             throw new ServiceUnavailableHttpException('Could not fetch data. Please try again later.');
         }
 
+//        var_dump($weatherApiData);
+
         $weatherData = new DailyWeather();
-        $weatherData->setHumidity($weatherApiData['current']['humidity'])
-            ->setTemperature($weatherApiData['current']['temp_c'])
-            ->setWeatherType()
+        $weatherData->setHumidity($weatherApiData['main']['humidity'])
+            ->setTemperature($weatherApiData['main']['temp'])
+            ->setTempMin($weatherApiData['main']['temp_min'])
+            ->setTempMax($weatherApiData['main']['temp_max'])
+            ->setWindSpeed($weatherApiData['wind']['speed'])
+            ->setTitle($weatherApiData['weather'][0]['main'])
+            ->setDescription($weatherApiData['weather'][0]['description'])
             ->setTimestamp(new DateTime());
 
         $this->entityManager->persist($weatherData);
