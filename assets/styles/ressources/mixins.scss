@@ -1,25 +1,25 @@
 @import "variables";
 
 @mixin light-mode {
-  background-color: $primary-light-color;
-  color: $primary-dark-color;
+  --color-text: #{$primary-dark-color};
+  --color-background: #{$primary-light-color};
+  --color-form-text: #{$primary-light-color};
+  --color-form-background: #{$primary-dark-color};
+  --color-btn-text: #{$primary-light-color};
+  --color-btn-background: #{$primary-dark-color};
+  --color-link: var(--color-text);
+  --color-link-hover: #{$secondary-light-color};
 }
 
 @mixin dark-mode {
-  background-color: $primary-dark-color;
-  color: $primary-light-color;
-}
-
-@mixin button {
-  margin: 1rem;
-  padding: .8rem;
-  border-radius: $border-radius;
-  box-shadow: none;
-  background-color: $primary-light-color;
-  border: none;
-  font-family: $secondary-font;
-  font-weight: 600;
-  font-size: 1rem;
+  --color-text: #{$primary-light-color};
+  --color-background: #{$primary-dark-color};
+  --color-form-text: #{$primary-dark-color};
+  --color-form-background: #{$primary-light-color};
+  --color-btn-text: #{$primary-dark-color};
+  --color-btn-background: #{$primary-light-color};
+  --color-link: var(--color-text);
+  --color-link-hover: #{$secondary-light-color};
 }
 
 @mixin media1000 {

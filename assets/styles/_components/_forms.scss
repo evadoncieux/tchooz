@@ -6,20 +6,26 @@
   margin: 2rem;
   padding: 1rem;
   width: 50vw;
-  color: $primary-light-color;
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: start;
-  border: .1rem dashed $primary-light-color;
+  border: .1rem dashed var(--color-text);
   border-radius: $border-radius;
 
   input {
+    width: 200px;
+    min-height: 2rem;
+    max-height: 3rem;
     margin: 1rem;
     padding: .8rem;
+    border: none;
     border-radius: $border-radius;
     box-shadow: none;
-    border: 1px solid $primary-light-color;
+    background-color: var(--color-form-background);
+    color: var(--color-form-text);
+    font-family: $text-font;
   }
 
   .input-group {
@@ -30,7 +36,16 @@
     align-items: center;
   }
 
-  button {
-    @include button;
+  .custom-select {
+    width: 200px;
+    height: 80px;
+    margin: 1rem;
+    padding: .8rem;
+    border-radius: $border-radius;
+    box-shadow: none;
+    background-color: var(--color-form-background);
+    color: var(--color-form-text);
+    font-family: $text-font;
+    font-size: 1rem;
   }
 }
