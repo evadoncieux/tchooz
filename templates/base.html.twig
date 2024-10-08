@@ -20,19 +20,23 @@
     <div class="nav">
         <p class="title-nav"><a href="{{ path('app_home') }}">tchooz</a></p>
 
-{#        <input type="checkbox" id="hamburger-input" class="burger-shower"/>#}
+        <input type="checkbox" id="hamburger-input" class="burger-shower" hidden/>
 
-{#        <label id="hamburger-menu">#}
-{#            <nav id="sidebar-menu">#}
-            <nav>
-                {% include '_components/_navigation.html.twig' %}
-                <label class="switch">
-                    <input type="checkbox" name="theme_switch">
-                    <span class="slider"></span>
-                </label>
-            </nav>
-{#        </label>#}
-{#        <div class="overlay"></div>#}
+        <label id="hamburger-menu" for="hamburger-input">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav id="sidebar-menu">
+            {% include '_components/_navigation.html.twig' %}
+            <label class="switch">
+                <input type="checkbox" name="theme_switch">
+                <span class="slider"></span>
+            </label>
+        </nav>
+
+        <div class="overlay"></div>
     </div>
 </header>
 {% block body %}{% endblock %}

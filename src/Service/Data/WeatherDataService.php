@@ -21,42 +21,50 @@ readonly class WeatherDataService
     public function __construct(
         private EntityManagerInterface $entityManager,
         private WeatherApiService      $weatherApiService,
-        private LocationApiService $locationApiService,
+        private LocationApiService     $locationApiService,
         private LoggerInterface        $logger,
     )
     {
-
     }
 
-    public function getWeather(string $location): DailyWeather
+    public function logWeather(string $location): DailyWeather
     {
-        try {
-            $weatherApiData = $this->weatherApiService->getWeatherData($location);
-        } catch (Exception $error) {
-            $this->logger->error('Weather API error: ' . $error->getMessage());
+        $coordinates = $this->locationApiService->getCoordinates($location);
+        $cityName = $coordinates[0]['name'];
+        $lastLoggedWeather = $this->entityManager->getRepository(DailyWeather::class)
+            ->findOneBy(['city' => $cityName], ['timestamp' => 'DESC']);
 
-            throw new ServiceUnavailableHttpException('Could not fetch data. Please try again later.');
+        if (!$lastLoggedWeather || new DateTime('-1h', new DateTimeZone('Europe/Paris')) > $lastLoggedWeather['timestamp']) {
+            try {
+                $weatherApiData = $this->weatherApiService->getWeatherData($location);
+            } catch (Exception $error) {
+                $this->logger->error('Weather API error: ' . $error->getMessage());
+
+                throw new ServiceUnavailableHttpException('Could not fetch data. Please try again later.');
+            }
+
+            $weatherData = new DailyWeather();
+            $weatherData
+                ->setName($weatherApiData['weather'][0]['main'])
+                ->setTemperature($weatherApiData['main']['temp'])
+                ->setDescription($weatherApiData['weather'][0]['description'])
+                ->setWindSpeed($weatherApiData['wind']['speed'])
+                ->setCity($weatherApiData['name'])
+                ->setTempFeels($weatherApiData['main']['feels_like'])
+                ->setTempMin($weatherApiData['main']['temp_min'])
+                ->setTempMax($weatherApiData['main']['temp_max'])
+                ->setHumidity($weatherApiData['main']['humidity']);
+            if (isset($weatherApiData['rain'])) {
+                $weatherData->setRain($weatherApiData['rain']['1h']);
+            }
+            $weatherData
+                ->setTimestamp(new DateTime('now', new DateTimeZone('Europe/Paris')));
+
+            $this->entityManager->persist($weatherData);
+            $this->entityManager->flush();
+        } else {
+            $weatherData = $lastLoggedWeather;
         }
-
-        $weatherData = new DailyWeather();
-        $weatherData
-            ->setName($weatherApiData['weather'][0]['main'])
-            ->setTemperature($weatherApiData['main']['temp'])
-            ->setDescription($weatherApiData['weather'][0]['description'])
-            ->setWindSpeed($weatherApiData['wind']['speed'])
-            ->setCity($weatherApiData['name'])
-            ->setTempFeels($weatherApiData['main']['feels_like'])
-            ->setTempMin($weatherApiData['main']['temp_min'])
-            ->setTempMax($weatherApiData['main']['temp_max'])
-            ->setHumidity($weatherApiData['main']['humidity']);
-        if (isset($weatherApiData['rain'])) {
-            $weatherData->setRain($weatherApiData['rain']['1h']);
-        }
-        $weatherData
-            ->setTimestamp(new DateTime('now', new DateTimeZone('Europe/Paris')));
-
-        $this->entityManager->persist($weatherData);
-        $this->entityManager->flush();
 
         return $weatherData;
     }

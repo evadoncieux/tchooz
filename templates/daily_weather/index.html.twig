@@ -11,12 +11,15 @@
 
     <div>
 
-        <p>The temperature will be {{ weatherData.temperature }} ({{ weatherData.tempMin|round(0, 'floor') }}-{{ weatherData.tempMax|round(0, 'floor') }}) </p>
+        <p>The temperature will be {{ weatherData.temperature }} ({{ weatherData.tempMin|round(0, 'floor') }}
+            -{{ weatherData.tempMax|round(0, 'floor') }}) </p>
     </div>
 
-    <a href="{{ path('generate_recommandation') }}">Get a recom°</a>
+    <div class="element-center">
+        <a href="{{ path('generate_recommandation') }}" class="button">Get a recommandation</a>
+    </div>
 
-    {{ dump(weatherData) }}
+{#    {{ dump(weatherData) }}#}
 {% endblock %}
 
 

@@ -68,3 +68,15 @@ input:checked + .slider:before {
   animation: going-dark 0.4s cubic-bezier(0.57, 1.52, 0.64, 1) forwards;
   transition: all 0.4s;
 }
+
+.button {
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-text);
+  height: 18px;
+  width: 24px;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 2rem;
+  font-family: $text-font;
+}

@@ -20,7 +20,7 @@ class WeatherTypeService
 
     /** wind speed is measured in km/h */
     private const WIND_SPEED_RANGES = [
-        'no wind' => ['min' => 0, 'max' => 2],
+        'no wind' => ['min' => -INF, 'max' => 2],
         'light breeze' => ['min' => 3, 'max' => 19],
         'breeze' => ['min' => 20, 'max' => 38],
         'wind' => ['min' => 39, 'max' => 49],
@@ -51,7 +51,7 @@ class WeatherTypeService
 
         try {
             $dailyWeather = $this->weatherDataService->getDailyWeather($location)
-                ?? $this->weatherDataService->getWeather($location);
+                ?? $this->weatherDataService->logWeather($location);
         } catch (\Exception $e) {
             throw new \RuntimeException('Failed to retrieve weather data: ' . $e->getMessage(), 0, $e);
         }

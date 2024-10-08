@@ -35,6 +35,7 @@ readonly class WeatherApiService
      */
     public function getWeatherData(string $location): array
     {
+        
         try {
             return $this->httpClient->request('GET', $this->buildApiUrl($location))->toArray();
         } catch (Exception $error) {

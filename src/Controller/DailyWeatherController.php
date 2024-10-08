@@ -25,7 +25,6 @@ class DailyWeatherController extends AbstractController
     {
         $userLocation = $this->getUser()->getLocation();
         $weatherData = $this->weatherDataService->getDailyWeather($userLocation);
-
         $weatherType = $this->weatherTypeService->getWeatherType($userLocation);
 
         $user = $this->getUser();
@@ -35,7 +34,7 @@ class DailyWeatherController extends AbstractController
 
             if (!$weatherData || $weatherData->getTimestamp() < new DateTime('-1 hour')) {
                 /** @var  User $user */
-                $weatherData = $this->weatherDataService->getWeather($user->getLocation());
+                $weatherData = $this->weatherDataService->logWeather($user->getLocation());
             }
         } else {
             return new \Exception('no user found');
