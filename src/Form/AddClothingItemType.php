@@ -31,9 +31,10 @@ class AddClothingItemType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('weather', EnumType::class, [
-                'class' => ClothingWeather::class,
-                'multiple' => false,
+            ->add('weatherTypes', ChoiceType::class, [
+                'choices' => ClothingWeather::cases(),
+                'choice_label' => fn($choice) => $choice->value,
+                'multiple' => true,
                 'expanded' => false,
             ])
             ->add('colors', ChoiceType::class, [

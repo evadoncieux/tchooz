@@ -13,6 +13,7 @@ enum ClothingCategory: string
     case UNDERWEAR = 'Underwear';
     case SWIMWEAR = 'Swimwear';
     case ACTIVEWEAR = 'Activewear';
+    case FOOTWEAR = 'Footwear';
     case SLEEPWEAR = 'Sleepwear';
     case SUIT = 'Suit';
     case BLAZER = 'Blazer';

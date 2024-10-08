@@ -28,4 +28,5 @@ enum ClothingStyle: string
     case HIPSTER = 'Hipster';
     case COMFY = 'Comfy';
     case OFFICE = 'Office';
+    case FUNCTIONAL = 'Functional';
 }

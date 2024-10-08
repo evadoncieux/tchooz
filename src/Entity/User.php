@@ -54,9 +54,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+    /**
+     * @var Collection<int, ClothingItem>
+     */
+    #[ORM\OneToMany(targetEntity: ClothingItem::class, mappedBy: 'user')]
+    private Collection $clothingItems;
+
     public function __construct()
     {
         $this->suggestions = new ArrayCollection();
+        $this->clothingItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -214,6 +221,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUser(): static
     {
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ClothingItem>
+     */
+    public function getClothingItems(): Collection
+    {
+        return $this->clothingItems;
+    }
+
+    public function addClothingItem(ClothingItem $clothingItem): static
+    {
+        if (!$this->clothingItems->contains($clothingItem)) {
+            $this->clothingItems->add($clothingItem);
+            $clothingItem->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClothingItem(ClothingItem $clothingItem): static
+    {
+        if ($this->clothingItems->removeElement($clothingItem)) {
+            // set the owning side to null (unless already changed)
+            if ($clothingItem->getUser() === $this) {
+                $clothingItem->setUser(null);
+            }
+        }
+
         return $this;
     }
 }

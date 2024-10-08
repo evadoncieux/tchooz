@@ -4,11 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AppFixtures extends Fixture implements OrderedFixtureInterface
+class AppFixtures extends Fixture
 {
 
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
@@ -20,9 +19,9 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
         $admin = new User();
         $admin->setUsername('admin')
             ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
-        ->setRoles(['ROLE_ADMIN'])
-        ->setEmail('admin@admin.com')
-        ->setVerified(true);
+            ->setRoles(['ROLE_ADMIN'])
+            ->setEmail('admin@admin.com')
+            ->setVerified(true);
         $manager->persist($admin);
 
         $userGuignol = new User();
@@ -52,11 +51,11 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
             ->setVerified(false);
         $manager->persist($userPaddington);
 
-        $manager->flush();
-    }
+        $this->addReference('user_admin', $admin);
+        $this->addReference('user_guignol', $userGuignol);
+        $this->addReference('user_pucci', $userPucci);
+        $this->addReference('user_paddington', $userPaddington);
 
-    public function getOrder(): int
-    {
-        return 1;
+        $manager->flush();
     }
 }

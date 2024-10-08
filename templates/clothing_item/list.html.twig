@@ -14,7 +14,9 @@
 
                 <p>{{ clothingItem.material.value }}</p>
 
-                <p>{{ clothingItem.weather.value }}</p>
+                {% for weatherType in clothingItem.weatherTypes %}
+                    <p>{{ weatherType.value }}</p>
+                {% endfor %}
 
                 {% for color in clothingItem.colors %}
                     <p>{{ color.value }}</p>
@@ -30,6 +32,6 @@
             </div>
         {% endfor %}
     </div>
-    {% else %}
+{% else %}
     <p>No clothing item logged in our database</p>
 {% endif %}

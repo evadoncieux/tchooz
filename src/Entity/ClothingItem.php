@@ -32,8 +32,8 @@ class ClothingItem
     #[ORM\Column(type: 'string', enumType: ClothingMaterial::class)]
     private ?ClothingMaterial $material = null;
 
-    #[ORM\Column(type: 'string', enumType: ClothingWeather::class)]
-    private ?ClothingWeather $weather;
+    #[ORM\Column(type: 'json')]
+    private array $weatherTypes;
 
     #[ORM\Column(type: 'json')]
     private array $colors = [];
@@ -43,6 +43,9 @@ class ClothingItem
 
     #[ORM\Column(type: 'json')]
     private array $categories = [];
+
+    #[ORM\ManyToOne(inversedBy: 'clothingItems')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -95,12 +98,12 @@ class ClothingItem
 
     public function getColors(): array
     {
-        return array_map(fn($color) => ClothingColor::from($color), $this->colors);
+        return array_map(static fn($color) => ClothingColor::from($color), $this->colors);
     }
 
     public function setColors(array $colors): self
     {
-        $this->colors = array_map(fn(ClothingColor $color) => $color->value, $colors);
+        $this->colors = array_map(static fn(ClothingColor $color) => $color->value, $colors);
         return $this;
     }
 
@@ -109,9 +112,10 @@ class ClothingItem
         return $this->material;
     }
 
-    public function setMaterial(?ClothingMaterial $material): void
+    public function setMaterial(?ClothingMaterial $material): self
     {
         $this->material = $material;
+        return $this;
     }
 
     public function getStyles(): array
@@ -136,13 +140,26 @@ class ClothingItem
         return $this;
     }
 
-    public function getWeather(): ?ClothingWeather
+    public function getWeatherTypes(): array
     {
-        return $this->weather;
+        return array_map(static fn($weatherType) => ClothingWeather::from($weatherType), $this->weatherTypes);
     }
 
-    public function setWeather(?ClothingWeather $weather): void
+    public function setWeatherTypes(array $weatherTypes): self
     {
-        $this->weather = $weather;
+        $this->weatherTypes = array_map(static fn(ClothingWeather $weatherType) => $weatherType->value, $weatherTypes);
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

@@ -28,4 +28,5 @@ enum ClothingMaterial: string
     case MODAL = 'Modal';
     case TENCEL = 'Tencel';
     case HEMP = 'Hemp';
+    case PVC = 'PVC';
 }
