@@ -1,0 +1,15 @@
+@import "../ressources/variables";
+@import "../ressources/mixins";
+
+.clothing-item {
+  border: 0.5px solid var(--color-text);
+  border-radius: $border-radius;
+  padding: 1rem;
+  margin: 1rem;
+  width: 10vw;
+  height: 10vw;
+
+  & > h4 {
+    text-decoration: underline;
+  }
+}

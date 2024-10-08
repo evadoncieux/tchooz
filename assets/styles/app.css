@@ -251,6 +251,24 @@ button:hover {
   transition: background-color 0.5s ease, color 1s ease;
 }
 
+.clothing-item {
+  border: 0.5px solid var(--color-text);
+  border-radius: 3rem;
+  padding: 1rem;
+  margin: 1rem;
+  width: 10vw;
+  height: 10vw;
+}
+.clothing-item > h4 {
+  text-decoration: underline;
+}
+
+.clothing-item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 html[data-theme=light] {
   --color-text: #46413f;
   --color-background: #ffeddb;
