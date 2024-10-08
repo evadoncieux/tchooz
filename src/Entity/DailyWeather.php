@@ -18,25 +18,22 @@ class DailyWeather
     #[ORM\Column(type: "integer")]
     private ?int $temperature = null;
 
-    #[ORM\ManyToOne]
-    private ?WeatherType $weatherType = null;
-
-    #[ORM\Column(type: "float")]
+    #[ORM\Column(type: "float", nullable: true)]
     private ?float $humidity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?DateTimeInterface $timestamp = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $tempMin = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $tempMax = null;
 
     #[ORM\Column]
@@ -47,6 +44,15 @@ class DailyWeather
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $sunset = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column]
+    private ?float $temp_feels = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $rain = null;
 
     public function getId(): ?int
     {
@@ -61,18 +67,6 @@ class DailyWeather
     public function setTemperature(?int $temperature): static
     {
         $this->temperature = $temperature;
-
-        return $this;
-    }
-
-    public function getWeatherType(): ?WeatherType
-    {
-        return $this->weatherType;
-    }
-
-    public function setWeatherType(?WeatherType $weatherType): static
-    {
-        $this->weatherType = $weatherType;
 
         return $this;
     }
@@ -101,14 +95,14 @@ class DailyWeather
         return $this;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): static
+    public function setName(string $name): static
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -185,4 +179,39 @@ class DailyWeather
         return $this;
     }
 
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getTempFeels(): ?float
+    {
+        return $this->temp_feels;
+    }
+
+    public function setTempFeels(float $temp_feels): static
+    {
+        $this->temp_feels = $temp_feels;
+
+        return $this;
+    }
+
+    public function getRain(): ?float
+    {
+        return $this->rain;
+    }
+
+    public function setRain(float $rain): static
+    {
+        $this->rain = $rain;
+
+        return $this;
+    }
 }

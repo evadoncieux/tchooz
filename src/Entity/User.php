@@ -51,19 +51,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Suggestion::class, mappedBy: 'userSuggestions')]
     private Collection $suggestions;
 
-    /**
-     * @var Collection<int, Wardrobe>
-     */
-    #[ORM\OneToMany(targetEntity: Wardrobe::class, mappedBy: 'wardrobeUser')]
-    private Collection $wardrobes;
-
     #[ORM\Column]
     private bool $isVerified = false;
+
+    /**
+     * @var Collection<int, ClothingItem>
+     */
+    #[ORM\OneToMany(targetEntity: ClothingItem::class, mappedBy: 'user')]
+    private Collection $clothingItems;
 
     public function __construct()
     {
         $this->suggestions = new ArrayCollection();
-        $this->wardrobes = new ArrayCollection();
+        $this->clothingItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -207,36 +207,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Wardrobe>
-     */
-    public function getWardrobes(): Collection
-    {
-        return $this->wardrobes;
-    }
-
-    public function addWardrobe(Wardrobe $wardrobe): static
-    {
-        if (!$this->wardrobes->contains($wardrobe)) {
-            $this->wardrobes->add($wardrobe);
-            $wardrobe->setWardrobeUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeWardrobe(Wardrobe $wardrobe): static
-    {
-        if ($this->wardrobes->removeElement($wardrobe)) {
-            // set the owning side to null (unless already changed)
-            if ($wardrobe->getWardrobeUser() === $this) {
-                $wardrobe->setWardrobeUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function isVerified(): bool
     {
         return $this->isVerified;
@@ -251,6 +221,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUser(): static
     {
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ClothingItem>
+     */
+    public function getClothingItems(): Collection
+    {
+        return $this->clothingItems;
+    }
+
+    public function addClothingItem(ClothingItem $clothingItem): static
+    {
+        if (!$this->clothingItems->contains($clothingItem)) {
+            $this->clothingItems->add($clothingItem);
+            $clothingItem->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClothingItem(ClothingItem $clothingItem): static
+    {
+        if ($this->clothingItems->removeElement($clothingItem)) {
+            // set the owning side to null (unless already changed)
+            if ($clothingItem->getUser() === $this) {
+                $clothingItem->setUser(null);
+            }
+        }
+
         return $this;
     }
 }

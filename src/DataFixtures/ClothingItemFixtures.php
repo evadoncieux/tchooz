@@ -3,6 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\ClothingItem;
+use App\Enum\ClothingCategory;
+use App\Enum\ClothingColor;
+use App\Enum\ClothingMaterial;
+use App\Enum\ClothingStyle;
+use App\Enum\ClothingWeather;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -11,9 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public function __construct(private readonly SluggerInterface $slugger,
-                                private readonly WeatherTypeFixtures $weatherTypeFixtures,
-                                private readonly CategoryFixtures $categoryFixtures
+    public function __construct(private readonly SluggerInterface $slugger
     )
     {
     }
@@ -22,36 +25,18 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
     {
         $jsonFile = file_get_contents('fixtures/clothing_items.json');
         $clothingItemsData = json_decode($jsonFile, true, 512, JSON_THROW_ON_ERROR);
-
-        $weatherTypes = $this->weatherTypeFixtures->getWeatherTypes();
-        $categories = $this->categoryFixtures->getCategories();
+        $userPucci = $this->getReference('user_pucci');
 
         foreach ($clothingItemsData as $itemData) {
             $clothingItem = new ClothingItem();
-            $clothingItem->setName($itemData['name'])
-                ->setColor($itemData['color'])
-                ->setMaterial($itemData['material'])
-                ->setOccasions($itemData['occasion'])
-                ->setStyle($itemData['style']);
-
-            foreach ($itemData['categories'] as $categoryName) {
-                $category = $categories->filter(function ($c) use ($categoryName) {
-                    return $c->getName() === $categoryName;
-                })->first();
-
-                if ($category) {
-                    $clothingItem->addCategory($category);
-                }
-            }
-            foreach ($itemData['weatherType'] as $weatherTypeName) {
-                $weatherType = $weatherTypes->filter(function ($wt) use ($weatherTypeName) {
-                    return $wt->getName() === $weatherTypeName;
-                })->first();
-
-                if ($weatherType) {
-                    $clothingItem->addWeatherType($weatherType);
-                }
-            }
+            $clothingItem
+                ->setColors(array_map(static fn($style) => ClothingColor::from($style), $itemData['colors']))
+                ->setWeatherTypes(array_map(static fn($style) => ClothingWeather::from($style), $itemData['weather']))
+                ->setCategories(array_map(static fn($category) => ClothingCategory::from($category), $itemData['categories']))
+                ->setName($itemData['name'])
+                ->setMaterial(ClothingMaterial::from($itemData['material']))
+                ->setStyles(array_map(static fn($style) => ClothingStyle::from($style), $itemData['styles']))
+                ->setUser($userPucci);
 
             $manager->persist($clothingItem);
         }
@@ -62,8 +47,8 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            CategoryFixtures::class,
-            WeatherTypeFixtures::class,
+            AppFixtures::class,
         ];
+
     }
 }

@@ -16,7 +16,7 @@ class Suggestion
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private ?array $suggestedOutfit = null;
 
     /**
@@ -28,16 +28,9 @@ class Suggestion
     #[ORM\ManyToOne(inversedBy: 'suggestions')]
     private ?User $userSuggestions = null;
 
-    /**
-     * @var Collection<int, Factor>
-     */
-    #[ORM\OneToMany(targetEntity: Factor::class, mappedBy: 'suggestion')]
-    private Collection $factor;
-
     public function __construct()
     {
         $this->outfits = new ArrayCollection();
-        $this->factor = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,36 +82,6 @@ class Suggestion
     public function setUserSuggestions(?User $userSuggestions): static
     {
         $this->userSuggestions = $userSuggestions;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Factor>
-     */
-    public function getFactor(): Collection
-    {
-        return $this->factor;
-    }
-
-    public function addFactor(Factor $factor): static
-    {
-        if (!$this->factor->contains($factor)) {
-            $this->factor->add($factor);
-            $factor->setSuggestion($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFactor(Factor $factor): static
-    {
-        if ($this->factor->removeElement($factor)) {
-            // set the owning side to null (unless already changed)
-            if ($factor->getSuggestion() === $this) {
-                $factor->setSuggestion(null);
-            }
-        }
 
         return $this;
     }

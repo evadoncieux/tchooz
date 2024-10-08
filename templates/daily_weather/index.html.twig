@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Daily weather{% endblock %}
+{% block title %}Weather{% endblock %}
 
 {% block body %}
-    {{ dump(weatherData) }}
-    <h2>Today's weather in {{ user.location }} is {{ weatherData.description }}</h2>
+    <h1>Weather</h1>
+
+    <p>Today's weather in {{ user.location }} is {{ weatherData.description }}</p>
 
     <div>
-        <p>The min temperature will be {{ weatherData.tempMin }} and the max temperature will
-            be {{ weatherData.tempMax }} </p>
+
+        <p>The temperature will be {{ weatherData.temperature }} ({{ weatherData.tempMin|round(0, 'floor') }}
+            -{{ weatherData.tempMax|round(0, 'floor') }}) </p>
     </div>
+
+    <div class="element-center">
+        <a href="{{ path('generate_recommandation') }}" class="button">Get outfit recommandations</a>
+    </div>
+
+{#    {{ dump(weatherData) }}#}
 {% endblock %}
+
+
