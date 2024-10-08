@@ -2,6 +2,11 @@
 
 namespace App\Entity;
 
+use App\Enum\ClothingCategory;
+use App\Enum\ClothingColor;
+use App\Enum\ClothingMaterial;
+use App\Enum\ClothingStyle;
+use App\Enum\ClothingWeather;
 use App\Repository\ClothingItemRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,11 +20,8 @@ class ClothingItem
     #[ORM\Column]
     private ?int $id = null;
 
-    /**
-     * @var Collection<int, Wardrobe>
-     */
-    #[ORM\ManyToMany(targetEntity: Wardrobe::class, mappedBy: 'items')]
-    private Collection $wardrobes;
+    #[ORM\Column(length: 255, unique: true)]
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Outfit>
@@ -27,39 +29,24 @@ class ClothingItem
     #[ORM\ManyToMany(targetEntity: Outfit::class, mappedBy: 'clothingItems')]
     private Collection $outfits;
 
-    /**
-     * @var Collection<int, Category>
-     */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'clothingItems')]
-    private Collection $categories;
+    #[ORM\Column(type: 'string', enumType: ClothingMaterial::class)]
+    private ?ClothingMaterial $material = null;
 
-    #[ORM\Column(length: 255, unique: true)]
-    private ?string $name = null;
+    #[ORM\Column(type: 'string', enumType: ClothingWeather::class)]
+    private ?ClothingWeather $weather;
 
-    #[ORM\Column(length: 255)]
-    private ?string $color = null;
+    #[ORM\Column(type: 'json')]
+    private array $colors = [];
 
-    #[ORM\Column(length: 255)]
-    private ?string $material = null;
+    #[ORM\Column(type: 'json')]
+    private array $styles = [];
 
-    /**
-     * @var Collection<int, WeatherType>
-     */
-    #[ORM\ManyToMany(targetEntity: WeatherType::class, inversedBy: 'clothingItems', cascade: ['persist'])]
-    private Collection $weatherTypes;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $style = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?array $occasions = null;
+    #[ORM\Column(type: 'json')]
+    private array $categories = [];
 
     public function __construct()
     {
-        $this->wardrobes = new ArrayCollection();
         $this->outfits = new ArrayCollection();
-        $this->categories = new ArrayCollection();
-        $this->weatherTypes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,29 +54,14 @@ class ClothingItem
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Wardrobe>
-     */
-    public function getWardrobes(): Collection
+    public function getName(): ?string
     {
-        return $this->wardrobes;
+        return $this->name;
     }
 
-    public function addWardrobe(Wardrobe $wardrobe): static
+    public function setName(string $name): static
     {
-        if (!$this->wardrobes->contains($wardrobe)) {
-            $this->wardrobes->add($wardrobe);
-            $wardrobe->addItem($this);
-        }
-
-        return $this;
-    }
-
-    public function removeWardrobe(Wardrobe $wardrobe): static
-    {
-        if ($this->wardrobes->removeElement($wardrobe)) {
-            $wardrobe->removeItem($this);
-        }
+        $this->name = $name;
 
         return $this;
     }
@@ -121,116 +93,56 @@ class ClothingItem
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategory(): Collection
+    public function getColors(): array
     {
-        return $this->categories;
+        return array_map(fn($color) => ClothingColor::from($color), $this->colors);
     }
 
-    public function setCategory(Collection $categories): void
+    public function setColors(array $colors): self
     {
-        $this->categories = $categories;
-    }
-
-    public function addCategory(Category $categories): static
-    {
-        if (!$this->categories->contains($categories)) {
-            $this->categories->add($categories);
-        }
-
+        $this->colors = array_map(fn(ClothingColor $color) => $color->value, $colors);
         return $this;
     }
 
-    public function removeCategory(Category $categories): static
-    {
-        $this->categories->removeElement($categories);
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): static
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    public function getMaterial(): ?string
+    public function getMaterial(): ?ClothingMaterial
     {
         return $this->material;
     }
 
-    public function setMaterial(string $material): static
+    public function setMaterial(?ClothingMaterial $material): void
     {
         $this->material = $material;
+    }
 
+    public function getStyles(): array
+    {
+        return array_map(fn($style) => ClothingStyle::from($style), $this->styles);
+    }
+
+    public function setStyles(array $styles): self
+    {
+        $this->styles = array_map(static fn(ClothingStyle $style) => $style->value, $styles);
         return $this;
     }
 
-    /**
-     * @return Collection<int, WeatherType>
-     */
-    public function getWeatherTypes(): Collection
+    public function getCategories(): array
     {
-        return $this->weatherTypes;
+        return array_map(static fn($category) => ClothingCategory::from($category), $this->categories);
     }
 
-    public function addWeatherType(WeatherType $weatherType): self
+    public function setCategories(array $categories): self
     {
-        if (!$this->weatherTypes->contains($weatherType)) {
-            $this->weatherTypes->add($weatherType);
-        }
-
+        $this->categories = array_map(static fn(ClothingCategory $category) => $category->value, $categories);
         return $this;
     }
 
-    public function removeWeatherType(WeatherType $weatherType): static
+    public function getWeather(): ?ClothingWeather
     {
-        $this->weatherTypes->removeElement($weatherType);
-
-        return $this;
+        return $this->weather;
     }
 
-    public function getStyle(): ?string
+    public function setWeather(?ClothingWeather $weather): void
     {
-        return $this->style;
-    }
-
-    public function setStyle(?string $style): static
-    {
-        $this->style = $style;
-
-        return $this;
-    }
-
-    public function getOccasions(): ?array
-    {
-        return $this->occasions;
-    }
-
-    public function setOccasions(?array $occasions): static
-    {
-        $this->occasions = $occasions;
-
-        return $this;
+        $this->weather = $weather;
     }
 }

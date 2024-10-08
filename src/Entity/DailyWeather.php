@@ -18,9 +18,6 @@ class DailyWeather
     #[ORM\Column(type: "integer")]
     private ?int $temperature = null;
 
-    #[ORM\ManyToOne]
-    private ?WeatherType $weatherType = null;
-
     #[ORM\Column(type: "float", nullable: true)]
     private ?float $humidity = null;
 
@@ -70,18 +67,6 @@ class DailyWeather
     public function setTemperature(?int $temperature): static
     {
         $this->temperature = $temperature;
-
-        return $this;
-    }
-
-    public function getWeatherType(): ?WeatherType
-    {
-        return $this->weatherType;
-    }
-
-    public function setWeatherType(?WeatherType $weatherType): static
-    {
-        $this->weatherType = $weatherType;
 
         return $this;
     }

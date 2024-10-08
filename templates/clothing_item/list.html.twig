@@ -1,0 +1,35 @@
+{% if clothingItems %}
+    <div class="clothing-item-list">
+        {#            {{ dump(clothingItems) }} #}
+        {% for clothingItem in clothingItems %}
+            <div class="clothing-item">
+
+                <h4>{{ clothingItem.name }}</h4>
+
+                {% if clothingItem.outfits is not empty %}
+                    {% for outfit in clothingItem.outfits %}
+                        <p>{{ outfit }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <p>{{ clothingItem.material.value }}</p>
+
+                <p>{{ clothingItem.weather.value }}</p>
+
+                {% for color in clothingItem.colors %}
+                    <p>{{ color.value }}</p>
+                {% endfor %}
+
+                {% for style in clothingItem.styles %}
+                    <p>{{ style.value }}</p>
+                {% endfor %}
+
+                {% for category in clothingItem.categories %}
+                    <p>{{ category.value }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No clothing item logged in our database</p>
+{% endif %}

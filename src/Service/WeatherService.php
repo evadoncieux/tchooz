@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
+use App\Entity\DailyWeather;
 use App\Entity\User;
-use App\Entity\WeatherType;
 use App\Service\Data\WeatherDataService;
 use Symfony\Bundle\SecurityBundle\Security;
 
-class WeatherTypeService
+class WeatherService
 {
     /** temperature is measured in Celsius */
     private const TEMPERATURE_RANGES = [
@@ -37,7 +37,7 @@ class WeatherTypeService
     /**
      * @throws \Exception
      */
-    public function getWeatherType(?string $location = null): WeatherType
+    public function getWeather(?string $location = null): DailyWeather
     {
         $user = $this->security->getUser();
         if (!$user instanceof User) {
@@ -60,16 +60,16 @@ class WeatherTypeService
             throw new \RuntimeException('No weather data available for the given location.');
         }
 
-        $weatherType = new WeatherType();
+        $weather = new DailyWeather();
         $temperature = $this->getTemperatureType($dailyWeather->getTemperature());
         $wind = $this->getWindSpeedType($dailyWeather->getWindSpeed());
 
-        $weatherType->setName($this->determineWeatherTypeName($temperature, $wind));
+        $weather->setName($this->determineWeatherName($temperature, $wind));
 
-        return $weatherType;
+        return $weather;
     }
 
-    private function determineWeatherTypeName(string $temperature, string $wind): string
+    private function determineWeatherName(string $temperature, string $wind): string
     {
         $combinations = [
             'very cold' => ['windy' => 'very cold & windy'],

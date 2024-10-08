@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit my profile{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h2>Edit my profile</h2>
+
+        <div class="form-group">
+            {{ form_start(userEditForm) }}
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                {{ form_widget(userEditForm.username) }}
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                {{ form_widget(userEditForm.email) }}
+            </div>
+
+            <div class="input-group">
+                <label for="location">Location</label>
+                {{ form_widget(userEditForm.location) }}
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                {{ form_widget(userEditForm.password) }}
+            </div>
+
+            <button class="btn btn-lg btn-primary" type="submit">
+                Edit
+            </button>
+            {{ form_end(userEditForm) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+

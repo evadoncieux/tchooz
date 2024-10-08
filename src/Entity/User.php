@@ -51,19 +51,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Suggestion::class, mappedBy: 'userSuggestions')]
     private Collection $suggestions;
 
-    /**
-     * @var Collection<int, Wardrobe>
-     */
-    #[ORM\OneToMany(targetEntity: Wardrobe::class, mappedBy: 'wardrobeUser')]
-    private Collection $wardrobes;
-
     #[ORM\Column]
     private bool $isVerified = false;
 
     public function __construct()
     {
         $this->suggestions = new ArrayCollection();
-        $this->wardrobes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,36 +194,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($suggestion->getUserSuggestions() === $this) {
                 $suggestion->setUserSuggestions(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Wardrobe>
-     */
-    public function getWardrobes(): Collection
-    {
-        return $this->wardrobes;
-    }
-
-    public function addWardrobe(Wardrobe $wardrobe): static
-    {
-        if (!$this->wardrobes->contains($wardrobe)) {
-            $this->wardrobes->add($wardrobe);
-            $wardrobe->setWardrobeUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeWardrobe(Wardrobe $wardrobe): static
-    {
-        if ($this->wardrobes->removeElement($wardrobe)) {
-            // set the owning side to null (unless already changed)
-            if ($wardrobe->getWardrobeUser() === $this) {
-                $wardrobe->setWardrobeUser(null);
             }
         }
 

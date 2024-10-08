@@ -17,11 +17,9 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-//        $faker = Faker\Factory::create();
-
         $admin = new User();
         $admin->setUsername('admin')
-        ->setPassword('admin')
+            ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
         ->setRoles(['ROLE_ADMIN'])
         ->setEmail('admin@admin.com')
         ->setVerified(true);
