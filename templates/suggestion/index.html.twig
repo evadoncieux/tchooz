@@ -1,11 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Suggestions{% endblock %}
+{% block title %}suggestions{% endblock %}
 
 {% block body %}
     <h1>suggestions</h1>
 
-    {{ dump(suggestions) }}
+    <h2>Here is an outfit suggestion</h2>
+
+    {% if suggestion.top is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.top} %}
+    {% endif %}
+{% if suggestion.bottom is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.bottom} %}
+    {% endif %}
+{% if suggestion.sweater is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.sweater} %}
+    {% endif %}
+{% if suggestion.dress is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.dress} %}
+    {% endif %}
+{% if suggestion.suit is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.suit} %}
+    {% endif %}
+{% if suggestion.shoes is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.shoes} %}
+    {% endif %}
+{% if suggestion.coat is not null %}
+        {% include 'suggestion/_item.html.twig' with {'item' : suggestion.coat} %}
+    {% endif %}
+
 {% endblock %}
 
 

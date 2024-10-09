@@ -25,9 +25,11 @@ class SuggestionController extends AbstractController
     public function getSuggestions(): Response
     {
         $suggestions = $this->suggestionGeneratorService->generateSuggestion();
+//        dd($suggestions);
 
         return $this->render('suggestion/index.html.twig', [
-            'suggestions' => $suggestions,
+            'weather' => $suggestions[0],
+            'suggestion' => $suggestions[1],
         ]);
     }
 
