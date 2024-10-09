@@ -256,17 +256,20 @@ button:hover {
   border-radius: 3rem;
   padding: 1rem;
   margin: 1rem;
-  width: 10vw;
-  height: 10vw;
+  width: 15vw;
+  height: fit-content;
 }
 .clothing-item > h4 {
   text-decoration: underline;
+  margin-bottom: 0.5rem;
 }
 
 .clothing-item-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  align-content: center;
+  justify-content: center;
 }
 
 html[data-theme=light] {
@@ -301,7 +304,7 @@ body {
   padding: 1rem;
   color: var(--color-text);
   background: var(--color-background);
-  transition: background 1s ease, color 1s ease;
+  transition: background 0.5s ease, color 1s ease;
 }
 
 .container {
@@ -328,6 +331,10 @@ h2 {
 }
 
 h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
   font-size: 2.5rem;
 }
 

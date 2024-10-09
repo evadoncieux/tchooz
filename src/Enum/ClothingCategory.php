@@ -23,4 +23,6 @@ enum ClothingCategory: string
     case VEST = 'Vest';
     case HOODIE = 'Hoodie';
     case JACKET = 'Jacket';
+    case COAT = 'Coat';
+    case SWEATER = 'Sweater';
 }

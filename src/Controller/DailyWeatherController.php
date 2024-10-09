@@ -28,7 +28,7 @@ class DailyWeatherController extends AbstractController
 //      If data is older than 1 hour or doesn't exist, fetch new data
         if ($user) {
             $userLocation = $user->getLocation();
-            $weatherData = $this->weatherDataService->getDailyWeather($userLocation);
+            $weatherData = $this->weatherDataService->getWeather($userLocation);
 
             if (!$weatherData || $weatherData->getTimestamp() < new DateTime('-1 hour')) {
                 /** @var  User $user */

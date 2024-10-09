@@ -16,7 +16,7 @@ class UserProfileController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findAll();
+        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findBy(['user' => $user->getId()]);
 
         return $this->render('user_profile/index.html.twig', [
             'user' => $user,

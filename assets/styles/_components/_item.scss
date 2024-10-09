@@ -6,10 +6,16 @@
   border-radius: $border-radius;
   padding: 1rem;
   margin: 1rem;
-  width: 10vw;
-  height: 10vw;
+  width: 15vw;
+  height: fit-content;
 
   & > h4 {
     text-decoration: underline;
+    margin-bottom: 0.5rem;
   }
+
+  //&:hover {
+  //  background: var(--color-text);
+  //  color: var(--color-background);
+  //}
 }

@@ -24,14 +24,14 @@ class AppFixtures extends Fixture
             ->setVerified(true);
         $manager->persist($admin);
 
-        $userGuignol = new User();
-        $userGuignol->setUsername('guignol')
-            ->setPassword($this->passwordHasher->hashPassword($userGuignol, 'lyoncestmamaison'))
+        $userEva = new User();
+        $userEva->setUsername('eva')
+            ->setPassword($this->passwordHasher->hashPassword($userEva, 'lyoncestmamaison'))
             ->setRoles(['ROLE_USER'])
-            ->setEmail('guignol@lyon.fr')
+            ->setEmail('eva@lyon.fr')
             ->setLocation('Lyon, FR')
             ->setVerified(true);
-        $manager->persist($userGuignol);
+        $manager->persist($userEva);
 
         $userPucci = new User();
         $userPucci->setUsername('pucci')
@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
         $manager->persist($userPaddington);
 
         $this->addReference('user_admin', $admin);
-        $this->addReference('user_guignol', $userGuignol);
+        $this->addReference('user_eva', $userEva);
         $this->addReference('user_pucci', $userPucci);
         $this->addReference('user_paddington', $userPaddington);
 

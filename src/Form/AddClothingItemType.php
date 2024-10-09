@@ -31,10 +31,10 @@ class AddClothingItemType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('weatherTypes', ChoiceType::class, [
+            ->add('weather', ChoiceType::class, [
                 'choices' => ClothingWeather::cases(),
-                'choice_label' => fn($choice) => $choice->value,
-                'multiple' => true,
+                'required' => true,
+                'multiple' => false,
                 'expanded' => false,
             ])
             ->add('colors', ChoiceType::class, [
@@ -50,8 +50,8 @@ class AddClothingItemType extends AbstractType
                 'expanded' => false,
             ])->add('categories', ChoiceType::class, [
                 'choices' => ClothingCategory::cases(),
-                'choice_label' => fn($choice) => $choice->value,
-                'multiple' => true,
+                'required' => true,
+                'multiple' => false,
                 'expanded' => false,
             ]);
     }

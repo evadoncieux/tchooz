@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\DailyWeather;
 use App\Entity\User;
 use App\Service\Data\WeatherDataService;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -13,9 +12,9 @@ class WeatherService
     private const TEMPERATURE_RANGES = [
         'very cold' => ['min' => -INF, 'max' => 9],
         'cold' => ['min' => 10, 'max' => 14],
-        'cool' => ['min' => 15, 'max' => 19],
-        'warm' => ['min' => 20, 'max' => 24],
-        'hot' => ['min' => 25, 'max' => INF],
+        'cool' => ['min' => 14, 'max' => 19],
+        'warm' => ['min' => 19, 'max' => 24],
+        'hot' => ['min' => 24, 'max' => INF],
     ];
 
     /** wind speed is measured in km/h */
@@ -37,7 +36,7 @@ class WeatherService
     /**
      * @throws \Exception
      */
-    public function getWeather(?string $location = null): DailyWeather
+    public function getWeather(?string $location = null): string
     {
         $user = $this->security->getUser();
         if (!$user instanceof User) {
@@ -50,7 +49,7 @@ class WeatherService
         }
 
         try {
-            $dailyWeather = $this->weatherDataService->getDailyWeather($location)
+            $dailyWeather = $this->weatherDataService->getWeather($location)
                 ?? $this->weatherDataService->logWeather($location);
         } catch (\Exception $e) {
             throw new \RuntimeException('Failed to retrieve weather data: ' . $e->getMessage(), 0, $e);
@@ -60,13 +59,10 @@ class WeatherService
             throw new \RuntimeException('No weather data available for the given location.');
         }
 
-        $weather = new DailyWeather();
         $temperature = $this->getTemperatureType($dailyWeather->getTemperature());
         $wind = $this->getWindSpeedType($dailyWeather->getWindSpeed());
 
-        $weather->setName($this->determineWeatherName($temperature, $wind));
-
-        return $weather;
+        return $this->determineWeatherName($temperature, $wind);
     }
 
     private function determineWeatherName(string $temperature, string $wind): string
