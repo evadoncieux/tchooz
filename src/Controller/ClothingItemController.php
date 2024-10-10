@@ -15,10 +15,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class ClothingItemController extends AbstractController
 {
     #[Route('/clothing/item', name: 'app_clothing_item')]
-    public function index(): Response
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findBy(['user' => $user->getId()]);
+
         return $this->render('clothing_item/index.html.twig', [
-            'controller_name' => 'ClothingItemController',
+            'clothingItems' => $clothingItems,
         ]);
     }
 
@@ -36,6 +40,7 @@ class ClothingItemController extends AbstractController
         $url = $urlGenerator->generate('app_user_profile');
 
         if ($addClothingItemForm->isSubmitted() && $addClothingItemForm->isValid()) {
+            $clothingItem->setUser($user);
             $entityManager->persist($clothingItem);
             $entityManager->flush();
 

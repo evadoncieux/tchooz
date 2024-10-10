@@ -1,0 +1,23 @@
+<div class="element-center">
+    {% if outfit.top is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.top} %}
+    {% endif %}
+    {% if outfit.bottom is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.bottom} %}
+    {% endif %}
+    {% if outfit.sweater is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.sweater} %}
+    {% endif %}
+    {% if outfit.dress is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.dress} %}
+    {% endif %}
+    {% if outfit.suit is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.suit} %}
+    {% endif %}
+    {% if outfit.shoes is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.shoes} %}
+    {% endif %}
+    {% if outfit.coat is not null %}
+        {% include 'outfit/_item.html.twig' with {'item' : outfit.coat} %}
+    {% endif %}
+</div>

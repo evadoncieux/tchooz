@@ -33,7 +33,7 @@ class ClothingItem
     private ?ClothingMaterial $material = null;
 
     #[ORM\Column(type: 'string', enumType: ClothingWeather::class)]
-    private ?ClothingWeather $weather = null;
+    private ClothingWeather $weather;
 
     #[ORM\Column(type: 'json')]
     private array $colors = [];
@@ -42,7 +42,7 @@ class ClothingItem
     private array $styles = [];
 
     #[ORM\Column(type: 'string', enumType: ClothingCategory::class)]
-    private ?ClothingCategory $category = null;
+    private ClothingCategory $category;
 
     #[ORM\ManyToOne(inversedBy: 'clothingItems')]
     private ?User $user = null;
@@ -134,7 +134,7 @@ class ClothingItem
         return $this->category;
     }
 
-    public function setCategories(?ClothingCategory $category): self
+    public function setCategory(?ClothingCategory $category): self
     {
         $this->category = $category;
         return $this;
@@ -142,7 +142,7 @@ class ClothingItem
 
     public function getWeather(): ClothingWeather
     {
-        return $this->weather;
+        return $this->weather ?? ClothingWeather::ANY;
     }
 
     public function setWeather(ClothingWeather $weather): self

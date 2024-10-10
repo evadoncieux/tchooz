@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Service\Data\WeatherDataService;
-use DateTime;
+use App\Service\Weather\WeatherDataService;
+use App\Service\Weather\WeatherParametersService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class DailyWeatherController extends AbstractController
+class CurrentWeatherController extends AbstractController
 {
 
     public function __construct(
-        private readonly WeatherDataService $weatherDataService,
+        private readonly WeatherDataService       $weatherDataService,
+        private readonly WeatherParametersService $weatherParametersService,
     )
     {
     }
@@ -25,22 +25,18 @@ class DailyWeatherController extends AbstractController
     {
         $user = $this->getUser();
 
-//      If data is older than 1 hour or doesn't exist, fetch new data
         if ($user) {
             $userLocation = $user->getLocation();
-            $weatherData = $this->weatherDataService->getWeather($userLocation);
-
-            if (!$weatherData || $weatherData->getTimestamp() < new DateTime('-1 hour')) {
-                /** @var  User $user */
-                $weatherData = $this->weatherDataService->logWeather($user->getLocation());
-            }
+            $weatherData = $this->weatherDataService->getWeatherData($userLocation);
+            $weatherString = $this->weatherParametersService->getWeather($userLocation);
         } else {
             return new \Exception('no user found');
         }
 
-        return $this->render('daily_weather/index.html.twig', [
+        return $this->render('current_weather/index.html.twig', [
             'weatherData' => $weatherData,
-            'user' => $user,
+            'weatherString' => $weatherString,
+            'user_location' => $userLocation,
         ]);
     }
 

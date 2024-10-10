@@ -350,7 +350,7 @@
       "Black"
     ],
     "category": "Sweater",
-    "weather": "Cool",
+    "weather": "Cold",
     "material": "Wool",
     "styles": [
       "Classic"
@@ -367,5 +367,179 @@
     "styles": [
       "Romantic"
     ]
+  },
+  {
+  "name": "Puffy coat",
+  "colors": [
+    "Yellow",
+    "Red",
+    "Purple"
+  ],
+  "category": "Coat",
+  "weather": "Freezing",
+  "material": "Cotton",
+  "styles": [
+    "Artsy"
+  ]
+},
+  {
+    "name": "Cropped Tank Top",
+    "colors": ["White", "Black"],
+    "category": "Top",
+    "weather": "Hot",
+    "material": "Cotton",
+    "styles": ["Casual", "Trendy"]
+  },
+  {
+    "name": "Wide-leg Palazzo Pants",
+    "colors": ["Navy"],
+    "category": "Bottom",
+    "weather": "Warm",
+    "material": "Linen",
+    "styles": ["Elegant", "Bohemian"]
+  },
+  {
+    "name": "Faux Fur Vest",
+    "colors": ["Brown"],
+    "category": "Vest",
+    "weather": "Cool",
+    "material": "Polyester",
+    "styles": ["Bohemian", "Vintage"]
+  },
+  {
+    "name": "Wrap Dress",
+    "colors": ["Red"],
+    "category": "Dress",
+    "weather": "Mild",
+    "material": "Cashmere",
+    "styles": ["Elegant", "Office"]
+  },
+  {
+    "name": "Leather Moto Jacket",
+    "colors": ["Black"],
+    "category": "Jacket",
+    "weather": "Cool",
+    "material": "Leather",
+    "styles": ["Edgy", "Street"]
+  },
+  {
+    "name": "Chunky Knit Cardigan",
+    "colors": ["Cream"],
+    "category": "Cardigan",
+    "weather": "Cold",
+    "material": "Wool",
+    "styles": ["Comfy", "Casual"]
+  },
+  {
+    "name": "High-waisted Shorts",
+    "colors": ["Blue"],
+    "category": "Bottom",
+    "weather": "Hot",
+    "material": "Denim",
+    "styles": ["Casual", "Trendy"]
+  },
+  {
+    "name": "Off-shoulder Blouse",
+    "colors": ["White"],
+    "category": "Top",
+    "weather": "Warm",
+    "material": "Cotton",
+    "styles": ["Romantic", "Bohemian"]
+  },
+  {
+    "name": "Pleated Midi Skirt",
+    "colors": ["Lavender"],
+    "category": "Skirt",
+    "weather": "Mild",
+    "material": "Polyester",
+    "styles": ["Elegant"]
+  },
+  {
+    "name": "Utility Jumpsuit",
+    "colors": ["Khaki"],
+    "category": "Jumpsuit",
+    "weather": "Mild",
+    "material": "Cotton",
+    "styles": ["Functional", "Trendy"]
+  },
+  {
+    "name": "Velvet Blazer",
+    "colors": ["Burgundy"],
+    "category": "Blazer",
+    "weather": "Cool",
+    "material": "Velvet",
+    "styles": ["Elegant", "Glamorous"]
+  },
+  {
+    "name": "Printed Maxi Dress",
+    "colors": ["Blue", "Green"],
+    "category": "Dress",
+    "weather": "Warm",
+    "material": "Chiffon",
+    "styles": ["Bohemian", "Romantic"]
+  },
+  {
+    "name": "Corduroy Overalls",
+    "colors": ["Brown"],
+    "category": "Bottom",
+    "weather": "Cool",
+    "material": "Corduroy",
+    "styles": ["Vintage", "Casual"]
+  },
+  {
+    "name": "Puffer Vest",
+    "colors": ["Navy"],
+    "category": "Vest",
+    "weather": "Cold",
+    "material": "Polyester",
+    "styles": ["Sporty", "Casual"]
+  },
+  {
+    "name": "Satin Slip Dress",
+    "colors": ["Gold"],
+    "category": "Dress",
+    "weather": "Mild",
+    "material": "Satin",
+    "styles": ["Glamorous", "Elegant"]
+  },
+  {
+    "name": "Graphic Tee",
+    "colors": ["Black", "White"],
+    "category": "Top",
+    "weather": "Mild",
+    "material": "Cotton",
+    "styles": ["Casual", "Street"]
+  },
+  {
+    "name": "Linen Culottes",
+    "colors": ["Beige"],
+    "category": "Bottom",
+    "weather": "Hot",
+    "material": "Linen",
+    "styles": ["Casual", "Minimalist"]
+  },
+  {
+    "name": "Sequin Party Dress",
+    "colors": ["Silver"],
+    "category": "Dress",
+    "weather": "Any",
+    "material": "Polyester",
+    "styles": ["Glamorous"]
+  },
+  {
+    "name": "Fleece Pullover",
+    "colors": ["Gray"],
+    "category": "Sweater",
+    "weather": "Cold",
+    "material": "Fleece",
+    "styles": ["Casual", "Sporty"]
+  },
+  {
+    "name": "Leather Miniskirt",
+    "colors": ["Black"],
+    "category": "Skirt",
+    "weather": "Cool",
+    "material": "Leather",
+    "styles": ["Edgy"]
   }
 ]

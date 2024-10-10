@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\ClothingItem;
-use App\Service\SuggestionGenerator\SuggestionGeneratorService;
+use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ClothingItemRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, private readonly SuggestionGeneratorService $suggestionGeneratorService)
+    public function __construct(ManagerRegistry $registry, private readonly OutfitGeneratorService $suggestionGeneratorService)
     {
         parent::__construct($registry, ClothingItem::class);
     }

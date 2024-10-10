@@ -32,7 +32,7 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
             $clothingItem
                 ->setColors(array_map(static fn($style) => ClothingColor::from($style), $itemData['colors']))
                 ->setWeather(ClothingWeather::from($itemData['weather']))
-                ->setCategories(ClothingCategory::from($itemData['category']))
+                ->setCategory(ClothingCategory::from($itemData['category']))
                 ->setName($itemData['name'])
                 ->setMaterial(ClothingMaterial::from($itemData['material']))
                 ->setStyles(array_map(static fn($style) => ClothingStyle::from($style), $itemData['styles']))

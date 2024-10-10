@@ -60,10 +60,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: ClothingItem::class, mappedBy: 'user')]
     private Collection $clothingItems;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $openWeatherCityName = null;
+
+    /**
+     * @var Collection<int, Outfit>
+     */
+    #[ORM\OneToMany(targetEntity: Outfit::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $outfits;
+
     public function __construct()
     {
         $this->suggestions = new ArrayCollection();
         $this->clothingItems = new ArrayCollection();
+        $this->outfits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -248,6 +258,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($clothingItem->getUser() === $this) {
                 $clothingItem->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getOpenWeatherCityName(): ?string
+    {
+        return $this->openWeatherCityName;
+    }
+
+    public function setOpenWeatherCityName(?string $openWeatherCityName): static
+    {
+        $this->openWeatherCityName = $openWeatherCityName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Outfit>
+     */
+    public function getOutfits(): Collection
+    {
+        return $this->outfits;
+    }
+
+    public function addOutfit(Outfit $outfit): static
+    {
+        if (!$this->outfits->contains($outfit)) {
+            $this->outfits->add($outfit);
+            $outfit->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOutfit(Outfit $outfit): static
+    {
+        if ($this->outfits->removeElement($outfit)) {
+            // set the owning side to null (unless already changed)
+            if ($outfit->getUser() === $this) {
+                $outfit->setUser(null);
             }
         }
 

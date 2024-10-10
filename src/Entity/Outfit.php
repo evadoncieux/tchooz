@@ -55,6 +55,10 @@ class Outfit
     #[ORM\JoinColumn(nullable: true)]
     private ?ClothingItem $top = null;
 
+    #[ORM\ManyToOne(inversedBy: 'outfits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->clothingItems = new ArrayCollection();
@@ -197,6 +201,18 @@ class Outfit
     public function setTop(?ClothingItem $top): static
     {
         $this->top = $top;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

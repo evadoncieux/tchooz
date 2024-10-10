@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\SuggestionGenerator\SuggestionGeneratorService;
+use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,8 +11,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class SuggestionController extends AbstractController
 {
-    public function __construct(
-        private readonly SuggestionGeneratorService $suggestionGeneratorService,
+    public function __construct(private readonly OutfitGeneratorService $suggestionGeneratorService,
     )
     {
     }
@@ -20,16 +19,15 @@ class SuggestionController extends AbstractController
     /**
      * @throws \Exception
      */
-    #[Route('/suggestion', name: 'generate_suggestion')]
+    #[Route('/suggestion/generate', name: 'app_generate_suggestion')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function getSuggestions(): Response
+    public function getSuggestion(): Response
     {
-        $suggestions = $this->suggestionGeneratorService->generateSuggestion();
-//        dd($suggestions);
+        $suggestionData = $this->suggestionGeneratorService->generateSuggestion();
 
-        return $this->render('suggestion/index.html.twig', [
-            'weather' => $suggestions[0],
-            'suggestion' => $suggestions[1],
+        return $this->render('suggestion/new.html.twig', [
+            'weather' => $suggestionData[0],
+            'outfit' => $suggestionData[1],
         ]);
     }
 
