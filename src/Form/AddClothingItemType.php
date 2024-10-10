@@ -23,7 +23,6 @@ class AddClothingItemType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
-
             ])
             ->add('material', EnumType::class, [
                 'class' => ClothingMaterial::class,
@@ -31,10 +30,11 @@ class AddClothingItemType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('weatherTypes', ChoiceType::class, [
+            ->add('weather', ChoiceType::class, [
                 'choices' => ClothingWeather::cases(),
                 'choice_label' => fn($choice) => $choice->value,
-                'multiple' => true,
+                'required' => true,
+                'multiple' => false,
                 'expanded' => false,
             ])
             ->add('colors', ChoiceType::class, [
@@ -48,10 +48,11 @@ class AddClothingItemType extends AbstractType
                 'choice_label' => fn($choice) => $choice->value,
                 'multiple' => true,
                 'expanded' => false,
-            ])->add('categories', ChoiceType::class, [
+            ])->add('category', ChoiceType::class, [
                 'choices' => ClothingCategory::cases(),
                 'choice_label' => fn($choice) => $choice->value,
-                'multiple' => true,
+                'required' => true,
+                'multiple' => false,
                 'expanded' => false,
             ]);
     }

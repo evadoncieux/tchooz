@@ -45,23 +45,15 @@ readonly class LocationApiService
         }
     }
 
-    // $cityCode sera à récup dans le profil de l'utilisateur
-    // c'est ca qui bugge ? OUI TODO fix ça
     private function buildApiUrl(string $cityCode): string
     {
         $baseUrl = 'http://api.openweathermap.org/geo/1.0/direct';
         $queryParams = http_build_query([
-            'q' => $cityCode, // y'a un pb lors du passage de la location à l'api, on a ça dans la requete
+            'q' => $cityCode,
             'limit' => 3,
             'appid' => $this->apiKey,
         ]);
 
-        $apiUrl = $baseUrl . '?' . $queryParams;
-
-        /*var_dump($apiUrl);*/
-
-        return $apiUrl;
+        return $baseUrl . '?' . $queryParams;
     }
 }
-
-// TODO this means that we have to use an api or stg to fetch city names across the globe

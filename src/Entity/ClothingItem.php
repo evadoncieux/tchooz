@@ -32,8 +32,8 @@ class ClothingItem
     #[ORM\Column(type: 'string', enumType: ClothingMaterial::class)]
     private ?ClothingMaterial $material = null;
 
-    #[ORM\Column(type: 'json')]
-    private array $weatherTypes;
+    #[ORM\Column(type: 'string', enumType: ClothingWeather::class)]
+    private ClothingWeather $weather;
 
     #[ORM\Column(type: 'json')]
     private array $colors = [];
@@ -41,8 +41,8 @@ class ClothingItem
     #[ORM\Column(type: 'json')]
     private array $styles = [];
 
-    #[ORM\Column(type: 'json')]
-    private array $categories = [];
+    #[ORM\Column(type: 'string', enumType: ClothingCategory::class)]
+    private ClothingCategory $category;
 
     #[ORM\ManyToOne(inversedBy: 'clothingItems')]
     private ?User $user = null;
@@ -129,25 +129,25 @@ class ClothingItem
         return $this;
     }
 
-    public function getCategories(): array
+    public function getCategory(): ClothingCategory
     {
-        return array_map(static fn($category) => ClothingCategory::from($category), $this->categories);
+        return $this->category;
     }
 
-    public function setCategories(array $categories): self
+    public function setCategory(?ClothingCategory $category): self
     {
-        $this->categories = array_map(static fn(ClothingCategory $category) => $category->value, $categories);
+        $this->category = $category;
         return $this;
     }
 
-    public function getWeatherTypes(): array
+    public function getWeather(): ClothingWeather
     {
-        return array_map(static fn($weatherType) => ClothingWeather::from($weatherType), $this->weatherTypes);
+        return $this->weather ?? ClothingWeather::ANY;
     }
 
-    public function setWeatherTypes(array $weatherTypes): self
+    public function setWeather(ClothingWeather $weather): self
     {
-        $this->weatherTypes = array_map(static fn(ClothingWeather $weatherType) => $weatherType->value, $weatherTypes);
+        $this->weather = $weather;
         return $this;
     }
 

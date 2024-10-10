@@ -25,18 +25,18 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
     {
         $jsonFile = file_get_contents('fixtures/clothing_items.json');
         $clothingItemsData = json_decode($jsonFile, true, 512, JSON_THROW_ON_ERROR);
-        $userPucci = $this->getReference('user_pucci');
+        $userEva = $this->getReference('user_eva');
 
         foreach ($clothingItemsData as $itemData) {
             $clothingItem = new ClothingItem();
             $clothingItem
                 ->setColors(array_map(static fn($style) => ClothingColor::from($style), $itemData['colors']))
-                ->setWeatherTypes(array_map(static fn($style) => ClothingWeather::from($style), $itemData['weather']))
-                ->setCategories(array_map(static fn($category) => ClothingCategory::from($category), $itemData['categories']))
+                ->setWeather(ClothingWeather::from($itemData['weather']))
+                ->setCategory(ClothingCategory::from($itemData['category']))
                 ->setName($itemData['name'])
                 ->setMaterial(ClothingMaterial::from($itemData['material']))
                 ->setStyles(array_map(static fn($style) => ClothingStyle::from($style), $itemData['styles']))
-                ->setUser($userPucci);
+                ->setUser($userEva);
 
             $manager->persist($clothingItem);
         }

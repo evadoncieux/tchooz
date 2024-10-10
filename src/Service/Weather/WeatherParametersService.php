@@ -1,30 +1,28 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Weather;
 
-use App\Entity\DailyWeather;
 use App\Entity\User;
-use App\Service\Data\WeatherDataService;
 use Symfony\Bundle\SecurityBundle\Security;
 
-class WeatherService
+class WeatherParametersService
 {
     /** temperature is measured in Celsius */
     private const TEMPERATURE_RANGES = [
         'very cold' => ['min' => -INF, 'max' => 9],
-        'cold' => ['min' => 10, 'max' => 14],
-        'cool' => ['min' => 15, 'max' => 19],
-        'warm' => ['min' => 20, 'max' => 24],
-        'hot' => ['min' => 25, 'max' => INF],
+        'cold' => ['min' => 9, 'max' => 14],
+        'cool' => ['min' => 14, 'max' => 19],
+        'warm' => ['min' => 19, 'max' => 24],
+        'hot' => ['min' => 24, 'max' => INF],
     ];
 
     /** wind speed is measured in km/h */
     private const WIND_SPEED_RANGES = [
         'no wind' => ['min' => -INF, 'max' => 2],
-        'light breeze' => ['min' => 3, 'max' => 19],
-        'breeze' => ['min' => 20, 'max' => 38],
+        'light breeze' => ['min' => 2, 'max' => 19],
+        'breeze' => ['min' => 19, 'max' => 39],
         'wind' => ['min' => 39, 'max' => 49],
-        'strong wind' => ['min' => 50, 'max' => INF],
+        'strong wind' => ['min' => 49, 'max' => INF],
     ];
 
     public function __construct(
@@ -37,7 +35,7 @@ class WeatherService
     /**
      * @throws \Exception
      */
-    public function getWeather(?string $location = null): DailyWeather
+    public function getWeather(?string $location = null): string
     {
         $user = $this->security->getUser();
         if (!$user instanceof User) {
@@ -50,23 +48,19 @@ class WeatherService
         }
 
         try {
-            $dailyWeather = $this->weatherDataService->getDailyWeather($location)
-                ?? $this->weatherDataService->logWeather($location);
+            $currentWeather = $this->weatherDataService->getWeatherData($location);
         } catch (\Exception $e) {
             throw new \RuntimeException('Failed to retrieve weather data: ' . $e->getMessage(), 0, $e);
         }
 
-        if (!$dailyWeather) {
+        if (!$currentWeather) {
             throw new \RuntimeException('No weather data available for the given location.');
         }
 
-        $weather = new DailyWeather();
-        $temperature = $this->getTemperatureType($dailyWeather->getTemperature());
-        $wind = $this->getWindSpeedType($dailyWeather->getWindSpeed());
+        $temperature = $this->getTemperatureType($currentWeather->getTemperature());
+        $wind = $this->getWindSpeedType($currentWeather->getWindSpeed());
 
-        $weather->setName($this->determineWeatherName($temperature, $wind));
-
-        return $weather;
+        return $this->determineWeatherName($temperature, $wind);
     }
 
     private function determineWeatherName(string $temperature, string $wind): string

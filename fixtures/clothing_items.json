@@ -4,12 +4,8 @@
     "colors": [
       "White"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Mild"
-    ],
+    "category": "Top",
+    "weather": "Mild",
     "material": "Cotton",
     "styles": [
       "Casual"
@@ -20,13 +16,8 @@
     "colors": [
       "Black"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Cool",
-      "Cold"
-    ],
+    "category": "Coat",
+    "weather": "Cool",
     "material": "Leather",
     "styles": [
       "Edgy"
@@ -37,13 +28,8 @@
     "colors": [
       "Blue"
     ],
-    "categories": [
-      "Bottom"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Bottom",
+    "weather": "Mild",
     "material": "Denim",
     "styles": [
       "Casual"
@@ -55,13 +41,8 @@
       "Red",
       "Orange"
     ],
-    "categories": [
-      "Dress"
-    ],
-    "weather": [
-      "Warm",
-      "Hot"
-    ],
+    "category": "Dress",
+    "weather": "Warm",
     "material": "Cotton",
     "styles": [
       "Glamorous"
@@ -72,19 +53,14 @@
     "colors": [
       "Gray"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Cool",
-      "Cold"
-    ],
+    "category": "Sweater",
+    "weather": "Cool",
     "material": "Wool",
     "styles": [
       "Classic"
     ],
     "season": [
-      "FAny"
+      "Winter"
     ]
   },
   {
@@ -92,13 +68,8 @@
     "colors": [
       "Khaki"
     ],
-    "categories": [
-      "Bottom"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Bottom",
+    "weather": "Mild",
     "material": "Cotton",
     "styles": [
       "Casual"
@@ -109,13 +80,8 @@
     "colors": [
       "Yellow"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Rainy",
-      "Windy"
-    ],
+    "category": "Coat",
+    "weather": "Rainy",
     "material": "Polyester",
     "styles": [
       "Functional"
@@ -126,13 +92,8 @@
     "colors": [
       "Navy"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Coat",
+    "weather": "Mild",
     "material": "Wool",
     "styles": [
       "Business"
@@ -143,13 +104,8 @@
     "colors": [
       "White"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Warm",
-      "Hot"
-    ],
+    "category": "Top",
+    "weather": "Warm",
     "material": "Linen",
     "styles": [
       "Elegant"
@@ -160,13 +116,8 @@
     "colors": [
       "Black"
     ],
-    "categories": [
-      "Bottom"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Bottom",
+    "weather": "Mild",
     "material": "Polyester",
     "styles": [
       "Business"
@@ -177,13 +128,8 @@
     "colors": [
       "Beige"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Cool",
-      "Rainy"
-    ],
+    "category": "Coat",
+    "weather": "Cool",
     "material": "Polyester",
     "styles": [
       "Classic"
@@ -195,13 +141,8 @@
       "Blue",
       "White"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Warm",
-      "Mild"
-    ],
+    "category": "Top",
+    "weather": "Warm",
     "material": "Cotton",
     "styles": [
       "Preppy"
@@ -212,13 +153,8 @@
     "colors": [
       "Green"
     ],
-    "categories": [
-      "Bottom"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Bottom",
+    "weather": "Mild",
     "material": "Cotton",
     "styles": [
       "Functional"
@@ -229,13 +165,8 @@
     "colors": [
       "Purple"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Cool",
-      "Cold"
-    ],
+    "category": "Sweater",
+    "weather": "Cool",
     "material": "Cashmere",
     "styles": [
       "Elegant"
@@ -246,31 +177,20 @@
     "colors": [
       "Black"
     ],
-    "categories": [
-      "Footwear"
-    ],
-    "weather": [
-      "Cool",
-      "Cold",
-      "Rainy"
-    ],
+    "category": "Shoes",
+    "weather": "Cool",
     "material": "Leather",
     "styles": [
       "Edgy"
     ]
   },
   {
-    "name": "White Tennis Shoes",
+    "name": "Tennis Shoes",
     "colors": [
       "White"
     ],
-    "categories": [
-      "Footwear"
-    ],
-    "weather": [
-      "Mild",
-      "Warm"
-    ],
+    "category": "Shoes",
+    "weather": "Mild",
     "material": "Cotton",
     "styles": [
       "Sporty"
@@ -281,13 +201,8 @@
     "colors": [
       "Blue"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Coat",
+    "weather": "Mild",
     "material": "Denim",
     "styles": [
       "Casual"
@@ -301,30 +216,20 @@
       "Green",
       "Yellow"
     ],
-    "categories": [
-      "Bottom"
-    ],
-    "weather": [
-      "Warm",
-      "Hot"
-    ],
+    "category": "Bottom",
+    "weather": "Warm",
     "material": "Chiffon",
     "styles": [
       "Artsy"
     ]
   },
   {
-    "name": "Gray Suit",
+    "name": "Suit",
     "colors": [
       "Gray"
     ],
-    "categories": [
-      "Suit"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Suit",
+    "weather": "Mild",
     "material": "Wool",
     "styles": [
       "Business"
@@ -335,13 +240,8 @@
     "colors": [
       "Pink"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Mild",
-      "Warm"
-    ],
+    "category": "Top",
+    "weather": "Mild",
     "material": "Silk",
     "styles": [
       "Elegant"
@@ -352,47 +252,33 @@
     "colors": [
       "Brown"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Mild",
-      "Cool"
-    ],
+    "category": "Coat",
+    "weather": "Mild",
     "material": "Suede",
     "styles": [
       "Vintage"
     ]
   },
   {
-    "name": "Swim Shorts",
+    "name": "Jeans",
     "colors": [
-      "Blue"
+      "Green"
     ],
-    "categories": [
-      "Swimwear"
-    ],
-    "weather": [
-      "Hot"
-    ],
-    "material": "Polyester",
+    "category": "Bottom",
+    "weather": "Any",
+    "material": "Denim",
     "styles": [
-      "Sporty"
+      "Artsy"
     ]
   },
   {
-    "name": "Red Plaid Flannel Shirt",
+    "name": "Plaid Flannel Shirt",
     "colors": [
       "Red",
       "Black"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Cool",
-      "Cold"
-    ],
+    "category": "Top",
+    "weather": "Cool",
     "material": "Flannel",
     "styles": [
       "Bohemian"
@@ -403,29 +289,21 @@
     "colors": [
       "Green"
     ],
-    "categories": [
-      "Dress"
-    ],
-    "weather": [
-      "Mild"
-    ],
+    "category": "Dress",
+    "weather": "Mild",
     "material": "Satin",
     "styles": [
       "Glamorous"
     ]
   },
   {
-    "name": "Leather Belt",
+    "name": "Overalls",
     "colors": [
-      "Brown"
+      "Blue"
     ],
-    "categories": [
-      "Accessory"
-    ],
-    "weather": [
-      "Any"
-    ],
-    "material": "Leather",
+    "category": "Bottom",
+    "weather": "Any",
+    "material": "Denim",
     "styles": [
       "Classic"
     ]
@@ -435,13 +313,8 @@
     "colors": [
       "Gray"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Cool",
-      "Mild"
-    ],
+    "category": "Sweater",
+    "weather": "Cool",
     "material": "Cotton",
     "styles": [
       "Casual"
@@ -452,12 +325,8 @@
     "colors": [
       "Yellow"
     ],
-    "categories": [
-      "Outerwear"
-    ],
-    "weather": [
-      "Rainy"
-    ],
+    "category": "Coat",
+    "weather": "Rainy",
     "material": "PVC",
     "styles": [
       "Functional"
@@ -468,13 +337,8 @@
     "colors": [
       "White"
     ],
-    "categories": [
-      "Footwear"
-    ],
-    "weather": [
-      "Mild",
-      "Warm"
-    ],
+    "category": "Shoes",
+    "weather": "Mild",
     "material": "Leather",
     "styles": [
       "Casual"
@@ -485,13 +349,8 @@
     "colors": [
       "Black"
     ],
-    "categories": [
-      "Top"
-    ],
-    "weather": [
-      "Cool",
-      "Cold"
-    ],
+    "category": "Sweater",
+    "weather": "Cold",
     "material": "Wool",
     "styles": [
       "Classic"
@@ -502,16 +361,185 @@
     "colors": [
       "Coral"
     ],
-    "categories": [
-      "Dress"
-    ],
-    "weather": [
-      "Warm",
-      "Hot"
-    ],
+    "category": "Dress",
+    "weather": "Warm",
     "material": "Cotton",
     "styles": [
       "Romantic"
     ]
+  },
+  {
+  "name": "Puffy coat",
+  "colors": [
+    "Yellow",
+    "Red",
+    "Purple"
+  ],
+  "category": "Coat",
+  "weather": "Freezing",
+  "material": "Cotton",
+  "styles": [
+    "Artsy"
+  ]
+},
+  {
+    "name": "Cropped Tank Top",
+    "colors": ["White", "Black"],
+    "category": "Top",
+    "weather": "Hot",
+    "material": "Cotton",
+    "styles": ["Casual", "Trendy"]
+  },
+  {
+    "name": "Wide-leg Palazzo Pants",
+    "colors": ["Navy"],
+    "category": "Bottom",
+    "weather": "Warm",
+    "material": "Linen",
+    "styles": ["Elegant", "Bohemian"]
+  },
+  {
+    "name": "Faux Fur Vest",
+    "colors": ["Brown"],
+    "category": "Vest",
+    "weather": "Cool",
+    "material": "Polyester",
+    "styles": ["Bohemian", "Vintage"]
+  },
+  {
+    "name": "Wrap Dress",
+    "colors": ["Red"],
+    "category": "Dress",
+    "weather": "Mild",
+    "material": "Cashmere",
+    "styles": ["Elegant", "Office"]
+  },
+  {
+    "name": "Leather Moto Jacket",
+    "colors": ["Black"],
+    "category": "Jacket",
+    "weather": "Cool",
+    "material": "Leather",
+    "styles": ["Edgy", "Street"]
+  },
+  {
+    "name": "Chunky Knit Cardigan",
+    "colors": ["Cream"],
+    "category": "Cardigan",
+    "weather": "Cold",
+    "material": "Wool",
+    "styles": ["Comfy", "Casual"]
+  },
+  {
+    "name": "High-waisted Shorts",
+    "colors": ["Blue"],
+    "category": "Bottom",
+    "weather": "Hot",
+    "material": "Denim",
+    "styles": ["Casual", "Trendy"]
+  },
+  {
+    "name": "Off-shoulder Blouse",
+    "colors": ["White"],
+    "category": "Top",
+    "weather": "Warm",
+    "material": "Cotton",
+    "styles": ["Romantic", "Bohemian"]
+  },
+  {
+    "name": "Pleated Midi Skirt",
+    "colors": ["Lavender"],
+    "category": "Skirt",
+    "weather": "Mild",
+    "material": "Polyester",
+    "styles": ["Elegant"]
+  },
+  {
+    "name": "Utility Jumpsuit",
+    "colors": ["Khaki"],
+    "category": "Jumpsuit",
+    "weather": "Mild",
+    "material": "Cotton",
+    "styles": ["Functional", "Trendy"]
+  },
+  {
+    "name": "Velvet Blazer",
+    "colors": ["Burgundy"],
+    "category": "Blazer",
+    "weather": "Cool",
+    "material": "Velvet",
+    "styles": ["Elegant", "Glamorous"]
+  },
+  {
+    "name": "Printed Maxi Dress",
+    "colors": ["Blue", "Green"],
+    "category": "Dress",
+    "weather": "Warm",
+    "material": "Chiffon",
+    "styles": ["Bohemian", "Romantic"]
+  },
+  {
+    "name": "Corduroy Overalls",
+    "colors": ["Brown"],
+    "category": "Bottom",
+    "weather": "Cool",
+    "material": "Corduroy",
+    "styles": ["Vintage", "Casual"]
+  },
+  {
+    "name": "Puffer Vest",
+    "colors": ["Navy"],
+    "category": "Vest",
+    "weather": "Cold",
+    "material": "Polyester",
+    "styles": ["Sporty", "Casual"]
+  },
+  {
+    "name": "Satin Slip Dress",
+    "colors": ["Gold"],
+    "category": "Dress",
+    "weather": "Mild",
+    "material": "Satin",
+    "styles": ["Glamorous", "Elegant"]
+  },
+  {
+    "name": "Graphic Tee",
+    "colors": ["Black", "White"],
+    "category": "Top",
+    "weather": "Mild",
+    "material": "Cotton",
+    "styles": ["Casual", "Street"]
+  },
+  {
+    "name": "Linen Culottes",
+    "colors": ["Beige"],
+    "category": "Bottom",
+    "weather": "Hot",
+    "material": "Linen",
+    "styles": ["Casual", "Minimalist"]
+  },
+  {
+    "name": "Sequin Party Dress",
+    "colors": ["Silver"],
+    "category": "Dress",
+    "weather": "Any",
+    "material": "Polyester",
+    "styles": ["Glamorous"]
+  },
+  {
+    "name": "Fleece Pullover",
+    "colors": ["Gray"],
+    "category": "Sweater",
+    "weather": "Cold",
+    "material": "Fleece",
+    "styles": ["Casual", "Sporty"]
+  },
+  {
+    "name": "Leather Miniskirt",
+    "colors": ["Black"],
+    "category": "Skirt",
+    "weather": "Cool",
+    "material": "Leather",
+    "styles": ["Edgy"]
   }
 ]

@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\DailyWeather;
+use App\Entity\CurrentWeather;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<DailyWeather>
+ * @extends ServiceEntityRepository<CurrentWeather>
  */
 class DailyWeatherRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DailyWeather::class);
+        parent::__construct($registry, CurrentWeather::class);
     }
 
     //    /**
-    //     * @return DailyWeather[] Returns an array of DailyWeather objects
+    //     * @return CurrentWeather[] Returns an array of CurrentWeather objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class DailyWeatherRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?DailyWeather
+    //    public function findOneBySomeField($value): ?CurrentWeather
     //    {
     //        return $this->createQueryBuilder('d')
     //            ->andWhere('d.exampleField = :val')

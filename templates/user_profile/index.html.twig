@@ -12,14 +12,4 @@
         <p>You are located in {{ user.location ? user.location : 'NO DATA' }}</p>
         <p>Your email is {{ user.email }}</p>
     </div>
-
-    <br>
-
-    <div>
-        <h3>My clothes</h3>
-        {% include 'clothing_item/list.html.twig' %}
-        <div class="element-center">
-            <a href="{{ path('app_add_clothes') }}" class="button">Add new clothes</a>
-        </div>
-    </div>
 {% endblock %}

@@ -8,27 +8,30 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DailyWeatherRepository::class)]
-class DailyWeather
+class CurrentWeather
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: "integer")]
-    private ?int $temperature = null;
-
-    #[ORM\Column(type: "float", nullable: true)]
-    private ?float $humidity = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?DateTimeInterface $timestamp = null;
-
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?DateTimeInterface $timestamp = null;
+
+    #[ORM\Column(type: "integer")]
+    private ?int $temperature = null;
+
+    #[ORM\Column]
+    private ?float $temp_feels = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $tempMin = null;
@@ -38,18 +41,6 @@ class DailyWeather
 
     #[ORM\Column]
     private ?float $windSpeed = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $sunrise = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $sunset = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $city = null;
-
-    #[ORM\Column]
-    private ?float $temp_feels = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $rain = null;
@@ -151,30 +142,6 @@ class DailyWeather
     public function setWindSpeed(float $windSpeed): static
     {
         $this->windSpeed = $windSpeed;
-
-        return $this;
-    }
-
-    public function getSunrise(): ?\DateTimeInterface
-    {
-        return $this->sunrise;
-    }
-
-    public function setSunrise(\DateTimeInterface $sunrise): static
-    {
-        $this->sunrise = $sunrise;
-
-        return $this;
-    }
-
-    public function getSunset(): ?\DateTimeInterface
-    {
-        return $this->sunset;
-    }
-
-    public function setSunset(\DateTimeInterface $sunset): static
-    {
-        $this->sunset = $sunset;
 
         return $this;
     }
