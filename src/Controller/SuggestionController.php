@@ -30,6 +30,4 @@ class SuggestionController extends AbstractController
             'outfit' => $suggestionData[1],
         ]);
     }
-
-
 }

@@ -1,4 +1,3 @@
-import {registerReactControllerComponents} from '@symfony/ux-react';
 import './bootstrap.js';
 
 /*
@@ -8,8 +7,7 @@ import './bootstrap.js';
  * which should already be in your base.html.twig.
  */
 import './styles/app.scss';
+import './js/theme-switcher.js'
+import './js/search.js'
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
-
-registerReactControllerComponents(require.context('./react/controllers', true, /\.([jt])sx?$/));
-registerReactControllerComponents();
+console.log('assets/app.js loaded 🎉');
