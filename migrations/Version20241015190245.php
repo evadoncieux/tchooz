@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241010104333 extends AbstractMigration
+final class Version20241015190245 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20241010104333 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE clothing_item (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, material VARCHAR(255) NOT NULL, weather VARCHAR(255) NOT NULL, colors JSON NOT NULL COMMENT \'(DC2Type:json)\', styles JSON NOT NULL COMMENT \'(DC2Type:json)\', category VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_CFE0A4E95E237E06 (name), INDEX IDX_CFE0A4E9A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE clothing_item (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, material VARCHAR(255) NOT NULL, weather VARCHAR(255) NOT NULL, colors JSON NOT NULL COMMENT \'(DC2Type:json)\', styles JSON NOT NULL COMMENT \'(DC2Type:json)\', category VARCHAR(255) NOT NULL, timestamp DATETIME NOT NULL, UNIQUE INDEX UNIQ_CFE0A4E95E237E06 (name), INDEX IDX_CFE0A4E9A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE current_weather (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, timestamp DATETIME NOT NULL, temperature INT NOT NULL, temp_feels DOUBLE PRECISION NOT NULL, temp_min DOUBLE PRECISION DEFAULT NULL, temp_max DOUBLE PRECISION DEFAULT NULL, wind_speed DOUBLE PRECISION NOT NULL, rain DOUBLE PRECISION DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE outfit (id INT AUTO_INCREMENT NOT NULL, coat_id INT DEFAULT NULL, bottom_id INT DEFAULT NULL, dress_id INT DEFAULT NULL, shoes_id INT DEFAULT NULL, suit_id INT DEFAULT NULL, sweater_id INT DEFAULT NULL, top_id INT DEFAULT NULL, user_id INT NOT NULL, INDEX IDX_3202960179F419D (coat_id), INDEX IDX_320296015EED6714 (bottom_id), INDEX IDX_320296014CB5A78C (dress_id), INDEX IDX_32029601B75E1D7A (shoes_id), INDEX IDX_32029601F27CB76F (suit_id), INDEX IDX_3202960146ABD2A0 (sweater_id), INDEX IDX_32029601C82CB256 (top_id), INDEX IDX_32029601A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE outfit_clothing_item (outfit_id INT NOT NULL, clothing_item_id INT NOT NULL, INDEX IDX_D50A35E3AE96E385 (outfit_id), INDEX IDX_D50A35E3AA13B545 (clothing_item_id), PRIMARY KEY(outfit_id, clothing_item_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

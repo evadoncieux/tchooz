@@ -5,6 +5,9 @@ deployment:
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp ./public/build $DEPLOYPATH
     - cd $DEPLOYPATH
+    - /bin/sed -i "s/DB_DATABASE=.zeme1231_tchooz" .env.local
+    - /bin/sed -i "s/DB_USERNAME=.zeme1231_eva" .env.local
+    - /bin/sed -i "s/DB_PASSWORD=.bIvqozdaxzy3" .env.local
     - /usr/local/bin/composer install --no-dev
     - /usr/local/bin/npm install
     - /usr/local/bin/npm run build
