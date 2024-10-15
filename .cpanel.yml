@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/zeme1231/repositories/tchooz/public_html/
+    - export DEPLOYPATH=/home/zeme1231/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp ./public/build $DEPLOYPATH
     - cd $DEPLOYPATH
