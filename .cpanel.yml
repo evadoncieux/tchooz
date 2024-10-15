@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/Applications/XAMPP/xamppfiles/htdocs/my_sites/TCHOOZ/tchooz/public
+#    - /bin/cp -R images $DEPLOYPATH
