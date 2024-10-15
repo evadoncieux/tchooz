@@ -6,11 +6,10 @@
     <h1>outfits</h1>
 
     {% if outfits %}
-
         {% for outfit in outfits %}
             {% include 'outfit/full.html.twig' %}
         {% endfor %}
-        {% else %}
+    {% else %}
         <h2>No outfit logged for the moment.</h2>
     {% endif %}
 

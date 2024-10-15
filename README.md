@@ -46,7 +46,6 @@ npm run dev server
 - Security
 - Translation
 - Twig
-- UX-React
 - UX-Translator
 - Web Profiler
 - symfony-auth0-api

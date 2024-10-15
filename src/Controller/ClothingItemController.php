@@ -14,19 +14,19 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ClothingItemController extends AbstractController
 {
-    #[Route('/clothing/item', name: 'app_clothing_item')]
+    #[Route('/clothes', name: 'app_clothes')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findBy(['user' => $user->getId()]);
+        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findBy(['user' => $user->getId()], ['timestamp' =>'DESC']);
 
         return $this->render('clothing_item/index.html.twig', [
             'clothingItems' => $clothingItems,
         ]);
     }
 
-    #[Route('/profile/add_clothes', name: 'app_add_clothes')]
+    #[Route('/clothes/add', name: 'app_clothes_add')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function addClothingItems(Request                $request,
                                      EntityManagerInterface $entityManager,
@@ -37,10 +37,11 @@ class ClothingItemController extends AbstractController
         $addClothingItemForm = $this->createForm(AddClothingItemType::class, $clothingItem);
         $addClothingItemForm->handleRequest($request);
 
-        $url = $urlGenerator->generate('app_user_profile');
+        $url = $urlGenerator->generate('app_clothes');
 
         if ($addClothingItemForm->isSubmitted() && $addClothingItemForm->isValid()) {
             $clothingItem->setUser($user);
+            $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
             $entityManager->persist($clothingItem);
             $entityManager->flush();
 

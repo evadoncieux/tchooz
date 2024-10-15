@@ -44,7 +44,6 @@ class OutfitGeneratorService
         $lastLoggedOutfit = $this->lastLoggedOutfit($user);
         if (!$lastLoggedOutfit) {
 
-
             $shoes = $this->getRandomItemByWeatherAndCategory($weather, 'Shoes');
             $outfit->setShoes($shoes);
 

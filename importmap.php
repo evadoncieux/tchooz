@@ -19,11 +19,12 @@ return [
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
+    'tom-select/dist/css/tom-select.default.css' => [
+        'version' => '2.3.1',
+        'type' => 'css',
+    ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-    ],
-    '@hotwired/turbo' => [
-        'version' => '7.3.0',
     ],
     'tom-select' => [
         'version' => '2.3.1',
@@ -41,19 +42,19 @@ return [
         'path' => './vendor/symfony/ux-react/assets/dist/loader.js',
     ],
     'intl-messageformat' => [
-        'version' => '10.5.14',
+        'version' => '10.6.0',
     ],
     'tslib' => [
-        'version' => '2.6.2',
-    ],
-    '@formatjs/icu-messageformat-parser' => [
-        'version' => '2.7.8',
+        'version' => '2.7.0',
     ],
     '@formatjs/fast-memoize' => [
         'version' => '2.2.0',
     ],
+    '@formatjs/icu-messageformat-parser' => [
+        'version' => '2.7.9',
+    ],
     '@formatjs/icu-skeleton-parser' => [
-        'version' => '1.8.2',
+        'version' => '1.8.3',
     ],
     '@symfony/ux-translator' => [
         'path' => './vendor/symfony/ux-translator/assets/dist/translator_controller.js',
@@ -64,11 +65,7 @@ return [
     '@app/translations/configuration' => [
         'path' => './var/translations/configuration.js',
     ],
-    'tom-select/dist/css/tom-select.default.css' => [
-        'version' => '2.3.1',
-        'type' => 'css',
-    ],
-    '@symfony/webpack-encore' => [
-        'version' => '4.6.1',
+    '@hotwired/turbo' => [
+        'version' => '7.3.0',
     ],
 ];

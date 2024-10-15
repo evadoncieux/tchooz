@@ -9,34 +9,27 @@
 
         <div class="form-group">
             {{ form_start(userEditForm) }}
+            {{ form_errors(userEditForm) }}
 
             <div class="input-group">
-                <label for="username">Username</label>
+                {{ form_label(userEditForm.username) }}
                 {{ form_widget(userEditForm.username) }}
             </div>
-
             <div class="input-group">
-                <label for="email">Email</label>
+                {{ form_label(userEditForm.email) }}
                 {{ form_widget(userEditForm.email) }}
             </div>
-
             <div class="input-group">
-                <label for="location">Location</label>
+                {{ form_label(userEditForm.plainPassword) }}
+                {{ form_widget(userEditForm.plainPassword) }}
+            </div>
+            <div class="input-group">
+                {{ form_label(userEditForm.location) }}
                 {{ form_widget(userEditForm.location) }}
             </div>
 
-            <div class="input-group">
-                <label for="password">Password</label>
-                {{ form_widget(userEditForm.password) }}
-            </div>
-
-            <button class="btn btn-lg btn-primary" type="submit">
-                Edit
-            </button>
+            <button type="submit">Edit</button>
             {{ form_end(userEditForm) }}
         </div>
     </div>
-
 {% endblock %}
-
-

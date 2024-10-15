@@ -5,8 +5,13 @@
 {% block body %}
     <div>
         <h1>My clothes</h1>
+
         <div class="element-center">
-            <a href="{{ path('app_add_clothes') }}" class="button">Add new clothes</a>
+        {% include 'clothing_item/search.html.twig' %}
+        </div>
+
+        <div class="element-center">
+            <a href="{{ path('app_clothes_add') }}" class="button">Add new clothes</a>
         </div>
         {% include 'clothing_item/list.html.twig' %}
     </div>

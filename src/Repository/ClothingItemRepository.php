@@ -31,19 +31,35 @@ class ClothingItemRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findItemByWeatherAndCategory(string $weather,  string $category):array
+    public function findItemByWeatherAndCategory(string $weather, string $category): array
     {
         $weatherType = $this->suggestionGeneratorService->determineWeatherType($weather);
 
-        return $this->createQueryBuilder('c')// ok
-            ->select('c')// ok
-            ->where('c.weather = :weather')
-            ->andWhere('c.category = :category')// ok
+        return $this->createQueryBuilder('ci')
+            ->select('ci')
+            ->where('ci.weather = :weather')
+            ->andWhere('ci.category = :category')
             ->setParameter('weather', $weather)
-            ->setParameter('category', $category)// ok
-            ->getQuery() // ok
-            ->getResult() // ok
+            ->setParameter('category', $category)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function searchOutfit(string $searchString): array
+    {
+        return $this->createQueryBuilder('ci')
+            ->select('ci')
+            ->where('ci.name LIKE :search')
+            ->orWhere('ci.category LIKE :search')
+            ->orWhere('ci.weather LIKE :search')
+            ->orWhere('ci.material LIKE :search')
+            ->orWhere('ci.colors LIKE :search')
+            ->orWhere('ci.styles LIKE :search')
+            ->setParameter('search', '%' . $searchString . '%')
+            ->getQuery()
+            ->getResult()
             ;
     }
+
 
 }

@@ -3,16 +3,24 @@
     "@babel/cli": "^7.24.8",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
-    "@babel/preset-react": "^7.24.7",
-    "@symfony/webpack-encore": "^4.6.1",
+    "@hotwired/stimulus": "^3.0.0",
+    "@hotwired/turbo": "^7.1.1 || ^8.0",
+    "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
+    "@symfony/ux-toggle-password": "file:vendor/symfony/ux-toggle-password/assets",
+    "@symfony/ux-translator": "file:vendor/symfony/ux-translator/assets",
+    "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
+    "@symfony/webpack-encore": "^5.0.1",
     "babel-loader": "^9.1.3",
     "core-js": "^3.23.0",
     "file-loader": "^6.2.0",
+    "intl-messageformat": "^10.5.11",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.77.8",
-    "sass-loader": "^13.3.3",
+    "sass-loader": "^16.0.2",
+    "tom-select": "^2.2.2",
     "webpack": "^5.93.0",
-    "webpack-cli": "^4.10.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
     "webpack-notifier": "^1.15.0"
   },
   "license": "UNLICENSED",
@@ -25,11 +33,8 @@
     "sass-watch": "sass -w assets"
   },
   "dependencies": {
-    "@symfony/stimulus-bridge": "github:symfony/stimulus-bridge",
+    "@symfony/stimulus-bridge": "^3.2.0",
     "@symfony/stimulus-bundle": "file:vendor/symfony/stimulus-bundle/assets",
-    "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
-    "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "prop-types": "^15.8.1"
   }
 }

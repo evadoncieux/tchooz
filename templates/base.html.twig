@@ -2,42 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}tchooz{% endblock %}</title>
     <link rel="icon" href="{{ asset('build/images/favicon.png') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
-        {{ encore_entry_script_tags('theme-switcher') }}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
 <body>
 <header>
-    <div class="nav">
-        <p class="title-nav"><a href="{{ path('app_home') }}">tchooz</a></p>
-
-        <input type="checkbox" id="hamburger-input" class="burger-shower" hidden/>
-
-        <label id="hamburger-menu" for="hamburger-input">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-
-        <nav id="sidebar-menu">
-            {% include '_components/_navigation.html.twig' %}
-            <label class="switch">
-                <input type="checkbox" name="theme_switch">
-                <span class="slider"></span>
-            </label>
-        </nav>
-
-        <div class="overlay"></div>
-    </div>
+    {% include '_components/_navigation.html.twig' %}
 </header>
 {% block body %}{% endblock %}
 </body>
