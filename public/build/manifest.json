@@ -1,8 +1,8 @@
 {
-  "build/app.css": "/build/app.css",
-  "build/app.js": "/build/app.js",
-  "build/theme-switcher.js": "/build/theme-switcher.js",
-  "build/runtime.js": "/build/runtime.js",
-  "build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_core-js_modules_es_array-11ad2d.js": "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_core-js_modules_es_array-11ad2d.js",
+  "build/app.css": "/build/app.bb4b192b.css",
+  "build/app.js": "/build/app.554add79.js",
+  "build/theme-switcher.js": "/build/theme-switcher.8edf3407.js",
+  "build/runtime.js": "/build/runtime.ced75ccf.js",
+  "build/93.fa789b28.js": "/build/93.fa789b28.js",
   "build/images/favicon.png": "/build/images/favicon.9e800553.png"
 }

@@ -1,5 +1,10 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/Applications/XAMPP/xamppfiles/htdocs/my_sites/TCHOOZ/tchooz/public
-#    - /bin/cp -R images $DEPLOYPATH
+    - export DEPLOYPATH=/home/zeme1231/repositories/tchooz/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp ./public/build $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - /usr/local/bin/composer install --no-dev
+    - /usr/local/bin/npm install
+    - /usr/local/bin/npm run build
