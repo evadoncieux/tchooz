@@ -22,10 +22,14 @@ class SearchController extends AbstractController
     public function search(Request $request): JsonResponse
     {
         $searchString = $request->query->get('q');
-        $results = $this->clothingItemRepository->searchOutfit($searchString);
+        $results = $this->clothingItemRepository->searchOutfits($searchString);
 
-        $data = $this->serializer->serialize($results, 'json', ['groups' => 'clothing_item']);
-
+        $data = $this->serializer->serialize($results, 'json', [
+            'groups' => 'clothing_item',
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
         return new JsonResponse($data, 200, [], true);
     }
 }

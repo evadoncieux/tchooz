@@ -46,8 +46,8 @@ class ClothingItemRepository extends ServiceEntityRepository
     }
 
     // TODO fix search on arrays
-    // TODO get an Object as a result, not an array
-    public function searchOutfit(string $searchString): array
+    // TODO get an Object array as a result, not an array
+    public function searchOutfits(string $searchString): array
     {
         return $this->createQueryBuilder('ci')
             ->select('ci')
@@ -60,8 +60,7 @@ class ClothingItemRepository extends ServiceEntityRepository
             ->setParameter('search', '%' . $searchString . '%')
             ->getQuery()
             ->getResult()
+//            ->getArrayResult()
             ;
     }
-
-
 }
