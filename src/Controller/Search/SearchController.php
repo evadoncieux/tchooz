@@ -8,12 +8,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class SearchController extends AbstractController
 {
-    public function __construct(private readonly ClothingItemRepository $clothingItemRepository)
+    public function __construct(private readonly ClothingItemRepository $clothingItemRepository,
+    private readonly SerializerInterface $serializer)
     {
-
     }
 
     #[Route(path: '/clothes/search', name: 'app_search_clothes', methods: ['GET'])]
@@ -23,6 +24,8 @@ class SearchController extends AbstractController
         $searchString = $request->query->get('q');
         $results = $this->clothingItemRepository->searchOutfit($searchString);
 
-        return $this->json($results);
+        $data = $this->serializer->serialize($results, 'json', ['groups' => 'clothing_item']);
+
+        return new JsonResponse($data, 200, [], true);
     }
 }

@@ -45,16 +45,18 @@ class ClothingItemRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    // TODO fix search on arrays
+    // TODO get an Object as a result, not an array
     public function searchOutfit(string $searchString): array
     {
         return $this->createQueryBuilder('ci')
             ->select('ci')
             ->where('ci.name LIKE :search')
-//            ->orWhere('ci.category LIKE :search')
-//            ->orWhere('ci.weather LIKE :search')
-//            ->orWhere('ci.material LIKE :search')
-//            ->orWhere('ci.colors LIKE :search')
-//            ->orWhere('ci.styles LIKE :search')
+            ->orWhere('ci.category LIKE :search')
+            ->orWhere('ci.weather LIKE :search')
+            ->orWhere('ci.material LIKE :search')
+            ->orWhere('ci.colors LIKE :search') // la search ne marche pas là dessus parce que ce sont des arrays
+            ->orWhere('ci.styles LIKE :search')// la search ne marche pas là dessus parce que ce sont des arrays
             ->setParameter('search', '%' . $searchString . '%')
             ->getQuery()
             ->getResult()

@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ClothingItemRepository::class)]
 class ClothingItem
@@ -22,6 +23,7 @@ class ClothingItem
     private ?int $id = null;
 
     #[ORM\Column(length: 255, unique: true)]
+    #[Groups(['clothing_item'])]
     private ?string $name = null;
 
     /**
@@ -46,6 +48,7 @@ class ClothingItem
     private ClothingCategory $category;
 
     #[ORM\ManyToOne(inversedBy: 'clothingItems')]
+    #[Groups(['clothing_item'])]
     private ?User $user = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
