@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ClothingItem;
-use App\Form\ClothingItem\AddClothingItemType;
+use App\Form\ClothingItem\ClothingItemType;
 use App\Form\ClothingItem\EditClothingItemType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -57,7 +57,7 @@ class ClothingItemController extends AbstractController
     {
         $user = $this->getUser();
         $clothingItem = new ClothingItem();
-        $addClothingItemForm = $this->createForm(AddClothingItemType::class, $clothingItem);
+        $addClothingItemForm = $this->createForm(ClothingItemType::class, $clothingItem);
         $addClothingItemForm->handleRequest($request);
 
         $url = $urlGenerator->generate('app_clothes');
@@ -88,7 +88,7 @@ class ClothingItemController extends AbstractController
         $user = $this->getUser();
         $clothingItem = $entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
 
-        $editClothingItemForm = $this->createForm(EditClothingItemType::class, $clothingItem);
+        $editClothingItemForm = $this->createForm(ClothingItemType::class, $clothingItem);
         $editClothingItemForm->handleRequest($request);
 
         $url = $urlGenerator->generate('app_clothes');

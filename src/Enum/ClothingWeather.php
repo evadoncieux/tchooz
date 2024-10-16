@@ -18,4 +18,16 @@ enum ClothingWeather: string
     case MILD = 'Mild';
     case BREEZY = 'Breezy';
     case ANY = 'Any';
+
+    public static function getSortOrder(): array
+    {
+        return [
+            self::ANY,
+            self::HOT,
+            self::WARM,
+            self::COOL,
+            self::COLD,
+            self::RAINY,
+        ];
+    }
 }
