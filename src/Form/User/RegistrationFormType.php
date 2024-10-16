@@ -33,7 +33,12 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('location', TextType::class)
+            ->add('location', TextType::class, [
+                'attr' => [
+                    'class' => 'city-autocomplete',
+                    'data-autocomplete-url' => '/api/city-autocomplete'
+                ]
+            ])
         ;
     }
 

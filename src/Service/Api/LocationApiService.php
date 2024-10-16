@@ -11,7 +11,6 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-/** TODO AJOUTE DE LA DOC EVA  */
 /**
  * @method render(string $string, \Exception[] $array)
  */
