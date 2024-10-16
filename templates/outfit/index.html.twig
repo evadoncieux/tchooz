@@ -1,18 +1,10 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}outfits{% endblock %}
-
-{% block body %}
-    <h1>outfits</h1>
-
-    {% if outfits %}
+<div class="element-center-v">
+    {% if outfits is not empty %}
+        <h2>My outfits</h2>
         {% for outfit in outfits %}
-            {% include 'outfit/full.html.twig' %}
+            {% include 'outfit/_full.html.twig' %}
         {% endfor %}
     {% else %}
-        <h2>No outfit logged for the moment.</h2>
+        <p>No outfit logged for the moment.</p>
     {% endif %}
-
-{% endblock %}
-
-
+</div>

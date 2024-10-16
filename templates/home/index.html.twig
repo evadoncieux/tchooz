@@ -3,9 +3,21 @@
 {% block title %}tchooz{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="element-center-h">
+            <div class="element-center-v">
+                <p>welcome to <span class="title">tchooz</span>, the app designed to help you make choices!</p>
+            </div>
 
-{#    <h1>tchooz</h1>#}
+            {% if app.user is null %}
+                <p><a href="{{ path('app_register') }}">Register</a> or <a href="{{ path('app_login') }}">login</a> to
+                    get
+                    outfit suggestions.</p>
+            {% endif %}
 
-    <p>welcome to <span class="title">tchooz</span>, the app designed to help you make choices!</p>
-
+            {% if app.user %}
+                {% include 'current_weather/_weather.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

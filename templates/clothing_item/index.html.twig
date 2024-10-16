@@ -7,25 +7,27 @@
 {% endblock %}
 
 {% block body %}
-    <div>
-        <h1>My clothes</h1>
+    <div class="container">
+        <h2>My clothes</h2>
 
-        <div class="element-center">
-        {% include 'clothing_item/search.html.twig' %}
-        </div>
+        <div class="element-center-h">
+            <div class="element-center-v">
+                {% include 'clothing_item/_search.html.twig' %}
+            </div>
 
-        <div class="element-center">
-            <a href="{{ path('app_clothes_add') }}" class="button">Add new clothes</a>
-        </div>
+            <div class="element-center-v">
+                <a href="{{ path('app_clothes_add') }}" class="button">Add new clothes</a>
+            </div>
 
-        <div class="count">
-            <p>Items count : {{ clothingItems.getTotalItemCount }}</p>
-        </div>
+            <div class="count">
+                <p>Items count : {{ clothingItems.getTotalItemCount }}</p>
+            </div>
 
-        {% include 'clothing_item/list.html.twig' %}
+            {% include 'clothing_item/_list.html.twig' %}
 
-        <div class="element-center">
-            {{ knp_pagination_render(clothingItems) }}
+            <div class="element-center-v">
+                {{ knp_pagination_render(clothingItems) }}
+            </div>
         </div>
     </div>
 {% endblock %}

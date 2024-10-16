@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\ClothingItem;
+namespace App\Controller\Outfit;
 
 use App\Entity\Outfit;
 use Doctrine\ORM\EntityManagerInterface;

@@ -3,14 +3,14 @@
 {% block title %}suggestion{% endblock %}
 
 {% block body %}
-    <h1>suggestion</h1>
+    <div class="container">
+        <h2>Suggestion</h2>
+        <p>Here is an outfit suggestion for the <span>"{{ weather }}"</span> weather</p>
 
-    <h2>Here is an outfit suggestion for the {{ weather }}</h2>
+        {% include 'outfit/_full.html.twig' %}
 
-    {% include 'outfit/full.html.twig' %}
-
-    <div class="element-center">
-        <a href="{{ path('app_generate_suggestion') }}" class="button">Get a new suggestion</a>
+        <div class="element-center-v">
+            <a href="{{ path('app_generate_suggestion') }}" class="button">Get a new suggestion</a>
+        </div>
     </div>
-
 {% endblock %}

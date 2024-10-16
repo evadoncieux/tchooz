@@ -6,7 +6,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
- @include dark-mode;
+  @include dark-mode;
 }
 
 * {
@@ -37,7 +37,8 @@ title, h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
   font-family: $primary-font;
 }
 
@@ -50,18 +51,23 @@ h3 {
 }
 
 h4 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 p {
   font-family: $text-font;
+  font-size: 1.3rem;
   text-align: center;
 }
 
 a {
   font-family: $secondary-font;
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--color-link);
+
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 .title {
@@ -69,6 +75,28 @@ a {
 }
 
 .element-center {
-  text-align: center;
-  margin-top: 2rem;
+  &-v {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  &-h {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+    padding: 2rem;
+    margin: 0 2rem;
+  }
 }
+
+.justify-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+

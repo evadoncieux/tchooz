@@ -18,16 +18,10 @@
                             href="{{ path('app_register') }}">register</a></li>
             {% endif %}
             {% if app.user %}
-                <li class="element-nav {{ app.request.get('_route') == 'app_daily_weather' ? 'active' : '' }}"><a
-                            href="{{ path('app_weather') }}">weather</a></li>
                 <li class="element-nav {{ app.request.get('_route') == 'app_clothes' ? 'active' : '' }}"><a
                             href="{{ path('app_clothes') }}">clothes</a></li>
-                <li class="element-nav {{ app.request.get('_route') == 'app_outfit_index' ? 'active' : '' }}"><a
-                            href="{{ path('app_outfit_index') }}">outfits</a></li>
                 <li class="element-nav {{ app.request.get('_route') == 'app_user_profile' ? 'active' : '' }}"><a
                             href="{{ path('app_user_profile') }}">profile</a></li>
-                <li class="element-nav {{ app.request.get('_route') == 'app_settings' ? 'active' : '' }}"><a
-                            href="{{ path('app_user_settings') }}">settings</a></li>
             {% endif %}
             <li class="element-nav {{ app.request.get('_route') == 'app_logout' ? 'active' : '' }}"><a
                         href="{{ path(app.user ? 'app_logout' : 'app_login') }}">log {{ app.user ? 'out' : 'in' }}</a>

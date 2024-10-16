@@ -3,13 +3,15 @@
 {% block title %}{{ clothingItem.name }}{% endblock %}
 
 {% block body %}
-    <div>
+    <div class="container">
         <h2>{{ clothingItem.name }}</h2>
 
-        {% include '_components/_edit_button.html.twig' with {'slug' : clothingItem.slug} %}
-        {% include '_components/_delete_button.html.twig' with {'slug' : clothingItem.slug} %}
+        <div class="justify-between">
+            {% include '_components/_edit_button.html.twig' with {'path': 'app_clothes_edit', 'slug' : clothingItem.slug} %}
+            {% include '_components/_delete_button.html.twig' with {'path': 'app_clothes_delete', 'slug' : clothingItem.slug} %}
+        </div>
 
-        <div class="element-center">
+        <div class="element-center-v">
             <div class="justify-between">
                 <p>Material</p>
                 <p>{{ clothingItem.material.value }}</p>
