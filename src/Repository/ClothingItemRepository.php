@@ -20,29 +20,14 @@ class ClothingItemRepository extends ServiceEntityRepository
         parent::__construct($registry, ClothingItem::class);
     }
 
-    /**
-     * @return ClothingItem[] Returns an array of ClothingItem objects
-     */
-    public function findByCategory($category): array
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $category)
-            ->orderBy('c.categories', 'ASC')
-            ->setMaxResults(50)
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findByUser(User $user): Query
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.user = :val')
             ->setParameter('val', $user)
-            ->orderBy('c.user', 'ASC')
+            ->orderBy('c.timestamp', 'DESC')
             ->setMaxResults(50)
-            ->getQuery()
-            ;
+            ->getQuery();
     }
 
     public function findItemByWeatherAndCategory(string $weather, string $category): array

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\ClothingItem;
 
 use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

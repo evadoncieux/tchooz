@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\ClothingItem;
 
 use App\Entity\ClothingItem;
+use App\Exception\NotFoundException;
 use App\Form\ClothingItem\ClothingItemType;
-use App\Form\ClothingItem\EditClothingItemType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,18 +17,26 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ClothingItemController extends AbstractController
 {
+
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+        private readonly PaginatorInterface     $paginator,
+        private readonly UrlGeneratorInterface  $urlGenerator,
+        private readonly SluggerInterface       $slugger,
+    )
+    {
+    }
+
     #[Route('/clothes', name: 'app_clothes')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function index(Request                $request,
-                          EntityManagerInterface $entityManager,
-                          PaginatorInterface    $paginator): Response
+    public function index(Request $request): Response
     {
         $user = $this->getUser();
-        $query = $entityManager->getRepository(ClothingItem::class)->findByUser($user);
-        $clothingItemsPaginated = $paginator->paginate(
+        $query = $this->entityManager->getRepository(ClothingItem::class)->findByUser($user);
+        $clothingItemsPaginated = $this->paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            4
+            12
         );
         return $this->render('clothing_item/index.html.twig', [
             'clothingItems' => $clothingItemsPaginated,
@@ -37,11 +45,13 @@ class ClothingItemController extends AbstractController
 
     #[Route('/clothes/details/{slug}', name: 'app_clothes_details')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function details(EntityManagerInterface $entityManager,
-                            string                 $slug): Response
+    public function details(string $slug): Response
     {
         $user = $this->getUser();
-        $clothingItem = $entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
+        $clothingItem = $this->entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
+        if(!$clothingItem) {
+            throw new NotFoundException('The item' . $slug . 'does not exist');
+        }
 
         return $this->render('clothing_item/details.html.twig', [
             'clothingItem' => $clothingItem,
@@ -50,24 +60,22 @@ class ClothingItemController extends AbstractController
 
     #[Route('/clothes/add', name: 'app_clothes_add')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function addClothingItems(Request                $request,
-                                     EntityManagerInterface $entityManager,
-                                     SluggerInterface       $slugger,
-                                     UrlGeneratorInterface  $urlGenerator): Response
+    public function addClothingItems(Request $request): Response
     {
         $user = $this->getUser();
         $clothingItem = new ClothingItem();
         $addClothingItemForm = $this->createForm(ClothingItemType::class, $clothingItem);
         $addClothingItemForm->handleRequest($request);
 
-        $url = $urlGenerator->generate('app_clothes');
+        $url = $this->urlGenerator->generate('app_clothes');
 
         if ($addClothingItemForm->isSubmitted() && $addClothingItemForm->isValid()) {
             $clothingItem->setUser($user);
-            $clothingItem->setSlug((strtolower($slugger->slug($clothingItem->getName()))));
+            $clothingItem->setSlug((strtolower($this->slugger->slug($clothingItem->getName()))));
             $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-            $entityManager->persist($clothingItem);
-            $entityManager->flush();
+            $this->entityManager->persist($clothingItem);
+            $this->entityManager->flush();
+            $this->addFlash('notice', 'Item ' . $clothingItem . ' successfully added');
 
             return $this->redirect($url);
         }
@@ -81,45 +89,44 @@ class ClothingItemController extends AbstractController
     #[Route('/clothes/edit/{slug}', name: 'app_clothes_edit')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function editClothingItems(Request                $request,
-                                      EntityManagerInterface $entityManager,
-                                      UrlGeneratorInterface  $urlGenerator,
                                       string                 $slug): Response
     {
         $user = $this->getUser();
-        $clothingItem = $entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
+        $clothingItem = $this->entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
 
         $editClothingItemForm = $this->createForm(ClothingItemType::class, $clothingItem);
         $editClothingItemForm->handleRequest($request);
 
-        $url = $urlGenerator->generate('app_clothes');
+        $url = $this->urlGenerator->generate('app_clothes');
 
         if ($editClothingItemForm->isSubmitted() && $editClothingItemForm->isValid()) {
             $clothingItem->setUser($user);
+            $clothingItem->setSlug((strtolower($this->slugger->slug($clothingItem->getName()))));
             $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-            $entityManager->persist($clothingItem);
-            $entityManager->flush();
+            $this->entityManager->persist($clothingItem);
+            $this->entityManager->flush();
+            $this->addFlash('notice', 'Item ' . $clothingItem . ' successfully edited');
 
             return $this->redirect($url);
         }
 
         return $this->render('clothing_item/edit.html.twig', [
             'user' => $user,
-            'clothingitem' => $clothingItem,
+            'clothingItem' => $clothingItem,
             'clothingItemForm' => $editClothingItemForm,
         ]);
     }
 
     #[Route('/clothes/delete/{slug}', name: 'app_clothes_delete')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function deleteClothingItem(EntityManagerInterface $entityManager,
-                                       string                 $slug): Response
+    public function deleteClothingItem(string $slug): Response
     {
-        $clothingItem = $entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
+        $clothingItem = $this->entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
 
-        $entityManager->remove($clothingItem);
-        $entityManager->flush();
+        $this->entityManager->remove($clothingItem);
+        $this->entityManager->flush();
 
-        $this->addFlash('success', "The clothing item $clothingItem has been deleted");
+        $this->addFlash('notice', "Item ' . $clothingItem . ' successfully deleted");
 
         return $this->redirectToRoute('app_clothes');
 

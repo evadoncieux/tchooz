@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Weather;
 
 use App\Service\Weather\WeatherDataService;
 use App\Service\Weather\WeatherParametersService;
