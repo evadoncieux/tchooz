@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h2>Edit {{ clothingitem.name }}</h2>
+
+        <div class="form-group">
+            {{ form_start(clothingItemForm) }}
+
+            <div class="input-group">
+                <label for="username">Name</label>
+                {{ form_widget(clothingItemForm.name) }}
+            </div>
+            <div class="input-group">
+                <label for="email">Material</label>
+                {{ form_widget(clothingItemForm.material) }}
+            </div>
+            <div class="input-group">
+                <label for="password">Weather</label>
+                {{ form_widget(clothingItemForm.weather) }}
+            </div>
+            <div class="input-group">
+                <label for="email">Color</label>
+                {{ form_widget(clothingItemForm.colors) }}
+            </div>
+            <div class="input-group">
+                <label for="password">Style</label>
+                {{ form_widget(clothingItemForm.styles) }}
+            </div>
+            <div class="input-group">
+                <label for="password">Categories</label>
+                {{ form_widget(clothingItemForm.category) }}
+            </div>
+
+            <button type="submit">
+                Edit
+            </button>
+            {{ form_end(clothingItemForm) }}
+        </div>
+    </div>
+{% endblock %}

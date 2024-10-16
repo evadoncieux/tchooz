@@ -12,10 +12,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ClothingItemRepository::class)]
-class ClothingItem
+#[UniqueEntity(fields: ['name'], message: 'This name already exists!')]
+class ClothingItem implements \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -54,6 +57,10 @@ class ClothingItem
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $timestamp = null;
 
+    #[ORM\Column(length: 255)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->outfits = new ArrayCollection();
@@ -74,6 +81,11 @@ class ClothingItem
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 
     /**
@@ -112,6 +124,7 @@ class ClothingItem
     {
         $this->colors = array_map(static fn(ClothingColor $color) => $color->value, $colors);
         return $this;
+
     }
 
     public function getMaterial(): ?ClothingMaterial
@@ -178,6 +191,18 @@ class ClothingItem
     public function setTimestamp(\DateTimeInterface $timestamp): static
     {
         $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

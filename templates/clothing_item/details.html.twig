@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ clothingItem.name }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>{{ clothingItem.name }}</h2>
+
+        {% include '_components/_edit_button.html.twig' with {'slug' : clothingItem.slug} %}
+        {% include '_components/_delete_button.html.twig' with {'slug' : clothingItem.slug} %}
+
+        <div class="element-center">
+            <div class="justify-between">
+                <p>Material</p>
+                <p>{{ clothingItem.material.value }}</p>
+            </div>
+
+            <div class="justify-between">
+                <p>Weather type</p>
+                <p>{{ clothingItem.weather.value }}</p>
+            </div>
+
+            <div class="justify-between">
+                <p>Color(s)</p>
+                {% for color in clothingItem.colors %}
+                    <p>{{ color.value }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="justify-between">
+                <p>Style</p>
+                {% for style in clothingItem.styles %}
+                    <p>{{ style.value }}</p>
+                {% endfor %}
+            </div>
+
+            {% if clothingItem.outfits is not empty %}
+                <div class="justify-between">
+                    <p>Logged outfit(s)</p>
+                    {% for outfit in clothingItem.outfits %}
+                        <p>{{ outfit }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -3,7 +3,7 @@
 namespace App\Controller\User;
 
 use App\Entity\User;
-use App\Form\UserEditType;
+use App\Form\User\UserEditType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\ClothingItem;
 
 use App\Entity\ClothingItem;
 use App\Enum\ClothingCategory;
@@ -16,7 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class AddClothingItemType extends AbstractType
+class EditClothingItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

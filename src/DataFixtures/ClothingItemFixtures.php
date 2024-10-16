@@ -34,6 +34,7 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
                 ->setWeather(ClothingWeather::from($itemData['weather']))
                 ->setCategory(ClothingCategory::from($itemData['category']))
                 ->setName($itemData['name'])
+                ->setSlug((strtolower($this->slugger->slug($itemData['name']))))
                 ->setMaterial(ClothingMaterial::from($itemData['material']))
                 ->setStyles(array_map(static fn($style) => ClothingStyle::from($style), $itemData['styles']))
                 ->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')))

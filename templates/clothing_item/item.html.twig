@@ -1,22 +1,23 @@
 <div class="clothing-item">
+    <a href="{{ path('app_clothes_details', {'slug': clothingItem.slug}) }}">
+        <h4>{{ clothingItem.name }}</h4>
 
-    <h4>{{ clothingItem.name }}</h4>
+        <p>{{ clothingItem.material.value }}</p>
 
-    {% if clothingItem.outfits is not empty %}
-        {% for outfit in clothingItem.outfits %}
-            <p>{{ outfit }}</p>
+        <p>{{ clothingItem.weather.value }}</p>
+
+        {% for color in clothingItem.colors %}
+            <p>{{ color.value }}</p>
         {% endfor %}
-    {% endif %}
 
-    <p>{{ clothingItem.material.value }}</p>
+        {% for style in clothingItem.styles %}
+            <p>{{ style.value }}</p>
+        {% endfor %}
 
-    <p>{{ clothingItem.weather.value }}</p>
-
-    {% for color in clothingItem.colors %}
-        <p>{{ color.value }}</p>
-    {% endfor %}
-
-    {% for style in clothingItem.styles %}
-        <p>{{ style.value }}</p>
-    {% endfor %}
+        {% if clothingItem.outfits is not empty %}
+            {% for outfit in clothingItem.outfits %}
+                <p>{{ outfit }}</p>
+            {% endfor %}
+        {% endif %}
+    </a>
 </div>
