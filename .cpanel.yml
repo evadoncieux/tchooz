@@ -1,9 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/zeme1231/public_html/
-    - /bin/cp -R * $DEPLOYPATH
-    - /bin/cp ./public/build $DEPLOYPATH
+    - export DEPLOYPATH=/home/zeme1231/public_html/tchooz
+    - /bin/cp * $DEPLOYPATH
     - cd $DEPLOYPATH
     - /usr/local/bin/composer install --no-dev
     - /usr/local/bin/npm install
