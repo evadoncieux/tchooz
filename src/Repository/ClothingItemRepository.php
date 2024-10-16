@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ClothingItem;
 use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -45,22 +46,38 @@ class ClothingItemRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    // TODO fix search on arrays
-    // TODO get an Object array as a result, not an array
     public function searchOutfits(string $searchString): array
     {
-        return $this->createQueryBuilder('ci')
-            ->select('ci')
-            ->where('ci.name LIKE :search')
-            ->orWhere('ci.category LIKE :search')
-            ->orWhere('ci.weather LIKE :search')
-            ->orWhere('ci.material LIKE :search')
-            ->orWhere('ci.colors LIKE :search') // la search ne marche pas là dessus parce que ce sont des arrays
-            ->orWhere('ci.styles LIKE :search')// la search ne marche pas là dessus parce que ce sont des arrays
-            ->setParameter('search', '%' . $searchString . '%')
-            ->getQuery()
-            ->getResult()
-//            ->getArrayResult()
-            ;
+        $entityManager = $this->getEntityManager();
+
+        $sql = '
+        SELECT *
+        FROM clothing_item ci
+        WHERE ci.name LIKE :search
+        OR ci.category LIKE :search
+        OR ci.weather LIKE :search
+        OR ci.material LIKE :search
+        OR JSON_CONTAINS(
+        LOWER(JSON_UNQUOTE(ci.colors)),
+        LOWER(:searchJson),
+        "$"
+    )
+    OR JSON_CONTAINS(
+        LOWER(JSON_UNQUOTE(ci.styles)),
+        LOWER(:searchJson),
+        "$"
+    )
+    ';
+
+        $rsm = new ResultSetMappingBuilder($entityManager);
+        $rsm->addRootEntityFromClassMetadata(ClothingItem::class, 'ci');
+
+        $query = $entityManager->createNativeQuery($sql, $rsm);
+        $query->setParameter('search', '%' . $searchString . '%');
+        $query->setParameter('searchJson', json_encode($searchString));
+
+        return $query->getResult();
     }
+
+
 }
