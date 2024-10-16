@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		e.preventDefault();
 		const query = input.value;
 
-		fetch(`/api/search?q=${encodeURIComponent(query)}`)
+		fetch(`/clothes/search?q=${encodeURIComponent(query)}`)
 			.then(response => response.json())
 			.then(data => {
+				console.log(data);
 				results.innerHTML = '';
 				data.forEach(item => {
 					const div = document.createElement('div');
