@@ -2,6 +2,10 @@
 
 {% block title %}My clothes{% endblock %}
 
+{% block head %}
+    {{ knp_pagination_rel_links(clothingItems) }}
+{% endblock %}
+
 {% block body %}
     <div>
         <h1>My clothes</h1>
@@ -14,6 +18,14 @@
             <a href="{{ path('app_clothes_add') }}" class="button">Add new clothes</a>
         </div>
 
+        <div class="count">
+            <p>Items count : {{ clothingItems.getTotalItemCount }}</p>
+        </div>
+
         {% include 'clothing_item/list.html.twig' %}
+
+        <div class="element-center">
+            {{ knp_pagination_render(clothingItems) }}
+        </div>
     </div>
 {% endblock %}

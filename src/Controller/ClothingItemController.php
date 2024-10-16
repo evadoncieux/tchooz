@@ -6,6 +6,7 @@ use App\Entity\ClothingItem;
 use App\Form\ClothingItem\AddClothingItemType;
 use App\Form\ClothingItem\EditClothingItemType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +19,19 @@ class ClothingItemController extends AbstractController
 {
     #[Route('/clothes', name: 'app_clothes')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request                $request,
+                          EntityManagerInterface $entityManager,
+                          PaginatorInterface    $paginator): Response
     {
         $user = $this->getUser();
-        $clothingItems = $entityManager->getRepository(ClothingItem::class)->findBy(['user' => $user->getId()], ['timestamp' => 'DESC']);
-
+        $query = $entityManager->getRepository(ClothingItem::class)->findByUser($user);
+        $clothingItemsPaginated = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            4
+        );
         return $this->render('clothing_item/index.html.twig', [
-            'clothingItems' => $clothingItems,
+            'clothingItems' => $clothingItemsPaginated,
         ]);
     }
 
@@ -104,8 +111,7 @@ class ClothingItemController extends AbstractController
 
     #[Route('/clothes/delete/{slug}', name: 'app_clothes_delete')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function deleteClothingItem(Request                $request,
-                                       EntityManagerInterface $entityManager,
+    public function deleteClothingItem(EntityManagerInterface $entityManager,
                                        string                 $slug): Response
     {
         $clothingItem = $entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);

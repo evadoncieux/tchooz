@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\ClothingItem;
+use App\Entity\User;
 use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -30,6 +32,17 @@ class ClothingItemRepository extends ServiceEntityRepository
             ->setMaxResults(50)
             ->getQuery()
             ->getResult();
+    }
+
+    public function findByUser(User $user): Query
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val')
+            ->setParameter('val', $user)
+            ->orderBy('c.user', 'ASC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ;
     }
 
     public function findItemByWeatherAndCategory(string $weather, string $category): array
