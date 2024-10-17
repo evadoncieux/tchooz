@@ -8,3 +8,4 @@ deployment:
     - /usr/local/bin/composer install --no-dev
     - /usr/local/bin/npm install
     - /usr/local/bin/npm run build
+    - /usr/local/bin/console doctrine:fixtures:load
