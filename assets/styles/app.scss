@@ -6,25 +6,32 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
- @include dark-mode;
+  @include dark-mode;
 }
+
+@include media-min768;
+@include media-max768;
+@include media-min980;
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 2rem;
-  padding: 1rem;
+  margin: 1rem;
+  padding: 0.5rem;
   color: var(--color-text);
   background: var(--color-background);
   transition: background 0.2s ease, color 1s ease;
+  font-size: 16px;
 }
 
 .container {
-  width: 100vw;
-  padding: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,27 +41,36 @@ body {
 title, h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-family: $secondary-font;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
   font-family: $primary-font;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 1.8rem;
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 2.5rem;
+  font-size: 1.3rem;
+}
+
+.splitter {
+  border: 1px solid;
+  border-radius: 0.2rem;
+  width: 80%;
+  margin: 1rem auto;
 }
 
 p {
   font-family: $text-font;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -62,6 +78,10 @@ a {
   font-family: $secondary-font;
   text-decoration: none;
   color: var(--color-link);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .title {
@@ -69,6 +89,29 @@ a {
 }
 
 .element-center {
+  &-v {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  &-h {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin: 0 1rem;
+    width: 100%;
+  }
+}
+
+.justify-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
-  margin-top: 2rem;
+  gap: 0.5rem;
+  width: 100%;
 }

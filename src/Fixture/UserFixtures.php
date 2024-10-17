@@ -6,11 +6,12 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
-class AppFixtures extends Fixture
+class UserFixtures extends Fixture
 {
 
-    public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
+    public function __construct(private readonly UserPasswordHasherInterface $passwordHasher, private readonly SluggerInterface $slugger)
     {
     }
 
@@ -21,6 +22,7 @@ class AppFixtures extends Fixture
             ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
             ->setRoles(['ROLE_ADMIN'])
             ->setEmail('admin@admin.com')
+            ->setSlug((strtolower($this->slugger->slug('admin'))))
             ->setVerified(true);
         $manager->persist($admin);
 
@@ -30,31 +32,34 @@ class AppFixtures extends Fixture
             ->setRoles(['ROLE_USER'])
             ->setEmail('eva@lyon.fr')
             ->setLocation('Lyon, FR')
+            ->setSlug((strtolower($this->slugger->slug('eva'))))
             ->setVerified(true);
         $manager->persist($userEva);
 
-        $userPucci = new User();
-        $userPucci->setUsername('pucci')
-            ->setPassword($this->passwordHasher->hashPassword($userPucci, 'imarat'))
+        $userFlo = new User();
+        $userFlo->setUsername('pucci')
+            ->setPassword($this->passwordHasher->hashPassword($userFlo, 'imarat'))
             ->setRoles(['ROLE_USER'])
-            ->setEmail('pucci@iloveny.com')
+            ->setEmail('flora@iloveny.com')
             ->setLocation('NY, NY, USA')
+            ->setSlug((strtolower($this->slugger->slug('flo'))))
             ->setVerified(true);
-        $manager->persist($userPucci);
+        $manager->persist($userFlo);
 
-        $userPaddington = new User();
-        $userPaddington->setUsername('paddington')
-            ->setPassword($this->passwordHasher->hashPassword($userPaddington, 'londonandtea'))
+        $userLise = new User();
+        $userLise->setUsername('lise')
+            ->setPassword($this->passwordHasher->hashPassword($userLise, 'londonandtea'))
             ->setRoles(['ROLE_USER'])
             ->setEmail('paddington@london.uk')
             ->setLocation('London, UK')
+            ->setSlug((strtolower($this->slugger->slug('lise'))))
             ->setVerified(false);
-        $manager->persist($userPaddington);
+        $manager->persist($userLise);
 
         $this->addReference('user_admin', $admin);
         $this->addReference('user_eva', $userEva);
-        $this->addReference('user_pucci', $userPucci);
-        $this->addReference('user_paddington', $userPaddington);
+        $this->addReference('user_pucci', $userFlo);
+        $this->addReference('user_paddington', $userLise);
 
         $manager->flush();
     }

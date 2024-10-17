@@ -1,0 +1,37 @@
+
+    <div class="outfit-item">
+        {% if outfit.top is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.top} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.bottom is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.bottom} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.sweater is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.sweater} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.dress is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.dress} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.suit is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.suit} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.shoes is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.shoes} %}
+            <div class="splitter"></div>
+        {% endif %}
+
+        {% if outfit.coat is not null %}
+            {% include 'outfit/_item.html.twig' with {'item' : outfit.coat} %}
+        {% endif %}
+    </div>
+

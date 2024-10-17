@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ClothingItemRepository::class)]
-#[UniqueEntity(fields: ['name'], message: 'This name already exists!')]
+#[UniqueEntity(fields: ['name'], message: 'This item name already exists!')]
 class ClothingItem implements \Stringable
 {
     #[ORM\Id]

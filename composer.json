@@ -111,6 +111,8 @@
         }
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "dama/doctrine-test-bundle": "^8.2",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "fakerphp/faker": "^1.23",

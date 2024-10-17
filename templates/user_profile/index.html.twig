@@ -3,13 +3,17 @@
 {% block title %}My profile{% endblock %}
 
 {% block body %}
-    <h1>My profile</h1>
-    <h2>Hello {{ user.username }}!</h2>
+    <div class="container">
+        <h2>My profile</h2>
 
-    <br>
+        <div>
+            <p>Hello {{ user.username }}!</p>
+            <p>You are located in {{ user.location ? user.location : 'No location data saved.' }}</p>
+            <p>Your email is {{ user.email }}</p>
+        </div>
 
-    <div>
-        <p>You are located in {{ user.location ? user.location : 'NO DATA' }}</p>
-        <p>Your email is {{ user.email }}</p>
+        {% include '_components/_edit_button.html.twig' with {'path': 'app_profile_edit', 'slug' : user.slug} %}
+
+        {% include 'outfit/index.html.twig' %}
     </div>
 {% endblock %}

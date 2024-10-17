@@ -1,0 +1,18 @@
+<p>The current weather in {{ user_location }} is <span style="font-style: italic">{{ weatherString }}</span></p>
+
+<div>
+    <p>The current temperature is {{ weatherData.temperature }}°C and it feels
+        like {{ weatherData.tempFeels|round(0, 'floor') }}°C.</p>
+
+    {% if weatherData.windSpeed > 20 %}
+        <p>It's windy outside!</p>
+    {% endif %}
+
+    {% if weatherData.rain > 1 %}
+        <p>It's raining. Don't forget to get an umbrella!</p>
+    {% endif %}
+</div>
+
+<div class="element-center-h">
+    <a href="{{ path('app_generate_suggestion') }}" class="button">Get outfit suggestions</a>
+</div>

@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
-        <form method="post" class="form-group">
+        <h2 class="h3 mb-3 font-weight-normal">Log in</h2>
 
+        <form method="post" class="form-group element-center-v">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -17,13 +17,13 @@
                 </div>
             {% endif %}
 
-            <div class="input-group">
+            <div class="input-group justify-between">
                 <label for="username">Username</label>
                 <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control"
                        autocomplete="username" required autofocus>
             </div>
 
-            <div class="input-group">
+            <div class="input-group justify-between">
                 <label for="password">Password</label>
                 <input type="password" name="_password" id="password" class="form-control"
                        autocomplete="current-password"
@@ -34,9 +34,9 @@
                    value="{{ csrf_token('authenticate') }}"
             >
 
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
+            <div class="checkbox justify-between">
                 <label for="_remember_me">Remember me</label>
+                <input type="checkbox" name="_remember_me" id="_remember_me">
             </div>
 
             <button class="btn btn-lg btn-primary" type="submit">

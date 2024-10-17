@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\ClothingItem;
+namespace App\Controller\Outfit;
 
 use App\Service\OutfitGenerator\OutfitGeneratorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
-class SuggestionController extends AbstractController
+class OutfitSuggestionController extends AbstractController
 {
     public function __construct(private readonly OutfitGeneratorService $suggestionGeneratorService,
     )
@@ -24,10 +24,17 @@ class SuggestionController extends AbstractController
     public function getSuggestion(): Response
     {
         $suggestionData = $this->suggestionGeneratorService->generateSuggestion();
+        $outfit = $suggestionData[1];
+        $message = '';
 
-        return $this->render('suggestion/new.html.twig', [
+        if ($outfit === null) {
+            $message = 'Sorry we could not generate a new outfit suggestion, try again later';
+        }
+
+        return $this->render('suggestion/generate.html.twig', [
             'weather' => $suggestionData[0],
             'outfit' => $suggestionData[1],
+            'message' => $message,
         ]);
     }
 }

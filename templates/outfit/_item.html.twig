@@ -1,4 +1,5 @@
-<div class="clothing-item">
-    <h3>{{ item.category.value }}</h3>
-    <p>{{ item.name }}</p>
-</div>
+<a href="{{ path('app_clothes_details', {'slug': item.slug}) }}">
+    <p>{{ item.category.value }}</p>
+    <h4>{{ item.name }}</h4>
+</a>
+

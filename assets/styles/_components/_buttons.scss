@@ -70,9 +70,9 @@ input:checked + .slider:before {
   transition: all 0.4s;
 }
 
-a.button {
+button, a.button {
   margin: 1rem;
-  padding: .8rem;
+  padding: .5rem 1.1rem;
   border-radius: $border-radius;
   box-shadow: none;
   color: var(--color-btn-text);
@@ -88,27 +88,22 @@ a.button {
     color: var(--color-btn-background);
     background-color: var(--color-btn-text);
     border: 1px solid var(--color-btn-background);
+    transition: background-color 0.2s ease, color 0.2s ease;
     text-decoration: underline;
-    transition: background-color 0.5s ease, color 1s ease;
   }
 }
 
-button {
-  margin: 1rem;
-  padding: .8rem;
-  border-radius: $border-radius;
-  box-shadow: none;
-  color: var(--color-btn-text);
-  background-color: var(--color-btn-background);
-  border: none;
-  font-family: $secondary-font;
-  font-weight: 600;
-  font-size: 1rem;
+a.button {
+  &-delete {
+    background-color: darkred;
+    color: $primary-light-color;
 
-  &:hover {
-    color: var(--color-btn-background);
-    background-color: var(--color-btn-text);
-    border: 1px solid var(--color-btn-background);
-    transition: background-color 0.5s ease, color 1s ease;
+    &:hover {
+      color: var(--color-btn-background);
+      background-color: var(--color-btn-text);
+      border: 1px solid var(--color-btn-background);
+      transition: background-color 0.2s ease, color 0.2s ease;
+      text-decoration: underline;
+    }
   }
 }

@@ -16,8 +16,7 @@
 
   input {
     width: 200px;
-    min-height: 2rem;
-    max-height: 3rem;
+    height: 1rem;
     margin: 1rem;
     padding: .8rem;
     border: none;
@@ -26,6 +25,7 @@
     background-color: var(--color-form-background);
     color: var(--color-form-text);
     font-family: $text-font;
+    font-size: 1rem;
   }
 
   .input-group {
@@ -36,16 +36,26 @@
     align-items: center;
   }
 
-  .custom-select {
+  select, .custom-select {
     width: 200px;
-    height: 80px;
+    height: 3rem;
     margin: 1rem;
     padding: .8rem;
     border-radius: $border-radius;
+    border: none;
     box-shadow: none;
     background-color: var(--color-form-background);
     color: var(--color-form-text);
     font-family: $text-font;
     font-size: 1rem;
+  }
+
+  label {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .justify-between {
+    width: 40vw;
   }
 }

@@ -21,12 +21,6 @@ class Outfit
     #[ORM\ManyToMany(targetEntity: ClothingItem::class, inversedBy: 'outfits')]
     private Collection $clothingItems;
 
-    /**
-     * @var Collection<int, Suggestion>
-     */
-    #[ORM\ManyToMany(targetEntity: Suggestion::class, mappedBy: 'outfits')]
-    private Collection $suggestions;
-
     #[ORM\ManyToOne(targetEntity: ClothingItem::class)]
     #[ORM\JoinColumn(nullable: true)]
     private ?ClothingItem $coat = null;
@@ -62,7 +56,6 @@ class Outfit
     public function __construct()
     {
         $this->clothingItems = new ArrayCollection();
-        $this->suggestions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,31 +87,15 @@ class Outfit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Suggestion>
-     */
-    public function getSuggestions(): Collection
+    public function updateClothingItems(): void
     {
-        return $this->suggestions;
-    }
-
-    public function addSuggestion(Suggestion $suggestion): static
-    {
-        if (!$this->suggestions->contains($suggestion)) {
-            $this->suggestions->add($suggestion);
-            $suggestion->addOutfit($this);
+        $this->clothingItems->clear();
+        $items = [$this->top, $this->bottom, $this->dress, $this->shoes, $this->suit, $this->sweater, $this->coat];
+        foreach ($items as $item) {
+            if ($item instanceof ClothingItem) {
+                $this->addClothingItem($item);
+            }
         }
-
-        return $this;
-    }
-
-    public function removeSuggestion(Suggestion $suggestion): static
-    {
-        if ($this->suggestions->removeElement($suggestion)) {
-            $suggestion->removeOutfit($this);
-        }
-
-        return $this;
     }
 
     public function getCoat(): ?ClothingItem

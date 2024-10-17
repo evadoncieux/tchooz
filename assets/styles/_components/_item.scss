@@ -1,21 +1,17 @@
 @import "../ressources/variables";
 @import "../ressources/mixins";
 
-.clothing-item {
+.clothing-item, .outfit-item {
   border: 0.5px solid var(--color-text);
   border-radius: $border-radius;
   padding: 1rem;
   margin: 1rem;
-  width: 15vw;
+  min-width: 15vw;
+  max-width: 25vw;
   height: fit-content;
 
   & > h4 {
     text-decoration: underline;
     margin-bottom: 0.5rem;
   }
-
-  //&:hover {
-  //  background: var(--color-text);
-  //  color: var(--color-background);
-  //}
 }

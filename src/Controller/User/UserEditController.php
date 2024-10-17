@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class UserEditController extends AbstractController
 {
-    #[Route(path: '/settings', name: 'app_user_settings')]
+    #[Route(path: '/profile/edit', name: 'app_profile_edit')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function editProfile(Request                $request,
                                 EntityManagerInterface $entityManager,

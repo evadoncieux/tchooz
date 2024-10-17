@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -47,12 +48,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    /**
-     * @var Collection<int, Suggestion>
-     */
-    #[ORM\OneToMany(targetEntity: Suggestion::class, mappedBy: 'userSuggestions')]
-    private Collection $suggestions;
-
     #[ORM\Column]
     private bool $isVerified = false;
 
@@ -72,9 +67,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Outfit::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $outfits;
 
+    #[ORM\Column(length: 255)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private ?string $slug = null;
+
     public function __construct()
     {
-        $this->suggestions = new ArrayCollection();
         $this->clothingItems = new ArrayCollection();
         $this->outfits = new ArrayCollection();
     }
@@ -190,36 +188,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Suggestion>
-     */
-    public function getSuggestions(): Collection
-    {
-        return $this->suggestions;
-    }
-
-    public function addSuggestion(Suggestion $suggestion): static
-    {
-        if (!$this->suggestions->contains($suggestion)) {
-            $this->suggestions->add($suggestion);
-            $suggestion->setUserSuggestions($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSuggestion(Suggestion $suggestion): static
-    {
-        if ($this->suggestions->removeElement($suggestion)) {
-            // set the owning side to null (unless already changed)
-            if ($suggestion->getUserSuggestions() === $this) {
-                $suggestion->setUserSuggestions(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function isVerified(): bool
     {
         return $this->isVerified;
@@ -305,6 +273,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $outfit->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
