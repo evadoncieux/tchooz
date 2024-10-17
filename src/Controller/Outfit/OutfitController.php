@@ -10,12 +10,22 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
+/**
+ * Display the current user's outfits
+ */
 class OutfitController extends AbstractController
 {
     public function __construct(
     )
     {
     }
+
+    /**
+     * display all of the current user's outfits
+     *
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
     #[Route('/outfit', name: 'app_outfit_index')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function index(EntityManagerInterface $entityManager): Response

@@ -9,6 +9,9 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
+/**
+ * Generate an outfit suggestion
+ */
 class OutfitSuggestionController extends AbstractController
 {
     public function __construct(private readonly OutfitGeneratorService $suggestionGeneratorService,
@@ -17,6 +20,9 @@ class OutfitSuggestionController extends AbstractController
     }
 
     /**
+     * generate an  outfit suggestion
+     *
+     * @return Response with the current weather, the outfit and a message if there's an error
      * @throws \Exception
      */
     #[Route('/suggestion/generate', name: 'app_generate_suggestion')]

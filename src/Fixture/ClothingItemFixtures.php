@@ -38,6 +38,7 @@ class ClothingItemFixtures extends Fixture implements DependentFixtureInterface
                 ->setMaterial(ClothingMaterial::from($itemData['material']))
                 ->setStyles(array_map(static fn($style) => ClothingStyle::from($style), $itemData['styles']))
                 ->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')))
+                ->setImage($clothingItem->getSlug() .'.png')
                 ->setUser($userEva);
 
             $manager->persist($clothingItem);

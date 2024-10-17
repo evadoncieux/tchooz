@@ -17,6 +17,11 @@ class SearchController extends AbstractController
     {
     }
 
+    /**
+     * search among the user's clothes, searchString can be any clothingItem property
+     * @param Request $request
+     * @return JsonResponse
+     */
     #[Route(path: '/clothes/search', name: 'app_search_clothes', methods: ['GET'])]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function search(Request $request): JsonResponse

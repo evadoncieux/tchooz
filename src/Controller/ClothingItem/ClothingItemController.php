@@ -3,10 +3,10 @@
 namespace App\Controller\ClothingItem;
 
 use App\Entity\ClothingItem;
-use App\Exception\NotFoundException;
 use App\Form\ClothingItem\ClothingItemType;
 use App\Service\File\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
+use Http\Discovery\Exception\NotFoundException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +16,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+
+/**
+ *  Handles the users' clothes CRUD
+ */
 class ClothingItemController extends AbstractController
 {
 
@@ -29,6 +33,11 @@ class ClothingItemController extends AbstractController
     {
     }
 
+    /**
+     * see all of the current user's clothing items
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/clothes', name: 'app_clothes')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function index(Request $request): Response
@@ -45,6 +54,11 @@ class ClothingItemController extends AbstractController
         ]);
     }
 
+    /**
+     * display the clothing items details
+     * @param string $slug
+     * @return Response
+     */
     #[Route('/clothes/details/{slug}', name: 'app_clothes_details')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function details(string $slug): Response
@@ -60,6 +74,12 @@ class ClothingItemController extends AbstractController
         ]);
     }
 
+    /**
+     *  add a clothing item to the current user
+     * @param Request $request
+     * @return Response
+     * @throws \DateMalformedStringException
+     */
     #[Route('/clothes/add', name: 'app_clothes_add')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function addClothingItems(Request $request): Response
@@ -94,6 +114,14 @@ class ClothingItemController extends AbstractController
         ]);
     }
 
+    /**
+     *   edit a clothing item of the current user
+     *
+     * @param Request $request
+     * @param string $slug
+     * @return Response
+     * @throws \DateMalformedStringException
+     */
     #[Route('/clothes/edit/{slug}', name: 'app_clothes_edit')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function editClothingItems(Request $request,
@@ -134,6 +162,12 @@ class ClothingItemController extends AbstractController
         return $this->render('clothing_item/index.html.twig');
     }
 
+    /**
+     * delete a clothing item of the current user
+     *
+     * @param string $slug
+     * @return Response
+     */
     #[Route('/clothes/delete/{slug}', name: 'app_clothes_delete')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function deleteClothingItem(string $slug): Response
