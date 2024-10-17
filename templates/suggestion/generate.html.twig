@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}suggestion{% endblock %}
+{% block title %}Suggestion{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -9,8 +9,11 @@
 
             {% if outfit.clothingItems is not empty %}
                 <p>Here is an outfit suggestion for the "{{ weather }}"</p>
-                {% else %}
-                <p>Sorry, we could not generate an outfit suggestion for the weather "{{ weather }}". Please try again later.</p>
+                {% include 'outfit/_full.html.twig' %}
+
+            {% else %}
+                <p>Sorry, we could not generate an outfit suggestion for the weather "{{ weather }}". Please try again
+                    later.</p>
             {% endif %}
 
             <a href="{{ path('app_generate_suggestion') }}" class="button">Get a new suggestion</a>

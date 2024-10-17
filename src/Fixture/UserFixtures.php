@@ -19,7 +19,7 @@ class UserFixtures extends Fixture
     {
         $admin = new User();
         $admin->setUsername('admin')
-            ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
+            ->setPassword($this->passwordHasher->hashPassword($admin, 'gdf74ds5sd7sd56'))
             ->setRoles(['ROLE_ADMIN'])
             ->setEmail('admin@admin.com')
             ->setSlug((strtolower($this->slugger->slug('admin'))))

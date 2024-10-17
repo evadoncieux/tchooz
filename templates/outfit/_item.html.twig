@@ -5,7 +5,7 @@
     {% if item.image is not null %}
         <div class="image-outfit">
             <img src="{{ asset('uploads/clothing_item/' ~ item.image) }}"
-                 alt="{{ item.name }} image">
+                 alt="{{ item.slug }} image">
         </div>
     {% endif %}
 </a>

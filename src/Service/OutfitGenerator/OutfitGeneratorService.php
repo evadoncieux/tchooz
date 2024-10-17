@@ -39,11 +39,7 @@ class OutfitGeneratorService
         }
 
         $outfit = new Outfit();
-
-//        TODO check if the newly selected items are the same as the previous outfits, otherwise ???
-        $lastLoggedOutfit = $this->lastLoggedOutfit($user);
-        if (!$lastLoggedOutfit) {
-
+        
             $shoes = $this->getRandomItemByWeatherAndCategory($weather, 'Shoes');
             $outfit->setShoes($shoes);
 
@@ -52,19 +48,47 @@ class OutfitGeneratorService
                 $outfit->setDress($dress);
             }
 
+            if ($weatherType === 'warm') {
+                $top = $this->getRandomItemByWeatherAndCategory($weather, 'Top');
+
+                $bottomCategories = ['Bottom', 'Skirt'];
+                $randomCategory = $bottomCategories[array_rand($bottomCategories)];
+                $bottom = $this->getRandomItemByWeatherAndCategory($weather, $randomCategory);
+
+                $outfit
+                    ->setTop($top)
+                    ->setBottom($bottom);
+
+            }
+
             if ($weatherType === 'cool' || $weatherType === 'mild') {
+                $coat = $this->getRandomItemByWeatherAndCategory($weather, 'Jacket');
                 $top = $this->getRandomItemByWeatherAndCategory($weather, 'Top');
                 $bottom = $this->getRandomItemByWeatherAndCategory($weather, 'Bottom');
+
+                $upperLayerCategories = ['Sweater', 'Hoodie'];
+                $randomCategory = $upperLayerCategories[array_rand($upperLayerCategories)];
+                $upperLayer = $this->getRandomItemByWeatherAndCategory($weather, $randomCategory);
+
                 $outfit
+                    ->setCoat($coat)
+                    ->setUpperLayer($upperLayer)
                     ->setTop($top)
                     ->setBottom($bottom);
             }
 
             if ($weatherType === 'cool' || $weatherType === 'cold') {
                 $coat = $this->getRandomItemByWeatherAndCategory($weather, 'Coat');
+                $top = $this->getRandomItemByWeatherAndCategory($weather, 'Top');
+                $bottom = $this->getRandomItemByWeatherAndCategory($weather, 'Bottom');
+                $headwear = $this->getRandomItemByWeatherAndCategory($weather, 'Headwear');
                 $sweater = $this->getRandomItemByWeatherAndCategory($weather, 'Sweater');
-                $outfit->setCoat($coat)
-                    ->setSweater($sweater);
+                $outfit
+                    ->setCoat($coat)
+                    ->setTop($top)
+                    ->setUpperLayer($sweater)
+                    ->setBottom($bottom)
+                    ->setHeadwear($headwear);
             }
 
             $outfit->setUser($user);
@@ -75,8 +99,6 @@ class OutfitGeneratorService
 
             $this->logger->notice("Success in generating outfit suggestion");
 
-            return [$weather, $outfit];
-        }
         return [$weather, $outfit];
     }
 

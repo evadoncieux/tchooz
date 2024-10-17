@@ -2,18 +2,18 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.ced75ccf.js",
-        "/build/122.d334628f.js",
-        "/build/app.78604d7c.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_core-js_modules_es_array-e772e9.js",
+        "/build/app.js"
       ],
       "css": [
-        "/build/app.b3384c03.css"
+        "/build/app.css"
       ]
     },
     "theme-switcher": {
       "js": [
-        "/build/runtime.ced75ccf.js",
-        "/build/theme-switcher.8edf3407.js"
+        "/build/runtime.js",
+        "/build/theme-switcher.js"
       ]
     }
   }

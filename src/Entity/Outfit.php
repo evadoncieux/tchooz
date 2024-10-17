@@ -43,7 +43,7 @@ class Outfit
 
     #[ORM\ManyToOne(targetEntity: ClothingItem::class)]
     #[ORM\JoinColumn(nullable: true)]
-    private ?ClothingItem $sweater = null;
+    private ?ClothingItem $upperLayer = null;
 
     #[ORM\ManyToOne(targetEntity: ClothingItem::class)]
     #[ORM\JoinColumn(nullable: true)]
@@ -52,6 +52,12 @@ class Outfit
     #[ORM\ManyToOne(inversedBy: 'outfits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    #[ORM\ManyToOne]
+    private ?ClothingItem $accessory = null;
+
+    #[ORM\ManyToOne]
+    private ?ClothingItem $headwear = null;
 
     public function __construct()
     {
@@ -90,7 +96,7 @@ class Outfit
     public function updateClothingItems(): void
     {
         $this->clothingItems->clear();
-        $items = [$this->top, $this->bottom, $this->dress, $this->shoes, $this->suit, $this->sweater, $this->coat];
+        $items = [$this->top, $this->bottom, $this->dress, $this->shoes, $this->suit, $this->upperLayer, $this->coat];
         foreach ($items as $item) {
             if ($item instanceof ClothingItem) {
                 $this->addClothingItem($item);
@@ -158,14 +164,14 @@ class Outfit
         return $this;
     }
 
-    public function getSweater(): ?ClothingItem
+    public function getUpperLayer(): ?ClothingItem
     {
-        return $this->sweater;
+        return $this->upperLayer;
     }
 
-    public function setSweater(?ClothingItem $sweater): static
+    public function setUpperLayer(?ClothingItem $upperLayer): static
     {
-        $this->sweater = $sweater;
+        $this->upperLayer = $upperLayer;
 
         return $this;
     }
@@ -190,6 +196,30 @@ class Outfit
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAccessory(): ?ClothingItem
+    {
+        return $this->accessory;
+    }
+
+    public function setAccessory(?ClothingItem $accessory): static
+    {
+        $this->accessory = $accessory;
+
+        return $this;
+    }
+
+    public function getHeadwear(): ?ClothingItem
+    {
+        return $this->headwear;
+    }
+
+    public function setHeadwear(?ClothingItem $headwear): static
+    {
+        $this->headwear = $headwear;
 
         return $this;
     }

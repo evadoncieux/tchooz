@@ -30,17 +30,10 @@ class OutfitSuggestionController extends AbstractController
     public function getSuggestion(): Response
     {
         $suggestionData = $this->suggestionGeneratorService->generateSuggestion();
-        $outfit = $suggestionData[1];
-        $message = '';
-
-        if ($outfit === null) {
-            $message = 'Sorry we could not generate a new outfit suggestion, try again later';
-        }
 
         return $this->render('suggestion/generate.html.twig', [
             'weather' => $suggestionData[0],
             'outfit' => $suggestionData[1],
-            'message' => $message,
         ]);
     }
 }

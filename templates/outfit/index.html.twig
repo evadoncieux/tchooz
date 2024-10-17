@@ -2,10 +2,12 @@
     {% if outfits is not empty %}
         <h2>My outfits</h2>
 
-        <div class="outfit-grid">
-            {% for outfit in outfits %}
-                {% include 'outfit/_full.html.twig' %}
-            {% endfor %}
+        <div style="width: 60vw;">
+            <div class="outfit-grid">
+                {% for outfit in outfits %}
+                    {% include 'outfit/_full.html.twig' %}
+                {% endfor %}
+            </div>
         </div>
     {% else %}
         <p>No outfit logged for the moment.</p>
