@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			.replace(/-+/g, '-'); // remove consecutive hyphens
 	}
 
-	console.log(slugify("The Quick Brown Fox Jumps Over The Lazy Dog! "))
-
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 		const query = input.value;

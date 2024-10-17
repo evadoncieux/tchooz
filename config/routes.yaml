@@ -3,3 +3,7 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+api_city_autocomplete:
+    path: /api/city-autocomplete
+    controller: App\Controller\Security\CityAutocompleteController::autocomplete
