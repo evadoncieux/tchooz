@@ -1,9 +1,12 @@
-<div class="element-center-v">
+<div class="element-center-h">
     {% if outfits is not empty %}
         <h2>My outfits</h2>
-        {% for outfit in outfits %}
-            {% include 'outfit/_full.html.twig' %}
-        {% endfor %}
+
+        <div class="outfit-grid">
+            {% for outfit in outfits %}
+                {% include 'outfit/_full.html.twig' %}
+            {% endfor %}
+        </div>
     {% else %}
         <p>No outfit logged for the moment.</p>
     {% endif %}

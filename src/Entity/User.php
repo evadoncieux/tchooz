@@ -48,12 +48,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    /**
-     * @var Collection<int, Suggestion>
-     */
-    #[ORM\OneToMany(targetEntity: Suggestion::class, mappedBy: 'userSuggestions')]
-    private Collection $suggestions;
-
     #[ORM\Column]
     private bool $isVerified = false;
 
@@ -79,7 +73,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->suggestions = new ArrayCollection();
         $this->clothingItems = new ArrayCollection();
         $this->outfits = new ArrayCollection();
     }
@@ -191,36 +184,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?string $avatar): static
     {
         $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Suggestion>
-     */
-    public function getSuggestions(): Collection
-    {
-        return $this->suggestions;
-    }
-
-    public function addSuggestion(Suggestion $suggestion): static
-    {
-        if (!$this->suggestions->contains($suggestion)) {
-            $this->suggestions->add($suggestion);
-            $suggestion->setUserSuggestions($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSuggestion(Suggestion $suggestion): static
-    {
-        if ($this->suggestions->removeElement($suggestion)) {
-            // set the owning side to null (unless already changed)
-            if ($suggestion->getUserSuggestions() === $this) {
-                $suggestion->setUserSuggestions(null);
-            }
-        }
 
         return $this;
     }

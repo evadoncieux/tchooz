@@ -68,6 +68,7 @@ class OutfitGeneratorService
             }
 
             $outfit->setUser($user);
+            $outfit->updateClothingItems();
 
             $this->entityManager->persist($outfit);
             $this->entityManager->flush();

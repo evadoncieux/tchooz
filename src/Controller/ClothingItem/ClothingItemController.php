@@ -36,7 +36,7 @@ class ClothingItemController extends AbstractController
         $clothingItemsPaginated = $this->paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            12
+            8
         );
         return $this->render('clothing_item/index.html.twig', [
             'clothingItems' => $clothingItemsPaginated,
@@ -80,7 +80,7 @@ class ClothingItemController extends AbstractController
             return $this->redirect($url);
         }
 
-        return $this->render('clothing_item/add.html.twig', [
+        return $this->render('clothing_item/form.html.twig', [
             'user' => $user,
             'clothingItemForm' => $addClothingItemForm,
         ]);
@@ -110,7 +110,7 @@ class ClothingItemController extends AbstractController
             return $this->redirect($url);
         }
 
-        return $this->render('clothing_item/edit.html.twig', [
+        return $this->render('clothing_item/form.html.twig', [
             'user' => $user,
             'clothingItem' => $clothingItem,
             'clothingItemForm' => $editClothingItemForm,

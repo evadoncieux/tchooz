@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}suggestion{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="element-center-h">
+            <h2>Suggestion</h2>
+
+            {% if outfit.clothingItems is not empty %}
+                <p>Here is an outfit suggestion for the "{{ weather }}"</p>
+                {% else %}
+                <p>Sorry, we could not generate an outfit suggestion for the weather "{{ weather }}". Please try again later.</p>
+            {% endif %}
+
+            <a href="{{ path('app_generate_suggestion') }}" class="button">Get a new suggestion</a>
+        </div>
+    </div>
+{% endblock %}
