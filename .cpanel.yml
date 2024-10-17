@@ -4,7 +4,7 @@ deployment:
     - export DEPLOYPATH=/home/zeme1231/public_html
     - /bin/cp -R * $DEPLOYPATH
     - cd $DEPLOYPATH
-    - /usr/local/bin/composer install --no-dev
-    - /usr/local/bin/npm install
-    - /usr/local/bin/npm run build
-    - /usr/local/bin/console doctrine:fixtures:load
+    - composer install --no-dev
+    - npm install
+    - npm run build
+    - doctrine:fixtures:load
