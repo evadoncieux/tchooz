@@ -18,7 +18,7 @@ End of the year project for my web developer diploma, with the 3W Academy.
 
 ## Technologies
 
-### SymfonybBundles used
+### Symfony bundles used
 
 - Webpack
 - Stimulus
