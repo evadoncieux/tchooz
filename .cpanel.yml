@@ -3,8 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/zeme1231/public_html
     - /bin/cp -R * $DEPLOYPATH
-    - cd $DEPLOYPATH
-    - composer install --no-dev
-    - npm install
-    - npm run build
-    - doctrine:fixtures:load
+    - /bin/cp ./public/build $DEPLOYPATH
