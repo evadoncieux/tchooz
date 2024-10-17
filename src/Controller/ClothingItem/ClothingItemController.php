@@ -5,6 +5,7 @@ namespace App\Controller\ClothingItem;
 use App\Entity\ClothingItem;
 use App\Exception\NotFoundException;
 use App\Form\ClothingItem\ClothingItemType;
+use App\Service\File\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,6 +23,7 @@ class ClothingItemController extends AbstractController
         private readonly EntityManagerInterface $entityManager,
         private readonly PaginatorInterface     $paginator,
         private readonly UrlGeneratorInterface  $urlGenerator,
+        private readonly FileUploaderService    $fileUploaderService,
         private readonly SluggerInterface       $slugger,
     )
     {
@@ -49,7 +51,7 @@ class ClothingItemController extends AbstractController
     {
         $user = $this->getUser();
         $clothingItem = $this->entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
-        if(!$clothingItem) {
+        if (!$clothingItem) {
             throw new NotFoundException('The item' . $slug . 'does not exist');
         }
 
@@ -73,6 +75,12 @@ class ClothingItemController extends AbstractController
             $clothingItem->setUser($user);
             $clothingItem->setSlug((strtolower($this->slugger->slug($clothingItem->getName()))));
             $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+            $clothingItemImage = $addClothingItemForm->get('image')->getData();
+            if ($clothingItemImage) {
+                $filename = $this->fileUploaderService->upload($clothingItemImage, 'clothing_item', strtolower($this->slugger->slug($clothingItem->getName())));
+                $clothingItem->setImage($filename);
+            }
+
             $this->entityManager->persist($clothingItem);
             $this->entityManager->flush();
             $this->addFlash('notice', 'Item ' . $clothingItem . ' successfully added');
@@ -88,8 +96,8 @@ class ClothingItemController extends AbstractController
 
     #[Route('/clothes/edit/{slug}', name: 'app_clothes_edit')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function editClothingItems(Request                $request,
-                                      string                 $slug): Response
+    public function editClothingItems(Request $request,
+                                      string  $slug): Response
     {
         $user = $this->getUser();
         $clothingItem = $this->entityManager->getRepository(ClothingItem::class)->findOneBy(['slug' => $slug]);
@@ -99,22 +107,31 @@ class ClothingItemController extends AbstractController
 
         $url = $this->urlGenerator->generate('app_clothes');
 
-        if ($editClothingItemForm->isSubmitted() && $editClothingItemForm->isValid()) {
-            $clothingItem->setUser($user);
-            $clothingItem->setSlug((strtolower($this->slugger->slug($clothingItem->getName()))));
-            $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
-            $this->entityManager->persist($clothingItem);
-            $this->entityManager->flush();
-            $this->addFlash('notice', 'Item ' . $clothingItem . ' successfully edited');
+        if ($clothingItem) {
+            if ($editClothingItemForm->isSubmitted() && $editClothingItemForm->isValid()) {
+                $clothingItem->setUser($user);
+                $clothingItem->setSlug((strtolower($this->slugger->slug($clothingItem->getName()))));
+                $clothingItem->setTimestamp(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
+                $clothingItemImage = $editClothingItemForm->get('image')->getData();
+                if ($clothingItemImage) {
+                    $filename = $this->fileUploaderService->upload($clothingItemImage, 'clothing_item', strtolower($this->slugger->slug($clothingItem->getName())));
+                    $clothingItem->setImage($filename);
+                }
 
-            return $this->redirect($url);
+                $this->entityManager->persist($clothingItem);
+                $this->entityManager->flush();
+                $this->addFlash('notice', 'Item ' . $clothingItem . ' successfully edited');
+
+                return $this->redirect($url);
+            }
+            return $this->render('clothing_item/form.html.twig', [
+                'user' => $user,
+                'clothingItem' => $clothingItem,
+                'clothingItemForm' => $editClothingItemForm,
+            ]);
         }
-
-        return $this->render('clothing_item/form.html.twig', [
-            'user' => $user,
-            'clothingItem' => $clothingItem,
-            'clothingItemForm' => $editClothingItemForm,
-        ]);
+        $this->addFlash('notice', 'Item ' . $clothingItem . ' does not exist');
+        return $this->render('clothing_item/index.html.twig');
     }
 
     #[Route('/clothes/delete/{slug}', name: 'app_clothes_delete')]

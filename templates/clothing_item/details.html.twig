@@ -15,29 +15,36 @@
         </div>
 
         <div class="element-center-h">
-            <div class="justify-between">
+            <div class="text-between">
                 <p style="font-weight: bold">Material</p>
                 <p>{{ clothingItem.material.value }}</p>
             </div>
 
-            <div class="justify-between">
+            <div class="text-between">
                 <p style="font-weight: bold">Weather type</p>
                 <p>{{ clothingItem.weather.value }}</p>
             </div>
 
-            <div class="justify-between">
+            <div class="text-between">
                 <p style="font-weight: bold">Color(s)</p>
                 {% for color in clothingItem.colors %}
                     <p>{{ color.value }}</p>
                 {% endfor %}
             </div>
 
-            <div class="justify-between">
+            <div class="text-between">
                 <p style="font-weight: bold">Style</p>
                 {% for style in clothingItem.styles %}
                     <p>{{ style.value }}</p>
                 {% endfor %}
             </div>
+
+            {% if clothingItem.image is not null %}
+                <div class="image-details">
+                    <img src="{{ asset('uploads/clothing_item/' ~ clothingItem.image) }}"
+                         alt="{{ clothingItem.name }} image">
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

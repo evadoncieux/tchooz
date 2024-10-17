@@ -22,74 +22,8 @@
   --color-link-hover: #{$secondary-light-color};
 }
 
-@mixin media-min768 {
-  @media (min-width: 768px) and (max-width: 979px) {
-    body {
-      margin: 1.5rem;
-      padding: 0.75rem;
-      font-size: 18px;
-    }
-
-    .container {
-      width: 90%;
-      padding: 0.75rem;
-    }
-
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2.2rem; }
-    h3 { font-size: 2rem; }
-    h4 { font-size: 1.7rem; }
-
-    p { font-size: 1.1rem; }
-
-    .splitter { width: 70%; }
-
-    .element-center-h {
-      width: 80%;
-    }
-
-    .justify-between {
-      flex-direction: row;
-      gap: 0.75rem;
-    }
-  }
-}
-
-@mixin media-max768 {
-  @media (max-width: 768px) {
-    body {
-      margin: 1.5rem;
-      padding: 0.75rem;
-      font-size: 18px;
-    }
-
-    .container {
-      width: 90%;
-      padding: 0.75rem;
-    }
-
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2.2rem; }
-    h3 { font-size: 2rem; }
-    h4 { font-size: 1.7rem; }
-
-    p { font-size: 1.1rem; }
-
-    .splitter { width: 70%; }
-
-    .element-center-h {
-      width: 80%;
-    }
-
-    .justify-between {
-      flex-direction: row;
-      gap: 0.75rem;
-    }
-  }
-}
-
 @mixin media-min980 {
-  @media (min-width: 980px) and (max-width: 1299px) {
+  @media (min-width: 980px) {
     body {
       margin: 1.5rem;
       padding: 0.75rem;
@@ -101,14 +35,26 @@
       padding: 0.75rem;
     }
 
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2.2rem; }
-    h3 { font-size: 2rem; }
-    h4 { font-size: 1.7rem; }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    h4 {
+      font-size: 1.7rem;
+    }
 
-    p { font-size: 1.1rem; }
+    p {
+      font-size: 1.1rem;
+    }
 
-    .splitter { width: 70%; }
+    .splitter {
+      width: 70%;
+    }
 
     .element-center-h {
       width: 80%;
@@ -117,6 +63,14 @@
     .justify-between {
       flex-direction: row;
       gap: 0.75rem;
+    }
+
+    .input-group {
+      flex-wrap: nowrap;
+    }
+
+    .outfit-grid {
+      display: flex;
     }
   }
 }

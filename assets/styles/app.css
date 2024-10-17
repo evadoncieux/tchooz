@@ -138,7 +138,7 @@
 }
 .form-group input {
   width: 200px;
-  height: 1rem;
+  height: 3rem;
   margin: 1rem;
   padding: 0.8rem;
   border: none;
@@ -303,6 +303,19 @@ a.button-delete:hover {
   margin: 0 auto;
 }
 
+.image-details {
+  margin: 1rem 0;
+}
+.image-details > img {
+  max-width: 50%;
+}
+.image-outfit {
+  margin: 1rem 0;
+}
+.image-outfit > img {
+  width: 10rem;
+}
+
 html[data-theme=light] {
   --color-text: #46413f;
   --color-background: #ffeddb;
@@ -325,7 +338,7 @@ html[data-theme=dark] {
   --color-link-hover: #b6dad9;
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 980px) {
   body {
     margin: 1.5rem;
     padding: 0.75rem;
@@ -360,77 +373,11 @@ html[data-theme=dark] {
     flex-direction: row;
     gap: 0.75rem;
   }
-}
-@media (max-width: 768px) {
-  body {
-    margin: 1.5rem;
-    padding: 0.75rem;
-    font-size: 18px;
+  .input-group {
+    flex-wrap: nowrap;
   }
-  .container {
-    width: 90%;
-    padding: 0.75rem;
-  }
-  h1 {
-    font-size: 2.5rem;
-  }
-  h2 {
-    font-size: 2.2rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-  h4 {
-    font-size: 1.7rem;
-  }
-  p {
-    font-size: 1.1rem;
-  }
-  .splitter {
-    width: 70%;
-  }
-  .element-center-h {
-    width: 80%;
-  }
-  .justify-between {
-    flex-direction: row;
-    gap: 0.75rem;
-  }
-}
-@media (min-width: 980px) and (max-width: 1299px) {
-  body {
-    margin: 1.5rem;
-    padding: 0.75rem;
-    font-size: 18px;
-  }
-  .container {
-    width: 90%;
-    padding: 0.75rem;
-  }
-  h1 {
-    font-size: 2.5rem;
-  }
-  h2 {
-    font-size: 2.2rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-  h4 {
-    font-size: 1.7rem;
-  }
-  p {
-    font-size: 1.1rem;
-  }
-  .splitter {
-    width: 70%;
-  }
-  .element-center-h {
-    width: 80%;
-  }
-  .justify-between {
-    flex-direction: row;
-    gap: 0.75rem;
+  .outfit-grid {
+    display: flex;
   }
 }
 * {
@@ -522,9 +469,9 @@ a:hover {
   width: 100%;
 }
 
-.justify-between {
+.justify-between, .text-between {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   text-align: center;

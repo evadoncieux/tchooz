@@ -10,9 +10,11 @@ use App\Enum\ClothingStyle;
 use App\Enum\ClothingWeather;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 
 class ClothingItemType extends AbstractType
@@ -54,6 +56,26 @@ class ClothingItemType extends AbstractType
                 'required' => true,
                 'multiple' => false,
                 'expanded' => false,
+            ])
+            ->add('image', FileType::class, [
+                'label' => 'Clothing Item Image',
+                'required' => false,
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Please choose a .jpg, .png or .webp file.',
+                        'maxSizeMessage' => 'Your image is too large. Maximum allowed size: 1024k',
+                    ]),
+                ],
             ]);
     }
 

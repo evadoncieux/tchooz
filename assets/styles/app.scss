@@ -9,8 +9,6 @@ html[data-theme="dark"] {
   @include dark-mode;
 }
 
-@include media-min768;
-@include media-max768;
 @include media-min980;
 
 * {
@@ -106,9 +104,9 @@ a {
   }
 }
 
-.justify-between {
+.justify-between, .text-between {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   text-align: center;

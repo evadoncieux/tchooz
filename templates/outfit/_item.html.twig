@@ -1,5 +1,12 @@
 <a href="{{ path('app_clothes_details', {'slug': item.slug}) }}">
     <p>{{ item.category.value }}</p>
     <h4>{{ item.name }}</h4>
+
+    {% if item.image is not null %}
+        <div class="image-outfit">
+            <img src="{{ asset('uploads/clothing_item/' ~ item.image) }}"
+                 alt="{{ item.name }} image">
+        </div>
+    {% endif %}
 </a>
 

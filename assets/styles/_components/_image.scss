@@ -1,0 +1,20 @@
+@import "../ressources/variables";
+@import "../ressources/mixins";
+
+.image {
+  &-details {
+    margin: 1rem 0;
+
+    & > img {
+      max-width: 50%;
+    }
+  }
+
+  &-outfit {
+    margin: 1rem 0;
+
+    & > img {
+      width: 10rem;
+    }
+  }
+}
