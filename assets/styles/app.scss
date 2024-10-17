@@ -23,7 +23,8 @@ body {
 }
 
 .container {
-  width: 100vw;
+  width: 80vw;
+  margin: 0 auto 0 auto;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -34,16 +35,17 @@ body {
 title, h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-family: $secondary-font;
+  margin-bottom: 2rem;
 }
 
 h1 {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
   font-family: $primary-font;
 }
 
 h2 {
   font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -54,6 +56,13 @@ h4 {
   font-size: 2rem;
 }
 
+.splitter {
+  border: 2px solid;
+  border-radius: 0.2rem;
+  width: 50%;
+  margin: 2rem auto;
+}
+
 p {
   font-family: $text-font;
   font-size: 1.3rem;
@@ -62,11 +71,11 @@ p {
 
 a {
   font-family: $secondary-font;
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--color-link);
 
-  &:hover{
-    text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
@@ -86,17 +95,18 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 70vh;
-    padding: 2rem;
+    padding-bottom: 2rem;
     margin: 0 2rem;
+  width: 70vw;
   }
 }
 
-.justify-between{
+.justify-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   gap: 1rem;
+  width: 75vw;
 }
 

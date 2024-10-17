@@ -8,26 +8,24 @@
 
 {% block body %}
     <div class="container">
-        <h2>My clothes</h2>
+        <div class="justify-between">
+            <h2>My clothes</h2>
+            <a href="{{ path('app_clothes_add') }}" class="button">Add</a>
+        </div>
 
         <div class="element-center-h">
-            <div class="element-center-v">
-                {% include 'clothing_item/_search.html.twig' %}
-            </div>
+            {% include 'clothing_item/_search.html.twig' %}
 
-            <div class="element-center-v">
-                <a href="{{ path('app_clothes_add') }}" class="button">Add new clothes</a>
-            </div>
-
-            <div class="count">
-                <p>Items count : {{ clothingItems.getTotalItemCount }}</p>
-            </div>
+            <p>{{ clothingItems.getTotalItemCount }} items</p>
 
             {% include 'clothing_item/_list.html.twig' %}
 
-            <div class="element-center-v">
-                {{ knp_pagination_render(clothingItems) }}
-            </div>
+            {{ knp_pagination_render(clothingItems) }}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/search.js') }}"></script>
 {% endblock %}

@@ -20,7 +20,7 @@ class OutfitController extends AbstractController
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $outfits = $entityManager->getRepository(Outfit::class)->findAll();
+        $outfits = $entityManager->getRepository(Outfit::class)->findBy(['user' => $this->getUser()]);
 
         return $this->render('outfit/index.html.twig', [
             'outfits' => $outfits,
