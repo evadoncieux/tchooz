@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
@@ -23,6 +24,7 @@ class RegistrationController extends AbstractController
         private readonly EmailVerifierService $emailVerifier,
         private readonly UserPasswordHasherInterface $userPasswordHasher,
         private readonly LoggerInterface             $logger,
+        private readonly SluggerInterface             $slugger,
     )
     {
     }
@@ -45,7 +47,8 @@ class RegistrationController extends AbstractController
             );
 
             $user->setRoles(['ROLE_USER']);
-            $user->setSlug($user->getUsername());
+            $user->setSlug((strtolower($this->slugger->slug($user->getUsername()))));
+
             $entityManager->persist($user);
             $entityManager->flush();
 
